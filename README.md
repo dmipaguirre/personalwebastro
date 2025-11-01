@@ -1,46 +1,65 @@
-# Astro Starter Kit: Basics
+# Personal Portfolio Website
 
-```sh
-pnpm create astro@latest -- --template basics
-```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Welcome to my personal portfolio website built with Astro! This project showcases my work, skills, and experience in web development.
 
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+Here's the current structure of the project:
 
 ```text
 /
 ├── public/
+│   ├── fonts/
+│   │   ├── BebasNeue-Regular.ttf
+│   │   ├── BebasNeue-Regular.woff
+│   │   ├── InstrumentSerif-Italic.ttf
+│   │   ├── InstrumentSerif-Italic.woff
+│   │   ├── InstrumentSerif-Regular.ttf
+│   │   ├── InstrumentSerif-Regular.woff
+│   │   ├── LavishlyYours-Regular.ttf
+│   │   └── LavishlyYours-Regular.woff
+│   ├── images/
+│   │   └── Users.avif
 │   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
+├── src/
+│   ├── components/
+│   │   ├── Hero.astro
+│   │   └── Navbar.astro
+│   ├── layouts/
+│   │   └── Layout.astro
+│   └── pages/
+│       └── index.astro
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🛠️ Features
+
+- Modern, responsive design
+- Custom typography with Bebas Neue and Instrument Serif fonts
+- Interactive UI components
+- Optimized for performance
 
 ## 🧞 Commands
 
-All commands are run from the root of the project, from a terminal:
+All commands are run from the root of the project:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+| `pnpm install`            | Installs dependencies                            |
+| `pnpm dev`                | Starts local dev server at `localhost:4321`      |
+| `pnpm build`              | Build your production site to `./dist/`          |
+| `pnpm preview`            | Preview your build locally                       |
+| `pnpm astro ...`          | Run Astro CLI commands                          |
+| `pnpm astro -- --help`    | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+## 🎨 Design System
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **Primary Color**: `#d17f04` (Orange)
+- **Fonts**: 
+  - Bebas Neue (Headings)
+  - Instrument Serif (Body text)
+  - Lavishly Yours (Accent text)
+
+## 📝 License
+
+This project is open source and available under the [MIT License](LICENSE).
