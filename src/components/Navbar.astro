@@ -1,0 +1,66 @@
+---
+import Hero from "./Hero.astro";
+---
+
+<nav class="navbar-container">
+  <div class="logo-container">
+    <a href="index.astro" class="logo">PS</a>
+  </div>
+  <ul class="links-container">
+    <li><a href="#" class="link-item">About</a></li>
+    <li><a href="#" class="link-item">Blog</a></li>
+    <li><a href="#" class="link-item">Projects</a></li>
+  </ul>
+</nav>
+
+<style>
+  /* Register your custom font family and tell the browser where to find it. */
+  @font-face {
+    font-family: "BebasNeue";
+    src:
+      url("../../public/fonts/BebasNeue-Regular.woff") format("woff"),
+      url("../../public/fonts/BebasNeue-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2rem 1.3rem;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: "BebasNeue", sans-serif;
+  }
+  .logo-container {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  .logo {
+    text-decoration: none;
+    color: #d17f04;
+    font-size: 2.9rem;
+  }
+  .links-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 1.2rem;
+    gap: 2rem;
+  }
+  .link-item {
+    text-decoration: none;
+    color: #0e0d0d;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+
+  .link-item:hover {
+    color: #d17f04;
+  }
+</style>

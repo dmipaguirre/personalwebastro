@@ -1,0 +1,211 @@
+---
+
+---
+
+<section class="hero-container">
+  <div class="txt-hero">
+    <p class="name">Hey, I'm Miguel</p>
+    <h1>
+      A creative
+      <span class="txt-skill">Web Developer</span>
+    </h1>
+    <p>
+      Transforming ideas into stunning visuals—UI/UX and brand design that
+      captivates, engages, and delivers results.
+    </p>
+  </div>
+  <div class="avatar-hero">
+    <img src="/images/Users.avif" alt="Miguel's profile photo" />
+  </div>
+  <div class="icons-container">
+    <a
+      class="icon-hero"
+      href="https://www.linkedin.com/in/dmpaeza/"
+      target="_blank"
+      rel=""
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M8 11v5"></path>
+        <path d="M8 8v.01"></path>
+        <path d="M12 16v-5"></path>
+        <path d="M16 16v-3a2 2 0 1 0 -4 0"></path>
+        <path
+          d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z"
+        ></path>
+      </svg>
+    </a>
+    <a class="icon-hero" href="" target="_blank" rel="">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path
+          d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"
+        ></path>
+        <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
+        <path d="M16.5 7.5v.01"></path>
+      </svg>
+    </a>
+    <a class="icon-hero" href="" target="_blank" rel="">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-facebook"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path
+          d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"
+        ></path>
+      </svg>
+    </a>
+  </div>
+</section>
+<style>
+  @font-face {
+    font-family: "BebasNeue";
+    src:
+      url("/fonts/BebasNeue-Regular.woff") format("woff"),
+      url("/fonts/BebasNeue-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Instrument Serif";
+    src:
+      url("/fonts/InstrumentSerif-Regular.woff") format("woff"),
+      url("/fonts/InstrumentSerif-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Instrument Serif";
+    src:
+      url("/fonts/InstrumentSerif-Italic.woff") format("woff"),
+      url("/fonts/InstrumentSerif-Italic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Lavishly Yours";
+    src:
+      url("/fonts/LavishlyYours-Regular.woff") format("woff"),
+      url("/fonts/LavishlyYours-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  /* --- Layout principal --- */
+  .hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem 1.3rem;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: "BebasNeue", sans-serif;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  .txt-hero {
+    width: 30%;
+  }
+
+  .txt-hero .name {
+    font-size: 2.5rem;
+    font-family: "Instrument Serif", sans-serif;
+    line-height: 1.2;
+    margin: 1rem 0;
+  }
+
+  .txt-hero h1 {
+    font-family: "BebasNeue", sans-serif;
+    font-size: 4.6rem;
+    line-height: 1.2;
+    margin: 1rem 0;
+  }
+
+  .txt-skill {
+    font-family: "Lavishly Yours", sans-serif;
+    line-height: 1;
+    font-size: 5rem;
+    color: #d17f04;
+  }
+
+  .txt-hero p {
+    font-family: "Instrument Serif", sans-serif;
+    font-size: 2.6rem;
+    line-height: 1;
+    margin: 1rem 0;
+  }
+
+  .avatar-hero {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 30%;
+    flex: 1;
+    padding-top: 0;
+    margin-top: 0;
+    align-self: flex-start;
+  }
+
+  .avatar-hero img {
+    width: 14rem;
+    height: 14rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0;
+    align-self: flex-start;
+  }
+
+  .icons-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem;
+    align-self: center;
+  }
+
+  .icon-hero svg {
+    width: 70px;
+    height: 70px;
+    transition: transform 0.3s ease-in-out;
+    color: #0e0d0d;
+    stroke-width: 1.3;
+    stroke: currentColor;
+  }
+  .icon-hero:hover svg {
+    color: #d17f04;
+    transform: scale(1.2);
+  }
+</style>
