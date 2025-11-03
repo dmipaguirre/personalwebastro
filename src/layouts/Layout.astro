@@ -1,5 +1,8 @@
 ---
 import Navbar from "../components/Navbar.astro";
+
+const { pageTitle } = Astro.props;
+
 ---
 
 <!doctype html>
@@ -9,7 +12,7 @@ import Navbar from "../components/Navbar.astro";
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Personal Web</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
 		<header>

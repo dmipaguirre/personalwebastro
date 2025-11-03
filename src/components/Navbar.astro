@@ -4,12 +4,12 @@ import Hero from "./Hero.astro";
 
 <nav class="navbar-container">
   <div class="logo-container">
-    <a href="index.astro" class="logo">PS</a>
+    <a href="/" class="logo">PS</a>
   </div>
   <ul class="links-container">
-    <li><a href="#" class="link-item">About</a></li>
-    <li><a href="#" class="link-item">Blog</a></li>
-    <li><a href="#" class="link-item">Projects</a></li>
+    <li><a href="/about/" class="link-item">About</a></li>
+    <li><a href="/blog/" class="link-item">Blog</a></li>
+    <li><a href="/projects/" class="link-item">Projects</a></li>
   </ul>
 </nav>
 
@@ -18,8 +18,8 @@ import Hero from "./Hero.astro";
   @font-face {
     font-family: "BebasNeue";
     src:
-      url("../../public/fonts/BebasNeue-Regular.woff") format("woff"),
-      url("../../public/fonts/BebasNeue-Regular.ttf") format("truetype");
+      url("/fonts/BebasNeue-Regular.woff") format("woff"),
+      url("/fonts/BebasNeue-Regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
