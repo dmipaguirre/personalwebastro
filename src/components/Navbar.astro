@@ -1,5 +1,5 @@
 ---
-import Hero from "./Hero.astro";
+import "../styles/global.css";
 ---
 
 <nav class="navbar-container">
@@ -14,16 +14,6 @@ import Hero from "./Hero.astro";
 </nav>
 
 <style>
-  /* Register your custom font family and tell the browser where to find it. */
-  @font-face {
-    font-family: "BebasNeue";
-    src:
-      url("/fonts/BebasNeue-Regular.woff") format("woff"),
-      url("/fonts/BebasNeue-Regular.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
   .navbar-container {
     display: flex;
     justify-content: space-between;

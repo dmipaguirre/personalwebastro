@@ -1,56 +1,54 @@
-# Personal Portfolio Website
+# 🌟 Personal Portfolio
 
-Welcome to my personal portfolio website built with Astro! This project showcases my work, skills, and experience in web development.
+Welcome to my personal portfolio built with Astro! This modern, performant website showcases my work, skills, and experience in web development.
 
-## 🚀 Project Structure
+## 🚀 Key Features
 
-Here's the current structure of the project:
+- ⚡ **Blazing Fast Performance** - Built with Astro for optimal speed
+- 🎨 **Modern & Responsive Design** - Looks great on all devices
+- 🎯 **SEO Optimized** - Built with search engines in mind
+- 🎨 **Custom Typography** - Featuring Bebas Neue and Instrument Serif
+- 🌈 **Consistent Design System** - Cohesive look and feel throughout
 
-```text
+## 🏗️ Project Structure
+
+```
 /
-├── public/
-│   ├── fonts/
-│   │   ├── BebasNeue-Regular.ttf
-│   │   ├── BebasNeue-Regular.woff
-│   │   ├── InstrumentSerif-Italic.ttf
-│   │   ├── InstrumentSerif-Italic.woff
-│   │   ├── InstrumentSerif-Regular.ttf
-│   │   ├── InstrumentSerif-Regular.woff
-│   │   ├── LavishlyYours-Regular.ttf
-│   │   └── LavishlyYours-Regular.woff
-│   ├── images/
-│   │   └── Users.avif
-│   └── favicon.svg
+├── public/                 # Static files
+│   ├── fonts/              # Custom fonts
+│   └── images/             # Images and graphics
+│   └── favicon.svg         # Site favicon
+│
 ├── src/
-│   ├── components/
-│   │   ├── Hero.astro
-│   │   └── Navbar.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── assets/             # Static assets (CSS, images, etc.)
+│   ├── components/         # Reusable components
+│   ├── content/            # MD/MDX content
+│   ├── layouts/            # Layout templates
+│   ├── pages/              # Application pages
+│   │   ├── about.astro     # About me
+│   │   ├── index.astro     # Homepage
+│   │   └── projects.astro  # Projects
+│   └── styles/             # Global styles
+│
+├── .gitignore
+├── astro.config.mjs        # Astro configuration
+├── package.json
+└── README.md
 ```
 
-## 🛠️ Features
-
-- Modern, responsive design
-- Custom typography with Bebas Neue and Instrument Serif fonts
-- Interactive UI components
-- Optimized for performance
-
-## 🧞 Commands
+## 🛠️ Available Commands
 
 All commands are run from the root of the project:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`            | Installs dependencies                            |
-| `pnpm dev`                | Starts local dev server at `localhost:4321`      |
-| `pnpm build`              | Build your production site to `./dist/`          |
-| `pnpm preview`            | Preview your build locally                       |
-| `pnpm astro ...`          | Run Astro CLI commands                          |
-| `pnpm astro -- --help`    | Get help using the Astro CLI                     |
+| Command                | Action                                           |
+|------------------------|--------------------------------------------------|
+| `pnpm install`         | Install dependencies                             |
+| `pnpm dev`             | Start development server at `localhost:4321`     |
+| `pnpm build`           | Build for production to `./dist/`                |
+| `pnpm preview`         | Preview production build locally                 |
+| `pnpm astro ...`       | Run Astro CLI commands                          |
+| `pnpm astro check`     | Check code for errors                            |
+| `pnpm astro add`       | Add Astro integrations                          |
 
 ## 🎨 Design System
 

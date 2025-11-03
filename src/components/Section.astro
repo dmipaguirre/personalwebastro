@@ -1,30 +1,29 @@
 ---
-
+import "../styles/global.css";
 ---
 
 <section class="section-container">
   <div class="section-content">
-    <h2>Desarrollo Frontend</h2>
+    <h2>Frotend Development</h2>
     <p>
-      Código limpio, modular y optimizado para la velocidad. Experto en
-      React/Astro y diseño responsivo para una experiencia impecable en cualquier
-      dispositivo.
+      Clean, modular, and speed-optimized code. Expert in React/Astro and
+      responsive design for a flawless experience on any device.
     </p>
   </div>
   <div class="bar-column"></div>
   <div class="section-content">
-    <h2>Estrategia UI/UX</h2>
+    <h2>UI/UX Strategy</h2>
     <p>
-      Diseño centrado en el usuario. Transformo la lógica de negocio en
-      interfaces intuitivas que reducen la fricción y aumentan la retención.
+      User-centered design. I transform business logic into intuitive interfaces
+      that reduce friction and increase user retention.
     </p>
   </div>
   <div class="bar-column"></div>
   <div class="section-content">
     <h2>Astro</h2>
     <p>
-      Recreación de páginas web con Astro.js para un mejor rendimiento y
-      experiencia del usuario. Optimizando tiempos de carga y respuesta
+      Rebuilding websites with Astro.js for better performance and user
+      experience — optimizing loading and response times.
     </p>
   </div>
 </section>
@@ -45,11 +44,16 @@
     background-color: #d17f04;
     height: 150px;
   }
+  .section-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
   .section-content h2 {
     font-family: "BebasNeue", sans-serif;
     font-size: 1.5rem;
     line-height: 1;
-    margin: 1rem 0;
+    margin: 0;
     font-weight: 300;
   }
   .section-content p {
