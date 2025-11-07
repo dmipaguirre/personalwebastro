@@ -1,6 +1,6 @@
 ---
 import Navbar from "../components/Navbar.astro";
-
+import Footer from "../components/Footer.astro";
 const { pageTitle } = Astro.props;
 
 ---
@@ -22,16 +22,23 @@ const { pageTitle } = Astro.props;
 
 			<slot />
 		</main>
+		<footer>
+			<Footer />
+		</footer>
+
 	</body>
 </html>
 
 <style>
+	html {
+		overflow: scroll;
+	}
 	* {
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
 	}
 	body {
-		background-color: rgb(206, 202, 197);
+		background-color: var(--color-bg);
 	}
 </style>

@@ -1,7 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
-import Section from "../components/Section.astro";
+import SectionSkill from "../components/SectionSkill.astro";
+import SectionQuote from "../components/SectionQuote.astro";
 import '../styles/global.css';
 
 const pageTitle = "Home";
@@ -12,5 +13,6 @@ const pageTitle = "Home";
 
 <Layout pageTitle={pageTitle}>
   <Hero />
-  <Section />
+  <SectionSkill />
+  <SectionQuote />
 </Layout>

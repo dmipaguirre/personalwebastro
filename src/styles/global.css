@@ -35,6 +35,14 @@
     font-display: swap;
   }
 
+  :root {
+    --color-primary: #d17f04;      /* Color principal/naranja */
+    --color-text: #0e0d0d;         /* Color de texto principal */
+    --color-bg: #cecac5;
+    --color-bgsecondary: #c9c6c0;
+    --width-container: 80%;
+  }
+
   @view-transition {
     navigation: auto;
   }

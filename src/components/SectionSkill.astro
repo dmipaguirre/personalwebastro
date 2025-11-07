@@ -6,24 +6,24 @@ import "../styles/global.css";
   <div class="section-content">
     <h2>Frotend Development</h2>
     <p>
-      Clean, modular, and speed-optimized code. Expert in React/Astro and
-      responsive design for a flawless experience on any device.
+      Clean, modular, and speed-optimized code. Expert in HTML, CSS, JavaScript
+      and responsive design for a flawless experience on any device.
     </p>
   </div>
   <div class="bar-column"></div>
   <div class="section-content">
-    <h2>UI/UX Strategy</h2>
+    <h2>Python</h2>
     <p>
-      User-centered design. I transform business logic into intuitive interfaces
-      that reduce friction and increase user retention.
+      Knowledge of Python, experience with the pandas library, automation, and
+      web scraping.
     </p>
   </div>
   <div class="bar-column"></div>
   <div class="section-content">
-    <h2>Astro</h2>
+    <h2>Libraries</h2>
     <p>
-      Rebuilding websites with Astro.js for better performance and user
-      experience — optimizing loading and response times.
+      Beginner in using libraries such as React, to create dynamic and
+      responsive user interfaces.
     </p>
   </div>
 </section>
@@ -34,20 +34,21 @@ import "../styles/global.css";
     justify-content: space-between;
     align-items: center;
     padding: 2rem 1.3rem;
-    width: 90%;
+    width: var(--width-container);
     max-width: 1200px;
     margin: 0 auto;
     gap: 4rem;
   }
   .bar-column {
     width: 1px;
-    background-color: #d17f04;
-    height: 150px;
+    background-color: var(--color-primary);
+    height: 110px;
   }
   .section-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 30%;
   }
   .section-content h2 {
     font-family: "BebasNeue", sans-serif;
@@ -58,7 +59,7 @@ import "../styles/global.css";
   }
   .section-content p {
     font-family: "Instrument Serif", sans-serif;
-    font-size: 1.2rem;
-    opacity: 0.4;
+    font-size: 1.4rem;
+    opacity: 0.7;
   }
 </style>
