@@ -1,16 +1,76 @@
 ---
 import Layout from "./Layout.astro";
+
 const { content, frontmatter } = Astro.props;
 ---
 
 <Layout pageTilte={frontmatter.title}>
-  <article>
+  <article class="blog-content">
     <h1>{frontmatter.title}</h1>
-    <p>
-      <strong>{frontmatter.readingTime ?? "7 minutos de lectura"} de lectura</strong>.
-      Publicado: {frontmatter.publishDate}
+    <p class="blog-meta">
+      <strong
+        >{frontmatter.readingTime ?? "7 minutos de lectura"} de lectura<svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="icon icon-tabler icons-tabler-filled icon-tabler-point"
+          ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+            d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z"
+          ></path></svg
+        ></strong
+      >Publicado: {frontmatter.publishDate}
     </p>
+    <slot />
   </article>
-
-  <slot />
 </Layout>
+
+<style is:global>
+  .blog-content {
+    max-width: 800px;
+    margin: 8rem auto;
+    padding: 1.2rem 1.3rem;
+    font-family: "Instrument Serif", serif;
+    color: var(--color-text);
+    line-height: 2;
+  }
+
+  .blog-content h1 {
+    font-family: "BebasNeue", sans-serif;
+    font-size: 4.6rem;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .blog-meta {
+    text-align: center;
+    color: var(--color-text);
+    opacity: 0.8;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+  }
+
+  /* Markdown elements */
+  .blog-content h2 {
+    font-family: "BebasNeue", sans-serif;
+    font-weight: 300;
+    font-size: 2.5rem;
+    line-height: 1;
+    margin: 2rem 0 1rem 0;
+  }
+
+  .blog-content p {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    text-align: justify;
+  }
+
+  .blog-content strong {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+</style>
