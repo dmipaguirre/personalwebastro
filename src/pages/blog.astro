@@ -1,12 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SectionBlog from "../components/SectionBlog.astro";
 import Construction404 from "../components/Construction404.astro";
-import '../styles/global.css';
+import "../styles/global.css";
+
+
 
 const pageTitle = "Blog";
-
 ---
 
 <Layout pageTitle={pageTitle}>
+  <SectionBlog />
   <Construction404 />
 </Layout>

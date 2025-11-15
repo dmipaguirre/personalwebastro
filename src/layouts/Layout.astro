@@ -9,7 +9,7 @@ const { pageTitle } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<link rel="icon" type="image/svg+xml" href="" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
@@ -29,16 +29,3 @@ const { pageTitle } = Astro.props;
 	</body>
 </html>
 
-<style>
-	html {
-		overflow: scroll;
-	}
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
-	body {
-		background-color: var(--color-bg);
-	}
-</style>

@@ -20,20 +20,24 @@ Welcome to my personal portfolio built with Astro! This modern, performant websi
 │   └── favicon.svg         # Site favicon
 │
 ├── src/
-│   ├── assets/             # Static assets (CSS, images, etc.)
+│   ├── assets/             # Static assets (images, icons, etc.)
 │   ├── components/         # Reusable components
-│   ├── content/            # MD/MDX content
+│   ├── data/               # Data files and utilities
 │   ├── layouts/            # Layout templates
 │   ├── pages/              # Application pages
-│   │   ├── about.astro     # About me
+│   │   ├── about.astro     # About me page
+│   │   ├── blog.astro      # Blog listing page
 │   │   ├── index.astro     # Homepage
-│   │   └── projects.astro  # Projects
-│   └── styles/             # Global styles
+│   │   ├── projects.astro  # Projects showcase
+│   │   └── post/           # Blog post markdown files
+│   │       ├── post-1.md   # Blog post 1
+│   │       └── post-2.md   # Blog post 2
+│   └── styles/             # Global styles and CSS modules
 │
-├── .gitignore
-├── astro.config.mjs        # Astro configuration
-├── package.json
-└── README.md
+├── .gitignore             # Git ignore file
+├── astro.config.mjs       # Astro configuration
+├── package.json           # Project dependencies
+└── README.md              # Project documentation
 ```
 
 ## 🛠️ Available Commands

@@ -1,0 +1,16 @@
+---
+import Layout from "./Layout.astro";
+const { content, frontmatter } = Astro.props;
+---
+
+<Layout pageTilte={frontmatter.title}>
+  <article>
+    <h1>{frontmatter.title}</h1>
+    <p>
+      <strong>{frontmatter.readingTime ?? "7 minutos de lectura"} de lectura</strong>.
+      Publicado: {frontmatter.publishDate}
+    </p>
+  </article>
+
+  <slot />
+</Layout>

@@ -2,19 +2,49 @@
 import "../styles/global.css";
 ---
 
-<nav class="navbar-container">
-  <div class="logo-container">
-    <a href="/" class="logo">PS</a>
+<nav class="navbar-container" id="navbar">
+  <div class="navbar-content">
+    <div class="logo-container">
+      <a href="/" class="logo">PS</a>
+    </div>
+    <ul class="links-container">
+      <li><a href="/about/" class="link-item">About</a></li>
+      <li><a href="/blog/" class="link-item">Blog</a></li>
+      <li><a href="/projects/" class="link-item">Projects</a></li>
+    </ul>
   </div>
-  <ul class="links-container">
-    <li><a href="/about/" class="link-item">About</a></li>
-    <li><a href="/blog/" class="link-item">Blog</a></li>
-    <li><a href="/projects/" class="link-item">Projects</a></li>
-  </ul>
 </nav>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+      if (window.scrollY > 2) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    }
+  });
+</script>
 
 <style>
   .navbar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: var(--color-bgprimary);
+    transition: all 0.3s ease;
+  }
+
+  .navbar-container.scrolled {
+    background-color: var(--color-bgprimary);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+  }
+  .navbar-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -39,7 +69,7 @@ import "../styles/global.css";
     align-items: center;
     list-style: none;
     margin: 0;
-    padding: 1.2rem;
+
     gap: 2rem;
   }
   .link-item {
