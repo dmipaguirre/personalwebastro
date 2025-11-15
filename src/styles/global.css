@@ -5,7 +5,7 @@
       url("/fonts/BebasNeue-Regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
   }
   @font-face {
     font-family: "Instrument Serif";
@@ -14,7 +14,7 @@
       url("/fonts/InstrumentSerif-Regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
   }
   @font-face {
     font-family: "Instrument Serif";
@@ -23,7 +23,7 @@
       url("/fonts/InstrumentSerif-Italic.ttf") format("truetype");
     font-weight: normal;
     font-style: italic;
-    font-display: swap;
+    font-display: fallback;
   }
   @font-face {
     font-family: "Lavishly Yours";
@@ -32,7 +32,7 @@
       url("/fonts/LavishlyYours-Regular.ttf") format("truetype");
     font-weight: normal;
     font-style: italic;
-    font-display: swap;
+    font-display: fallback;
   }
 
   :root {
@@ -51,14 +51,19 @@
     box-sizing: border-box;
   }
 
-  html {
-    overflow: scroll;
-  }
-
+  /* Font fallbacks to reduce FOUT */
   body {
+    font-family: Georgia, serif; /* Fallback for Instrument Serif */
     background-color: var(--color-bg);
   }
- 
+
+  h1, h2, h3, .logo {
+    font-family: Impact, Arial Black, sans-serif; /* Fallback for BebasNeue */
+  }
+
+  .txt-skill {
+    font-family: Brush Script MT, cursive; /* Fallback for Lavishly Yours */
+  }
 
   @view-transition {
     navigation: auto;
