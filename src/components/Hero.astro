@@ -70,7 +70,7 @@ import "../styles/global.css";
     </a>
     <a
       class="icon-hero"
-      href="https://www.instagram.com/"
+      href="https://www.facebook.com/miguel.paezaguirre"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -126,9 +126,9 @@ import "../styles/global.css";
 
   .txt-skill {
     font-family: var(--font-style);
-    line-height: 1;
+    line-height: .1;
     font-weight: 100;
-    font-size: 5rem;
+    font-size: 7rem;
     color: var(--color-primary);
   }
 
@@ -203,7 +203,7 @@ import "../styles/global.css";
       font-size: 3.5rem;
     }
     .txt-skill {
-      font-size: 4rem;
+        font-size: 5rem;
     }
 
     .avatar-hero img {
@@ -214,7 +214,14 @@ import "../styles/global.css";
 
   @media (width < 614px) {
     .hero-container {
-
+      margin: 3rem 0;
+    }
+    .txt-hero,
+    .avatar-hero,
+    .icons-container {
+      min-width: 100%;
+      gap: 1rem;
+      flex: 1 1 300px;
     }
   }
 </style>

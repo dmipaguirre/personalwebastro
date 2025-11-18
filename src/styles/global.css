@@ -29,10 +29,10 @@
 }
 
 @font-face {
-  font-family: "StoryScript-Regular";
-  src: url("fonts/StoryScript-Regular.woff2") format("woff2"),
-    url("fonts/StoryScript-Regular.woff") format("woff"),
-    url("fonts/StoryScript-Regular.ttf") format("truetype");
+  font-family: "Allison-Regular";
+  src: url("fonts/Allison-Regular.woff2") format("woff2"),
+    url("fonts/Allison-Regular.woff") format("woff"),
+    url("fonts/Allison-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: fallback;
@@ -47,7 +47,7 @@
   --width-container: 80%;
   --font-title: "BebasNeue", Helvetica, Arial, sans-serif;
   --font-text: "Instrument Serif Regular", Georgia, serif;
-  --font-style: "StoryScript-Regular", Helvetica, Arial, sans-serif;
+  --font-style: "Allison-Regular", Helvetica, Arial, sans-serif;
 }
 
 * {
