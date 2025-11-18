@@ -1,73 +1,79 @@
-  @font-face {
-    font-family: "BebasNeue";
-    src:
-      url("/fonts/BebasNeue-Regular.woff") format("woff2"),
-      url("/fonts/BebasNeue-Regular.woff") format("woff"),
-      url("/fonts/BebasNeue-Regular.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: fallback;
-  }
-  @font-face {
-    font-family: "Instrument Serif";
-    src:
-      url("/fonts/InstrumentSerif-Regular.woff") format("woff"),
-      url("/fonts/InstrumentSerif-Regular.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: fallback;
-  }
-  @font-face {
-    font-family: "Instrument Serif";
-    src:
-      url("/fonts/InstrumentSerif-Italic.woff") format("woff"),
-      url("/fonts/InstrumentSerif-Italic.ttf") format("truetype");
-    font-weight: normal;
-    font-style: italic;
-    font-display: fallback;
-  }
-  @font-face {
-    font-family: "Lavishly Yours";
-    src:
-      url("/fonts/LavishlyYours-Regular.woff") format("woff"),
-      url("/fonts/LavishlyYours-Regular.ttf") format("truetype");
-    font-weight: normal;
-    font-style: italic;
-    font-display: fallback;
-  }
+@font-face {
+  font-family: "BebasNeue";
+  src: url("/fonts/BebasNeue-Regular.woff2") format("woff2"),
+    url("/fonts/BebasNeue-Regular.woff") format("woff"),
+    url("/fonts/BebasNeue-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+}
 
-  :root {
-    --color-primary: #d17f04;
-    --color-text: #0e0d0d;
-    --color-bg: #cecac5;
-    --color-bgsecondary: #c9c6c0;
-    --color-bgprimary: #cecac5;
-    --width-container: 80%;
-  }
+@font-face {
+  font-family: "Instrument Serif Regular";
+  src: url("/fonts/InstrumentSerif-Regular.woff2") format("woff2"),
+    url("/fonts/InstrumentSerif-Regular.woff") format("woff"),
+    url("/fonts/InstrumentSerif-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+}
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+@font-face {
+  font-family: "Instrument Serif Italic";
+  src: url("/fonts/InstrumentSerif-Italic.woff2") format("woff2"),
+    url("/fonts/InstrumentSerif-Italic.woff") format("woff"),
+    url("/fonts/InstrumentSerif-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
 
-  body {
-    font-family: Georgia, serif;
-    background-color: var(--color-bg);
-  }
+@font-face {
+  font-family: "StoryScript-Regular";
+  src: url("fonts/StoryScript-Regular.woff2") format("woff2"),
+    url("fonts/StoryScript-Regular.woff") format("woff"),
+    url("fonts/StoryScript-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+}
 
-  h1, h2, h3, .logo {
-    font-family: Impact, Arial Black, sans-serif;
-  }
+:root {
+  --color-primary: #d17f04;
+  --color-text: #0e0d0d;
+  --color-bg: #cecac5;
+  --color-bgsecondary: #c9c6c0;
+  --color-bgprimary: #cecac5;
+  --width-container: 80%;
+  --font-title: "BebasNeue", Helvetica, Arial, sans-serif;
+  --font-text: "Instrument Serif Regular", Georgia, serif;
+  --font-style: "StoryScript-Regular", Helvetica, Arial, sans-serif;
+}
 
-  .txt-skill {
-    font-family: Brush Script MT, cursive;
-  }
-
-  @view-transition {
-    navigation: auto;
-  }
-
-  ::view-transition-group(*) {
-    animation-duration: 0.1s;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: var(--color-bg);
+  font-family: var(--font-text);
+}
+h1,
+h2,
+h3,
+.logo {
+  font-family: var(--font-title);
+}
+.txt-skill {
+  font-family: var(--font-style);
+}
+@view-transition {
+  navigation: auto;
+}
+::view-transition-group(*) {
+  animation-duration: 0.1s;
+}
+html {
+  overflow-y: scroll;
+}

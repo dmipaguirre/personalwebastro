@@ -71,13 +71,13 @@ const posts = Object.values(import.meta.glob("../pages/post/*.md", { eager: true
     .title {
       font-size: 2.1rem;
       font-weight: 600;
-      font-family: "BebasNeue", sans-serif;
+      font-family: var(--font-title);
       line-height: 1.2;
     }
 
     .text {
       font-size: 1.4rem;
-      font-family: "Instrument Serif", sans-serif;
+      font-family: var(--font-text);
       color: var(--color-text-muted);
     }
   }
