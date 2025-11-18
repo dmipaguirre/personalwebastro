@@ -62,4 +62,24 @@ import "../styles/global.css";
     font-size: 1.4rem;
     opacity: 0.7;
   }
+
+  @media (width < 1200px) {
+    .section-container {
+      width: 100%
+    }
+  }
+  @media (width < 614px) {
+    .section-container {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .bar-column {
+      height: 1px;
+      width: 90%;
+    }
+    .section-content {
+      max-width: 100%;
+      margin: 1rem 0;
+    }
+  }
 </style>
