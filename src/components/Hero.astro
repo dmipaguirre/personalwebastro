@@ -18,7 +18,12 @@ import "../styles/global.css";
     <img src="/images/Users.avif" alt="Miguel's profile photo" />
   </div>
   <div class="icons-container">
-    <a class="icon-hero" href="https://www.linkedin.com/in/dmpaeza/" target="_blank" rel="noopener noreferrer">
+    <a
+      class="icon-hero"
+      href="https://www.linkedin.com/in/dmpaeza/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -39,7 +44,12 @@ import "../styles/global.css";
         ></path>
       </svg>
     </a>
-    <a class="icon-hero" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+    <a
+      class="icon-hero"
+      href="https://www.facebook.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -58,7 +68,12 @@ import "../styles/global.css";
         <path d="M16.5 7.5v.01"></path>
       </svg>
     </a>
-    <a class="icon-hero" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+    <a
+      class="icon-hero"
+      href="https://www.instagram.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -88,7 +103,6 @@ import "../styles/global.css";
     max-width: 1200px;
     margin: 8rem auto;
     font-family: "BebasNeue", sans-serif;
-    gap: 2rem;
     align-items: flex-start;
   }
 
@@ -136,8 +150,8 @@ import "../styles/global.css";
   }
 
   .avatar-hero img {
-    width: 34rem;
-    height: 34rem;
+    width: 33rem;
+    height: 33rem;
     border-radius: 50%;
     object-fit: cover;
     margin: 0;
@@ -165,5 +179,41 @@ import "../styles/global.css";
   .icon-hero:hover svg {
     color: #d17f04;
     transform: scale(1.2);
+  }
+  @media (width < 1200px) {
+    .hero-container {
+      flex-wrap: wrap;
+      gap: 1rem;
+      text-align: center;
+    }
+    .txt-hero,
+    .avatar-hero,
+    .icons-container {
+      min-width: 250px;
+      gap: 1rem;
+      flex: 1 1 300px;
+    }
+    .icons-container {
+      flex-direction: row;
+      margin: 0;
+    }
+
+    .txt-hero h1 {
+      font-size: 3.5rem;
+    }
+    .txt-skill {
+      font-size: 4rem;
+    }
+
+    .avatar-hero img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  @media (width < 614px) {
+    .hero-container {
+
+    }
   }
 </style>

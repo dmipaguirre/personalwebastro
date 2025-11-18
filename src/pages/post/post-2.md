@@ -38,3 +38,5 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus tincidunt 
 ## Conclusión
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed viverra risus id augue fermentum, quis consequat sapien tempus.
+
+npx ttf2woff ./src/fonts/InstrumentSerif-Regular.ttf ./src/fonts/InstrumentSerif-Regular.woff
