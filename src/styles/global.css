@@ -9,7 +9,7 @@
 }
 
 @font-face {
-  font-family: "Instrument Serif Regular";
+  font-family: "Instrument Serif";
   src: url("/fonts/InstrumentSerif-Regular.woff2") format("woff2"),
     url("/fonts/InstrumentSerif-Regular.woff") format("woff"),
     url("/fonts/InstrumentSerif-Regular.ttf") format("truetype");
@@ -19,7 +19,7 @@
 }
 
 @font-face {
-  font-family: "Instrument Serif Italic";
+  font-family: "Instrument Serif";
   src: url("/fonts/InstrumentSerif-Italic.woff2") format("woff2"),
     url("/fonts/InstrumentSerif-Italic.woff") format("woff"),
     url("/fonts/InstrumentSerif-Italic.ttf") format("truetype");
@@ -30,7 +30,7 @@
 
 @font-face {
   font-family: "Allison-Regular";
-  src: 
+  src: url("/fonts/Allison-Regular.woff2") format("woff2"),
     url("/fonts/Allison-Regular.woff") format("woff"),
     url("/fonts/Allison-Regular.ttf") format("truetype");
   font-weight: normal;
@@ -44,9 +44,9 @@
   --color-bg: #cecac5;
   --color-bgsecondary: #c9c6c0;
   --width-container: 80%;
-  --font-title: "BebasNeue", Helvetica, Arial, sans-serif;
-  --font-text: "Instrument Serif Regular", Georgia, serif;
-  --font-style: "Allison-Regular", Helvetica, Arial, sans-serif;
+  --font-title: "BebasNeue", system-ui, sans-serif;
+  --font-text: "Instrument Serif", Georgia, serif;
+  --font-style: "Allison-Regular", cursive;
 }
 
 * {
@@ -56,22 +56,13 @@
 }
 body {
   background-color: var(--color-bg);
-  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-h1,
-h2,
-h3,
-.logo {
-  font-family: var(--font-title);
-}
-.txt-skill {
-  font-family: var(--font-style);
+  font-family: var(--font-text);
 }
 @view-transition {
   navigation: auto;
 }
 ::view-transition-group(*) {
-  animation-duration: 0.1s;
+  animation-duration: 0.2s;
 }
 html {
   overflow-y: scroll;
