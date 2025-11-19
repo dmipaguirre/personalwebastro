@@ -4,7 +4,7 @@ import Layout from "./Layout.astro";
 const { content, frontmatter } = Astro.props;
 ---
 
-<Layout pageTilte={frontmatter.title}>
+<Layout pageTitle={frontmatter.title}>
   <article class="blog-content">
     <h1>{frontmatter.title}</h1>
     <p class="blog-meta">
@@ -31,13 +31,13 @@ const { content, frontmatter } = Astro.props;
     max-width: 800px;
     margin: 8rem auto;
     padding: 1.2rem 1.3rem;
-    font-family: "Instrument Serif", serif;
+    font-family: var(--font-text);
     color: var(--color-text);
     line-height: 2;
   }
 
   .blog-content h1 {
-    font-family: "BebasNeue", sans-serif;
+    font-family: var(--font-title);
     font-size: 4.6rem;
     color: var(--color-text);
     margin-bottom: 1rem;
@@ -55,7 +55,7 @@ const { content, frontmatter } = Astro.props;
 
   /* Markdown elements */
   .blog-content h2 {
-    font-family: "BebasNeue", sans-serif;
+    font-family: var(--font-title);
     font-weight: 300;
     font-size: 2.5rem;
     line-height: 1;

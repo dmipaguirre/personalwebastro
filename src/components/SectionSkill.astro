@@ -4,7 +4,7 @@ import "../styles/global.css";
 
 <section class="section-container">
   <div class="section-content">
-    <h2>Frotend Development</h2>
+    <h2>Frontend Development</h2>
     <p>
       Clean, modular, and speed-optimized code. Expert in HTML, CSS, JavaScript
       and responsive design for a flawless experience on any device.
@@ -32,7 +32,7 @@ import "../styles/global.css";
   .section-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     padding: 1.2rem 1.3rem;
     width: var(--width-container);
     max-width: 1200px;
@@ -54,7 +54,7 @@ import "../styles/global.css";
     font-family: var(--font-title);
     font-size: 1.5rem;
     line-height: 1;
-    margin: 0;
+    margin: 0 0 1rem 0;
     font-weight: 300;
   }
   .section-content p {
@@ -65,18 +65,19 @@ import "../styles/global.css";
 
   @media (width < 1200px) {
     .section-container {
-      width: 100%
+      width: 100%;
     }
   }
-  @media (width < 614px) {
+  @media (width < 800px) {
     .section-container {
-      flex-direction: column;
-      margin: 3rem 0;
-      gap: 1rem;
+    flex-direction: column;
+    margin: 3rem 0;
+    gap: 1rem;
     }
     .bar-column {
       height: 1px;
-      width: 90%;
+      width: 100%;
+      margin: 0 auto;
     }
     .section-content {
       max-width: 100%;

@@ -35,12 +35,12 @@ import "../styles/global.css";
     left: 0;
     right: 0;
     z-index: 1000;
-    background-color: var(--color-bgprimary);
+    background-color: var(--color-bg);
     transition: all 0.3s ease;
   }
 
   .navbar-container.scrolled {
-    background-color: var(--color-bgprimary);
+    background-color: var(--color-bg);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(10px);
   }
@@ -52,7 +52,7 @@ import "../styles/global.css";
     width: var(--width-container);
     max-width: 1200px;
     margin: 0 auto;
-    font-family: "BebasNeue", sans-serif;
+    font-family: var(--font-title), sans-serif;
   }
   .logo-container {
     font-size: 2rem;
@@ -69,13 +69,15 @@ import "../styles/global.css";
     align-items: center;
     list-style: none;
     margin: 0;
-
     gap: 2rem;
   }
-  .link-item {
+  .links-container a {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
     text-decoration: none;
     color: var(--color-text);
-    font-size: 1.2rem;
+  }
+  .link-item {
     text-transform: uppercase;
     transition: color 0.3s ease;
   }

@@ -1,42 +1,122 @@
 ---
 layout: ../../layouts/BlogLayout.astro
-title: 'Pendiente'
-publishDate: 'Pendiente'
-description: 'Pendiente'
+title: 'A way to Responsive Web Design'
+publishDate: 'Noviember 19, 2025'
+description: 'Responsive Web Design with Flexbox and Grid'
 autor: 'Miguel Páez'
 slug: "--"
 icon: "---"
 readingTime: 'Pendiente'
 ---
 
-David Wildish es un ilustrador y diseñador UX/UI conocido por sus mundos isométricos juguetones y muy detallados, llenos de guiños a la cultura pop, encanto retro y precisión del más alto nivel.  
-En esta entrevista, comparte su trayectoria en el diseño, cómo una experiencia que le cambió la vida dio forma a su carrera y por qué Affinity se ha convertido en una parte integral de su proceso creativo.
+Con el creciente auge de los dispositivos electrónicos, como tablet, smartphone y computadoras portatiles 
 
-## Háblenos un poco de su trayectoria en la industria creativa. ¿Dónde empezó todo para usted?
+Dentro del mundo del desarrollo web, mas específicamente dentro del diseño responsivo, existen alternativas que permiten estructurar los cambios en el diseño con propiedades CSS como lo son las propiedades Flexbox o CSS Grid.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non lorem vel dui tristique interdum.  
-Suspendisse potenti. Integer luctus odio vel ligula facilisis, at vehicula sapien tincidunt.
+## Pongamos un poco en contexto que significan propiedades Flexbox y CSS Grid.
 
-## ¿Qué inspira su estilo isométrico tan característico?
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus posuere urna id est hendrerit, id dictum lorem pretium.
 
-## ¿Cómo es su proceso creativo desde cero hasta el render final?
+## Comportamiento de cajas con propiedades Flebox
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ut ultrices erat.  
+Estructura del nuestro documento CSS:
 
-- Investigación inicial  
-- Bocetos preliminares  
-- Construcción isométrica  
-- Paleta de color  
-- Detalles y texturas  
 
-## ¿Por qué Affinity se ha convertido en una herramienta clave para usted?
+```astro
+* {
+  box-sizing: border-box;
+}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus tincidunt justo, non venenatis lorem.
+body {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-## Conclusión
+.left {
+  background-color: #2196F3;
+  padding: 20px;
+  flex: 0 0 20%;
+}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed viverra risus id augue fermentum, quis consequat sapien tempus.
+.main {
+  background-color: #f1f1f1;
+  padding: 20px;
+  flex: 0 0 60%;
+}
+
+.right {
+  background-color: #04AA6D;
+  padding: 20px;
+  flex: 0 0 20%;
+}
+
+@media screen and (max-width: 800px) {
+  .left, .main, .right {
+    flex: 0 0 100%;
+  }
+}
+```
+Estructura de nuestro documento HTML:
+
+```astro
+<div class="left">
+  <p>Left Menu</p>
+</div>
+<div class="main">
+  <p>Main Content</p>
+</div>
+<div class="right">
+  <p>Right Content</p>
+</div>
+```
+
+
+## Comportamiento de cajas con propiedades CSS Grid
+Estructura de nuestro documento CSS:
+
+```astro
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+}
+
+.left {
+  background-color: #2196F3;
+  padding: 20px;
+}
+
+.main {
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+.right {
+  background-color: #04AA6D;
+  padding: 20px;
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    grid-template-columns: 100%;
+  }
+}
+```
+Estructura de nuestro documento HTML:
+
+```astro
+<div class="left">
+  <p>Left Menu</p>
+</div>
+<div class="main">
+  <p>Main Content</p>
+</div>
+<div class="right">
+  <p>Right Content</p>
+</div>
+```
 
 npx ttf2woff ./src/fonts/InstrumentSerif-Regular.ttf ./src/fonts/InstrumentSerif-Regular.woff

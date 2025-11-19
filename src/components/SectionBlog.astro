@@ -7,18 +7,17 @@ const posts = Object.values(import.meta.glob("../pages/post/*.md", { eager: true
 <section class="blog-container">
 
   {posts.map((post) => (
-    <div class="box-blog">
+    <div class="box-blog" key={post.url}>
       <a href={post.url}>
         <div class="link-container">
-          <div class="div-svg">
+        <div class="div-svg"></div>
 
-          </div>
           <h3 class="title">{post.frontmatter.title}</h3>
           <p class="text">{post.frontmatter.description}</p>
         </div>
       </a>
-    </div>
-  ))}
+      </div>
+    ))}
 </section>
 
 <style>
@@ -95,7 +94,7 @@ const posts = Object.values(import.meta.glob("../pages/post/*.md", { eager: true
 
   @media (width < 768px) {
     .blog-container {
-      grid-template-columns: 1fr;
+
       max-width: 500px;
     }
   }

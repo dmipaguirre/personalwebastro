@@ -1,7 +1,7 @@
 ---
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
-const { pageTitle } = Astro.props;
+const { pageTitle, description = "Portfolio personal de Miguel Páez - Desarrollador Web Freelance. Proyectos, blog y experiencia en desarrollo web." } = Astro.props;
 
 ---
 
@@ -9,10 +9,30 @@ const { pageTitle } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<link rel="icon" type="image/svg+xml" href="" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
+		
+		<!-- SEO Meta Tags -->
+		<meta name="description" content={description} />
+		<meta name="keywords" content="desarrollo web, freelance, portfolio, Miguel Páez, frontend, programación, blog" />
+		<meta name="author" content="Miguel Páez" />
+		<meta name="language" content="es" />
+		
+		<!-- Open Graph Meta Tags -->
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="es_ES" />
+		<meta property="og:image" content="/images/Users.avif" />
+		<meta property="og:image:alt" content="Miguel Páez - Desarrollador Web" />
+		
+		<!-- Twitter Card Meta Tags -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content="/images/Users.avif" />
 	</head>
 	<body>
 		<header>
