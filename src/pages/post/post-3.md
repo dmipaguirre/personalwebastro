@@ -3,7 +3,7 @@ layout: ../../layouts/BlogLayout.astro
 title: 'Pendiente'
 publishDate: 'Pendiente'
 description: 'Pendiente'
-autor: 'Miguel Páez'
+author: 'Miguel Páez'
 slug: "--"
 icon: "---"
 readingTime: 'Pendiente'

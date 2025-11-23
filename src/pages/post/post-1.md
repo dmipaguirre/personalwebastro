@@ -3,10 +3,10 @@ layout: ../../layouts/BlogLayout.astro
 title: 'Master the Terminal: Essential Linux Commands for Beginners'
 publishDate: 'November 15, 2025'
 description: 'A simple and clear guide to understanding the fundamentals of the Linux command line.'
-autor: 'Miguel Páez'
+author: 'Miguel Páez'
 slug: "basic-linux-commands"
 icon: "brand-ubuntu"
-readingTime: '5 minutes'
+readingTime: '5'
 ---
 
 Linux is, for many people, the doorway into the world of open-source software and system administration. Its terminal—powerful, minimalistic, and incredibly flexible—allows you to control every aspect of the system with precision, speed, and elegance. In this introductory guide, we’ll explore how basic commands can transform the way you interact with your computer and help you understand how an operating system really works.

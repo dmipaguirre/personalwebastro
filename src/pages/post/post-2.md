@@ -1,23 +1,25 @@
 ---
 layout: ../../layouts/BlogLayout.astro
-title: 'A way to Responsive Web Design'
-publishDate: 'Noviember 19, 2025'
+title: 'A Guide to Responsive Web Design'
+publishDate: 'November 19, 2025'
 description: 'Responsive Web Design with Flexbox and Grid'
-autor: 'Miguel Páez'
-slug: "--"
-icon: "---"
-readingTime: 'Pendiente'
+author: 'Miguel Páez'
+slug: "responsive-web-design"
+icon: "layout"
+readingTime: '4'
 ---
 
-Con el creciente auge de los dispositivos electrónicos, como tablet, smartphone y computadoras portatiles 
 
-Dentro del mundo del desarrollo web, mas específicamente dentro del diseño responsivo, existen alternativas que permiten estructurar los cambios en el diseño con propiedades CSS como lo son las propiedades Flexbox o CSS Grid.
+Con el creciente auge de dispositivos electrónicos como tablets, smartphones y computadores portátiles, el diseño web moderno debe adaptarse a pantallas de diferentes tamaños y resoluciones. 
 
-## Pongamos un poco en contexto que significan propiedades Flexbox y CSS Grid.
+Dentro del desarrollo web, especialmente en el diseño responsivo, existen técnicas que permiten adaptar la estructura de un sitio utilizando propiedades de CSS como Flexbox y CSS Grid. Ambas herramientas facilitan la organización del contenido y su redistribución según el tamaño del dispositivo.
+
+## ¿Qué son Flexbox y CSS Grid?
 
 
 
-## Comportamiento de cajas con propiedades Flebox
+## Comportamiento de cajas utilizando Flexbox
+
 
 Estructura del nuestro documento CSS:
 

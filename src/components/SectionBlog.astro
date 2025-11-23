@@ -1,23 +1,47 @@
 ---
 import "../styles/global.css";
 
-const posts = Object.values(import.meta.glob("../pages/post/*.md", { eager: true }));
+const posts = Object.values(
+  import.meta.glob("../pages/post/*.md", { eager: true })
+);
 ---
 
 <section class="blog-container">
-
-  {posts.map((post) => (
-    <div class="box-blog" key={post.url}>
-      <a href={post.url}>
-        <div class="link-container">
-        <div class="div-svg"></div>
-
-          <h3 class="title">{post.frontmatter.title}</h3>
-          <p class="text">{post.frontmatter.description}</p>
-        </div>
-      </a>
+  {
+    posts.map((post) => (
+      <div class="box-blog" key={post.url}>
+        <a href={post.url}>
+          <div class="link-container">
+            <div class="content">
+              <h3 class="title">{post.frontmatter.title}</h3>
+              <p class="text">{post.frontmatter.description}</p>
+            </div>
+            <p class="meta-info">
+              by {post.frontmatter.author}
+              <span class="dot-separator">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="icon icon-tabler icons-tabler-filled icon-tabler-point"
+                >
+                  <>
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+                  </>
+                </svg>
+              </span>
+              {post.frontmatter.readingTime} min read
+            </p>
+          </div>
+        </a>
       </div>
-    ))}
+    ))
+  }
 </section>
 
 <style>
@@ -32,15 +56,13 @@ const posts = Object.values(import.meta.glob("../pages/post/*.md", { eager: true
     padding: 1.2rem 1.3rem;
   }
 
-  .box-blog a {
-    text-decoration: none;
-    color: var(--color-text);
-    display: block;
-  }
-
-  .link-container {
+  .box-blog .link-container {
     padding: 1.5rem;
     transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Esto separa el contenido */
+    min-height: 100%; /* Asegura que ocupe todo el espacio */
   }
 
   .box-blog {
@@ -48,7 +70,17 @@ const posts = Object.values(import.meta.glob("../pages/post/*.md", { eager: true
     border-radius: 1rem;
     min-width: 200px;
     flex: 1 1 300px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+    display: flex; /*  Añadido para que el enlace ocupe todo */
+
+    & a {
+      text-decoration: none;
+      color: var(--color-text);
+      display: flex; /*  Cambiado de block a flex */
+      flex: 1; /*  Para que ocupe todo el espacio disponible */
+    }
 
     &:hover {
       transform: translateY(-5px);
@@ -77,25 +109,34 @@ const posts = Object.values(import.meta.glob("../pages/post/*.md", { eager: true
     .text {
       font-size: 1.4rem;
       font-family: var(--font-text);
-      color: var(--color-text-muted);
+      color: var(--color-text);
+    }
+
+    .meta-info {
+      margin-top: auto;
+      font-size: .9rem;
+      color: var(--color-text);
+      opacity: 0.8;
+      font-family: var(--font-text);
     }
   }
 
-  .div-svg {
-    text-align: center;
-    margin-bottom: 1rem;
-    
-    svg {
-      width: 40px;
-      height: 40px;
-      
-    }
+  .dot-separator {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0.3rem;
   }
 
-  @media (width < 768px) {
+    @media (width < 1200px) {
     .blog-container {
+      width: 100%;
+    }
+  }
 
-      max-width: 500px;
+  @media (width < 500px) {
+    .blog-container {
+      margin: 8rem auto;
+      width: 100%;
     }
   }
 </style>

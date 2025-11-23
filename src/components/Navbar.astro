@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+
 ---
 
 <nav class="navbar-container" id="navbar">
@@ -7,6 +8,7 @@ import "../styles/global.css";
     <div class="logo-container">
       <a href="/" class="logo">PS</a>
     </div>
+
     <ul class="links-container">
       <li><a href="/about/" class="link-item">About</a></li>
       <li><a href="/blog/" class="link-item">Blog</a></li>
@@ -93,6 +95,24 @@ import "../styles/global.css";
       width: 100%;
       padding: 0.2rem 1.3rem;
       margin: 0;
+    }
+  }
+    @media (width < 600px) {
+    .links-container {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Oculto a la derecha */
+    width: 300px;
+    height: 100vh;
+    background-color: #222;
+    flex-direction: column;
+    padding: 5rem 2rem 2rem;
+    gap: 2rem;
+    transition: right 0.3s ease;
+    z-index: 999;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+  }
+
     }
   }
 </style>
