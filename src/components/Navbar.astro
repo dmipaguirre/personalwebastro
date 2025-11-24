@@ -39,13 +39,14 @@ import "../styles/global.css";
     z-index: 1000;
     background-color: var(--color-bg);
     transition: all 0.3s ease;
+    
+    &.navbar-container.scrolled {
+      background-color: var(--color-bg);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(10px);
+    }
   }
 
-  .navbar-container.scrolled {
-    background-color: var(--color-bg);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(10px);
-  }
   .navbar-content {
     display: flex;
     justify-content: space-between;
@@ -72,6 +73,7 @@ import "../styles/global.css";
     list-style: none;
     margin: 0;
     gap: 2rem;
+    
   }
   .links-container a {
     font-family: var(--font-title);
@@ -103,5 +105,4 @@ import "../styles/global.css";
   }
 
     }
-  }
 </style>
