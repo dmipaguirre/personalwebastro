@@ -2,7 +2,7 @@
 import "../styles/global.css";
 
 const posts = Object.values(
-  import.meta.glob("../pages/post/*.md", { eager: true })
+  import.meta.glob("../pages/post/*.md", { eager: true }),
 );
 ---
 
@@ -114,7 +114,7 @@ const posts = Object.values(
 
     .meta-info {
       margin-top: auto;
-      font-size: .9rem;
+      font-size: 0.9rem;
       color: var(--color-text);
       opacity: 0.8;
       font-family: var(--font-text);
@@ -127,7 +127,7 @@ const posts = Object.values(
     margin: 0 0.3rem;
   }
 
-    @media (width < 1200px) {
+  @media (width < 1200px) {
     .blog-container {
       width: 100%;
     }
@@ -135,7 +135,8 @@ const posts = Object.values(
 
   @media (width < 500px) {
     .blog-container {
-      margin: 8rem auto;
+      margin-left: 0;
+      margin-right: 0;
       width: 100%;
     }
   }
