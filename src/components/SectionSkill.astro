@@ -2,7 +2,7 @@
 import "../styles/global.css";
 ---
 
-<section class="section-container">
+<section class="skill-section">
   <div class="section-content">
     <h2>Frontend Development</h2>
     <p>
@@ -29,14 +29,14 @@ import "../styles/global.css";
 </section>
 
 <style>
-  .section-container {
+  .skill-section {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     padding: 1.2rem 1.3rem;
     width: var(--width-container);
     max-width: 1200px;
-    margin: 8rem auto;
+    margin: 1rem auto;
     gap: 2rem;
   }
   .bar-column {
@@ -64,15 +64,14 @@ import "../styles/global.css";
   }
 
   @media (width < 1200px) {
-    .section-container {
+    .skill-section {
       width: 100%;
     }
   }
   @media (width < 800px) {
-    .section-container {
-    flex-direction: column;
-    margin: 3rem 0;
-    gap: 1rem;
+    .skill-section {
+      flex-direction: column;
+      gap: 1rem;
     }
     .bar-column {
       height: 1px;
