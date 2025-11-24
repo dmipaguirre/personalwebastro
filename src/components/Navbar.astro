@@ -102,8 +102,12 @@ import "../styles/global.css";
     width: 100%;
     border-radius: 3px;
     margin: 6px 0;
-    background: var(--color-primary);
+    background: var(--color-text);
     transition: all 0.3s ease-in-out;
+  }
+
+  .hamburger.active .bar {
+    background: var(--color-primary);
   }
 
   .hamburger.active .bar:nth-child(1) {
@@ -192,33 +196,34 @@ import "../styles/global.css";
     }
   }
 
-  @media (max-width: 599px) {
+  @media (width < 600px) {
     .links-container {
-      position: fixed;
-      top: 0;
+      position: absolute;
+      top: 100%;
       right: -100%;
       width: 100%;
-      height: 40vh;
       background-color: var(--color-bg, #ffffff);
-      padding: 5rem 2rem 2rem;
-      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.15);
+      padding: 0.1rem 0;
+      box-shadow: 0 16px 20px rgba(0, 0, 0, 0.15);
       backdrop-filter: blur(10px);
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
-      gap: 1.5rem;
+      gap: 0;
       transition: right 0.3s ease-in-out;
       overflow-y: auto;
+      border-bottom-left-radius: 1rem;
+      border-bottom-right-radius: 1rem;
     }
 
     .links-container li {
       width: 100%;
-      text-align: center;
     }
     .links-container li a {
-      display: block;
       font-size: 1.5rem;
+      display: block;
+      width: 100%;
+      padding: 1rem 0;
+      text-align: center;
     }
 
     .links-container.active {
