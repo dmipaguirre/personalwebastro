@@ -30,13 +30,12 @@ Welcome to my personal portfolio built with Astro! This modern, performant websi
 │   │   ├── index.astro     # Homepage
 │   │   ├── projects.astro  # Projects showcase
 │   │   └── post/           # Blog post markdown files
-│   │       ├── post-1.md   # Blog post 1
-│   │       └── post-2.md   # Blog post 2
 │   └── styles/             # Global styles and CSS modules
 │
 ├── .gitignore             # Git ignore file
 ├── astro.config.mjs       # Astro configuration
 ├── package.json           # Project dependencies
+├── tsconfig.json          # TypeScript configuration
 └── README.md              # Project documentation
 ```
 
@@ -60,7 +59,7 @@ All commands are run from the root of the project:
 - **Fonts**: 
   - Bebas Neue (Headings)
   - Instrument Serif (Body text)
-  - Lavishly Yours (Accent text)
+  - Allison (Accent text)
 
 ## 📝 License
 

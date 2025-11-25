@@ -39,12 +39,12 @@ import "../styles/global.css";
           navbar.classList.toggle("scrolled", window.scrollY > 2);
         }
         ticking = false;
+        console.log(ticking);
       });
       ticking = true;
     }
   });
 
-  // Toggle del menú hamburguesa
   const hamburger = document.getElementById("hamburger");
   const navMenu = document.getElementById("menu-links");
 
@@ -103,7 +103,39 @@ import "../styles/global.css";
     border-radius: 3px;
     margin: 6px 0;
     background: var(--color-text);
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s
+      linear(
+        0,
+        0.013 0.6%,
+        0.05 1.2%,
+        0.2 2.5%,
+        0.949 6.7%,
+        1.2 8.4%,
+        1.286 9.2%,
+        1.35 10%,
+        1.392 10.8%,
+        1.411 11.6%,
+        1.411 12.2%,
+        1.401 12.8%,
+        1.343 14.2%,
+        1.258 15.5%,
+        1.016 18.7%,
+        0.914 20.4%,
+        0.856 21.9%,
+        0.831 23.5%,
+        0.834 24.7%,
+        0.858 26.1%,
+        0.996 30.7%,
+        1.037 32.4%,
+        1.06 33.9%,
+        1.07 35.4%,
+        1.061 37.7%,
+        0.989 43.8%,
+        0.971 47.2%,
+        1.012 59.1%,
+        0.995 70.8%,
+        1
+      );
   }
 
   .hamburger.active .bar {
@@ -202,14 +234,29 @@ import "../styles/global.css";
       top: 100%;
       right: -100%;
       width: 100%;
-      background-color: var(--color-bg, #ffffff);
+      background-color: var(--color-bg);
       padding: 0.1rem 0;
       box-shadow: 0 16px 20px rgba(0, 0, 0, 0.15);
       backdrop-filter: blur(10px);
       display: flex;
       flex-direction: column;
       gap: 0;
-      transition: right 0.3s ease-in-out;
+      transition: right 0.3s
+        linear(
+          0,
+          0.029 1.6%,
+          0.123 3.5%,
+          0.651 10.6%,
+          0.862 14.1%,
+          1.002 17.7%,
+          1.046 19.6%,
+          1.074 21.6%,
+          1.087 23.9%,
+          1.086 26.6%,
+          1.014 38.5%,
+          0.994 46.3%,
+          1
+        );
       overflow-y: auto;
       border-bottom-left-radius: 1rem;
       border-bottom-right-radius: 1rem;

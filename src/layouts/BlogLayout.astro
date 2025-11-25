@@ -4,8 +4,8 @@ import "../styles/global.css";
 
 const { content, frontmatter } = Astro.props;
 const regardingTimeText = frontmatter.regardingTime
-  ? `${frontmatter.regardingTime} min de lectura`
-  : "7 minutos de lectura";
+  ? `${frontmatter.regardingTime} min to read`
+  : "4 min to read";
 ---
 
 <Layout pageTitle={frontmatter.title}>
