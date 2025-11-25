@@ -3,15 +3,13 @@ import "../styles/global.css";
 ---
 
 <section class="footer-container">
-    <p>&copy; <span id="current-year"></span> SP. Todos los derechos reservados.</p>
+    <p>&copy; <span id="current-year"></span> Miguel Páez. Todos los derechos reservados.</p>
 </section>
 
 <script>
-    // 1. Envuelve el código para que solo se ejecute cuando el DOM esté listo.
     document.addEventListener('DOMContentLoaded', function() {
         const yearElement = document.getElementById('current-year');
         
-        // 2. Comprueba que el elemento existe antes de intentar modificarlo.
         if (yearElement) {
             yearElement.textContent = new Date().getFullYear().toString();
         }
@@ -30,11 +28,12 @@ import "../styles/global.css";
     .footer-container p {
         font-family: var(--font-text);
         font-size: 1.2rem;
-        opacity: 0.4;
+        opacity: 0.6;
     }
     @media (width < 1200px) {
         .footer-container {
             width: 90%;
+            padding: 3rem 1.3rem;
         }
     }
 </style>

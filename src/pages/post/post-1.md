@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/BlogLayout.astro
-title: 'Master the Terminal: Essential Linux Commands for Beginners'
+title: 'Essential Linux Commands for Beginners'
 publishDate: 'November 15, 2025'
 description: 'A simple and clear guide to understanding the fundamentals of the Linux command line.'
 author: 'Miguel Páez'
