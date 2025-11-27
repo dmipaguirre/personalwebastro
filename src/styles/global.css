@@ -49,6 +49,13 @@
   --font-style: "Allison-Regular", cursive;
 }
 
+.darkmode {
+  --color-primary: #8d9923;
+  --color-text: #c9c7c1ad;
+  --color-bg: #3b3838;
+  --color-bgsecondary: #464b18;
+}
+
 * {
   margin: 0;
   padding: 0;

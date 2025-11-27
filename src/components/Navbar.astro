@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import ButtonColor from "./ButtonColor.astro";
 ---
 
 <nav class="navbar-container" id="navbar">
@@ -19,12 +20,14 @@ import "../styles/global.css";
       <span class="bar"></span>
       <span class="bar"></span>
     </button>
-
-    <ul class="links-container" id="menu-links">
-      <li><a href="/about/" class="link-item">About</a></li>
-      <li><a href="/blog/" class="link-item">Blog</a></li>
-      <li><a href="/projects/" class="link-item">Projects</a></li>
-    </ul>
+    <div class="link-theme-container" id="menu-links">
+      <ul class="links-container">
+        <li><a href="/about/" class="link-item">About</a></li>
+        <li><a href="/blog/" class="link-item">Blog</a></li>
+        <li><a href="/projects/" class="link-item">Projects</a></li>
+      </ul>
+      <ButtonColor />
+    </div>
   </div>
 </nav>
 
@@ -56,11 +59,9 @@ import "../styles/global.css";
       navMenu.classList.toggle("active");
       hamburger.setAttribute("aria-expanded", (!isActive).toString());
 
-      // Prevenir scroll del body cuando el menú está abierto
       document.body.style.overflow = isActive ? "" : "hidden";
     });
 
-    // Cerrar con tecla Escape
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && navMenu.classList.contains("active")) {
         hamburger.classList.remove("active");
@@ -84,6 +85,12 @@ import "../styles/global.css";
 </script>
 
 <style>
+  .link-theme-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background-color: var(--color-bg);
+  }
   .hamburger {
     display: none;
     background: none;
@@ -229,18 +236,19 @@ import "../styles/global.css";
   }
 
   @media (width < 600px) {
-    .links-container {
+    .link-theme-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
       position: absolute;
       top: 100%;
-      right: -100%;
+      right: 0;
       width: 100%;
-      background-color: var(--color-bg);
       padding: 0.1rem 0;
       box-shadow: 0 16px 20px rgba(0, 0, 0, 0.15);
       backdrop-filter: blur(10px);
-      display: flex;
-      flex-direction: column;
-      gap: 0;
+      right: -100%;
       transition: right 0.3s
         linear(
           0,
@@ -259,14 +267,23 @@ import "../styles/global.css";
           0.994 68.4%,
           1
         );
-      overflow-y: auto;
-      border-bottom-left-radius: 1rem;
-      border-bottom-right-radius: 1rem;
+        gap: 0;
+        overflow-y: auto;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+    }
+    
+    .links-container {
+      display: flex;
+      gap: 0;
+      flex-direction: column;
+      width: 100%;
     }
 
     .links-container li {
       width: 100%;
     }
+
     .links-container li a {
       font-size: 1.5rem;
       display: block;
@@ -275,7 +292,7 @@ import "../styles/global.css";
       text-align: center;
     }
 
-    .links-container.active {
+    .link-theme-container.active {
       right: 0;
     }
 
