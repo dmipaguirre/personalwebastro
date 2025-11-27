@@ -50,7 +50,14 @@ import "../styles/global.css";
 </div>
 
 <script>
-
+const themeSwitch = document.getElementById("theme-switch");
+const body = document.body;
+if (themeSwitch) {
+    // Now TypeScript knows themeSwitch is not null here
+    themeSwitch.addEventListener('click', () => {
+        body.classList.toggle("darkmode");
+    });
+}
 </script>
 
 <style>
@@ -62,9 +69,10 @@ import "../styles/global.css";
     display: block;
   }
 
-  .darkmode #theme-swithc span:last-child {
+  .darkmode #theme-switch span:last-child {
     display: block;
   }
+
 
   .button-theme {
     display: flex;
@@ -73,12 +81,15 @@ import "../styles/global.css";
     background-color: transparent;
     border: none;
     padding: 1rem 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .button-theme svg {
+    fill: var(--color-text);
   }
 
   .button-theme svg:hover {
     color: var(--color-primary);
-    transform: rotate(180deg);
+    transform: translateY(-2px);
   }
 
   .button-theme span {

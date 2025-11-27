@@ -169,6 +169,8 @@ import ButtonColor from "./ButtonColor.astro";
     z-index: 1000;
     background-color: var(--color-bg);
     transition: all 0.3s ease;
+    height: 60px;
+
   }
 
   .navbar-container.scrolled {
@@ -181,11 +183,13 @@ import ButtonColor from "./ButtonColor.astro";
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.2rem 1.3rem;
+    padding-left: 1.3rem;
+    padding-right: 1.3rem;
     width: var(--width-container);
     max-width: 1200px;
     margin: 0 auto;
     font-family: var(--font-title), sans-serif;
+
   }
 
   .logo-container {
@@ -230,7 +234,7 @@ import ButtonColor from "./ButtonColor.astro";
     }
     .navbar-content {
       width: 100%;
-      padding: 0.2rem 1.3rem;
+      padding: 0 1.3rem;
       margin: 0;
     }
   }
