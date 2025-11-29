@@ -88,8 +88,7 @@ import ButtonColor from "./ButtonColor.astro";
   .link-theme-container {
     display: flex;
     align-items: center;
-    gap: 2rem;
-    background-color: var(--color-bg);
+    gap: 2rem;    
   }
   .hamburger {
     display: none;
@@ -241,6 +240,7 @@ import ButtonColor from "./ButtonColor.astro";
 
   @media (width < 600px) {
     .link-theme-container {
+      background-color: var(--color-bg);
       display: flex;
       justify-content: center;
       align-items: center;
