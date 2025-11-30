@@ -89,7 +89,7 @@ import "../styles/global.css";
 }
 
 .button-theme span {
-  position: static; /* cambia aquí */
+  position: static;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -147,6 +147,12 @@ import "../styles/global.css";
     }
     100% {
       transform: rotate(360deg) scale(1);
+    }
+  }
+
+  @media (width < 600px) {
+    .button-theme-container {
+      padding: 1rem 0;
     }
   }
 
