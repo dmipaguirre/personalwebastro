@@ -50,10 +50,10 @@
 }
 
 .darkmode {
-  --color-primary: #8d9923;
+  --color-primary: #a2b30c;
   --color-text: #ebe4e4;
   --color-bg: #252525;
-  --color-bgsecondary: #464b18;
+  --color-bgsecondary: #30302e;
 }
 
 * {
