@@ -14,29 +14,49 @@ Welcome to my personal portfolio built with Astro! This modern, performant websi
 
 ```
 /
-├── public/                 # Static files
-│   ├── fonts/              # Custom fonts
-│   └── images/             # Images and graphics
-│   └── favicon.svg         # Site favicon
+├── public/                      # Static public assets
+│   ├── fonts/                   # Custom font files
+│   ├── icons/                   # Icon assets
+│   ├── images/                  # Image assets
+│   └── favicon.svg              # Site favicon
 │
 ├── src/
-│   ├── assets/             # Static assets (images, icons, etc.)
-│   ├── components/         # Reusable components
-│   ├── data/               # Data files and utilities
-│   ├── layouts/            # Layout templates
-│   ├── pages/              # Application pages
-│   │   ├── about.astro     # About me page
-│   │   ├── blog.astro      # Blog listing page
-│   │   ├── index.astro     # Homepage
-│   │   ├── projects.astro  # Projects showcase
-│   │   └── post/           # Blog post markdown files
-│   └── styles/             # Global styles and CSS modules
+│   ├── assets/                  # Additional static assets (if needed)
+│   ├── components/              # Reusable UI components
+│   │   ├── ButtonColor.astro    # Theme switch (light/dark)
+│   │   ├── Construction404.astro# 404 / under construction component
+│   │   ├── Footer.astro         # Site footer
+│   │   ├── Hero.astro           # Hero section for home page
+│   │   ├── Navbar.astro         # Top navigation bar
+│   │   ├── SectionAbout.astro   # About section
+│   │   ├── SectionBlog.astro    # Blog section on home page
+│   │   ├── SectionQuote.astro   # Quote / testimonial section
+│   │   ├── SectionSkill.astro   # Skills section
+│   │   └── icons/
+│   │       └── IconSvg.astro    # SVG icon component
+│   ├── data/                    # Data files and utilities
+│   ├── layouts/                 # Layout templates
+│   │   ├── Layout.astro         # Main site layout (header/footer)
+│   │   └── BlogLayout.astro     # Layout for individual blog posts
+│   ├── pages/                   # Application pages (file-based routing)
+│   │   ├── about.astro          # About me page
+│   │   ├── blog.astro           # Blog listing page
+│   │   ├── index.astro          # Homepage
+│   │   ├── projects.astro       # Projects showcase
+│   │   └── post/                # Blog post markdown content
+│   │       ├── post-1.md
+│   │       ├── post-2.md
+│   │       ├── post-3.md
+│   │       └── post-4.md
+│   └── styles/
+│       └── global.css           # Global styles and CSS variables (theme)
 │
-├── .gitignore             # Git ignore file
-├── astro.config.mjs       # Astro configuration
-├── package.json           # Project dependencies
-├── tsconfig.json          # TypeScript configuration
-└── README.md              # Project documentation
+├── .gitignore                   # Git ignore file
+├── astro.config.mjs             # Astro configuration
+├── package.json                 # Project dependencies and scripts
+├── pnpm-lock.yaml               # pnpm lockfile
+├── tsconfig.json                # TypeScript configuration
+└── README.md                    # Project documentation
 ```
 
 ## 🛠️ Available Commands
