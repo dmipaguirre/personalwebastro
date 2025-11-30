@@ -2,7 +2,7 @@
 import Layout from "./Layout.astro";
 import "../styles/global.css";
 
-const { content, frontmatter } = Astro.props;
+const { frontmatter } = Astro.props;
 const regardingTimeText = frontmatter.regardingTime
   ? `${frontmatter.regardingTime} min to read`
   : "4 min to read";
@@ -26,8 +26,7 @@ const regardingTimeText = frontmatter.regardingTime
             stroke-linejoin="round"
             class="meta-icon"
             ><circle cx="12" cy="12" r="10"></circle><polyline
-              points="12 6 12 12 16 14"></polyline></svg
-          >
+              points="12 6 12 12 16 14"></polyline></svg>
           <span>{regardingTimeText}</span>
         </div>
         <div class="meta-item">
@@ -71,6 +70,7 @@ const regardingTimeText = frontmatter.regardingTime
     margin: 8rem auto;
     padding: 1.2rem 1.3rem;
     font-family: var(--font-text);
+    color: var(--color-text);
     line-height: 2;
   }
 
