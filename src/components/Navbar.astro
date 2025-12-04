@@ -40,13 +40,12 @@ import ButtonColor from "./ButtonColor.astro";
         const navbar = document.getElementById("navbar");
         if (navbar) {
           navbar.classList.toggle("scrolled", window.scrollY > 2);
-          console.log(ticking);
         }
         ticking = false;
       });
       ticking = true;
     }
-  });
+  }); // Terminación de scroll con requestAnimationFrame
 
   const hamburger = document.getElementById("hamburger");
   const navMenu = document.getElementById("menu-links");
