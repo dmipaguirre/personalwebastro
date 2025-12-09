@@ -56,7 +56,7 @@ const socialMedia = [
     max-width: 1200px;
     margin: 8rem auto 4rem auto;
     font-family: var(--font-title);
-    gap: 2rem;
+    gap: 1rem;
   }
 
   .txt-hero {
@@ -82,7 +82,7 @@ const socialMedia = [
     font-family: var(--font-style);
     font-weight: 100;
     font-size: 7rem;
-    line-height: 0.9;
+    line-height: .7;
     color: var(--color-primary);
     display: block;
   }
@@ -151,6 +151,9 @@ const socialMedia = [
       flex-direction: row;
       margin: 0;
     }
+    .txt-hero {
+      width: 100%;
+    }
     .txt-hero h1 {
       font-size: 3.5rem;
     }
@@ -164,10 +167,6 @@ const socialMedia = [
   }
 
   @media (width < 600px) {
-    .txt-hero {
-      width: 100%;
-    }
-
     .avatar-hero {
       width: 70%;
     }

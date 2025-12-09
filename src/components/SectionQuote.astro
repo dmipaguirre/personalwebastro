@@ -5,10 +5,10 @@ import "../styles/global.css";
 <section class="article-container">
   <div class="section-quote">
     <blockquote class="quote">
-      <p class="translation">
-        Life is a comedy for those who think and a tragedy for those who feel.
+      <p class="english">
+        "Life is a comedy for those who think and a tragedy for those who feel."
       </p>
-      <p>
+      <p class="spanish">
         La vida es una comedia para quienes piensan y una tragedia para quienes
         sienten
       </p>
@@ -25,21 +25,58 @@ import "../styles/global.css";
     color: var(--color-text);
     font-family: var(--font-text);
     font-size: 1.4rem;
-    line-height: 1;
+    line-height: 1.4;
   }
-
   .quote {
-    padding: 0;
-    margin: 0;
+    max-width: 700px;
+    margin-inline: auto;
+    padding-inline: 1rem;
+    position: relative;
+  }
+  .quote .english,
+  .quote .spanish {
+    margin: 3rem 0;
+    text-align: center;
+  }
+  .quote .english {
+    font-size: 3rem;
+  }
+  .quote .spanish {
+    font-size: 1.4rem;
+    opacity: 0.3;
   }
   .section-quote {
     border-left: 10px solid var(--color-primary);
     background-color: var(--color-bgsecondary);
-    padding: 1rem 1.2rem;
+    padding: 2rem 1.2rem;
   }
+  .quote::before {
+    content: '"';
+    position: absolute;
+    font-size: clamp(10rem, 30vw, 30rem);
+    top: 0;
+    left: 0;
+    transform: translate(-80%, -1%);
+    opacity: 0.1;
+    line-height: 1;
+    pointer-events: none;
+  }
+
   @media (width < 1200px) {
     .article-container {
       width: 100%;
+    }
+
+    .quote::before {
+      content: '"';
+      top: 50%;
+      left: 50%;
+    }
+    .quote .english {
+      font-size: 2rem;
+    }
+    .quote .spanish {
+      font-size: 1.3rem;
     }
   }
 </style>
