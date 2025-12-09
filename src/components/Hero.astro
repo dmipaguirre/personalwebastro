@@ -23,7 +23,7 @@ const socialMedia = [
 
 <section class="hero-container">
   <div class="txt-hero">
-    <p class="name">Hi, I'm Miguel</p>
+    <p class="name">Hi, I'm Miguel.</p>
     <h1>
       A creative
       <span class="txt-skill">Freelance Web Developer</span>
@@ -34,6 +34,7 @@ const socialMedia = [
     </p>
   </div>
   <div class="avatar-hero">
+    <div class="box"></div>
     <img
       src="/images/Users.avif"
       alt="Miguel's profile photo"
@@ -42,6 +43,7 @@ const socialMedia = [
       loading="eager"
       decoding="sync"
     />
+    
   </div>
   <div class="icons-container">
     {socialMedia.map((social) => (
@@ -60,11 +62,11 @@ const socialMedia = [
     max-width: 1200px;
     margin: 8rem auto 4rem auto;
     font-family: var(--font-title);
-    align-items: flex-start;
+    gap: 2rem;
   }
 
   .txt-hero {
-    width: 30%;
+    width: 40%;
   }
 
   .txt-hero .name {
@@ -98,27 +100,42 @@ const socialMedia = [
     margin: 1rem 0;
   }
 
+  .avatar-hero .box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 246, 127);
+    border-radius: 6%;
+    transform: rotate(5deg);
+    transition: transform 0.4s ease;
+  }
+  .avatar-hero:hover .box {
+  transform: rotate(3deg);
+  
+}
   .avatar-hero {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    width: 30%;
-    flex: 1;
-    padding-top: 0;
-    margin-top: 0;
+    width: 30rem;
+    height: 30rem;
     align-self: center;
   }
 
   .avatar-hero img {
-    width: 33rem;
-    height: 33rem;
-    border-radius: 50%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 6%;
     object-fit: cover;
-    margin: 0;
-    box-shadow: 0 0 10px var(--color-primary);
+
+    box-shadow: 0 0 4px var(--color-primary);
   }
 
+
   .icons-container {
+    min-width: fit-content;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -130,7 +147,7 @@ const socialMedia = [
   @media (width < 1200px) {
     .hero-container {
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 1.9rem;
       width: 100%;
     }
     .txt-hero,
@@ -151,10 +168,6 @@ const socialMedia = [
       font-size: 5rem;
     }
 
-    .avatar-hero img {
-      width: 100%;
-      height: 100%;
-    }
   }
 
   @media (width < 600px) {
