@@ -1,11 +1,10 @@
 ---
-import "../styles/global.css";
 import ButtonColor from "./ButtonColor.astro";
 ---
 
-<nav class="navbar-container" id="navbar">
-  <div class="navbar-content">
-    <div class="logo-container">
+<nav class="navbar" id="navbar">
+  <div class="nav-content">
+    <div class="logo-box">
       <a href="/" class="logo">!MP</a>
     </div>
 
@@ -13,18 +12,18 @@ import ButtonColor from "./ButtonColor.astro";
       class="hamburger"
       id="hamburger"
       aria-expanded="false"
-      aria-controls="menu-links"
+      aria-controls="menu-panel"
       aria-label="Menú de navegación"
     >
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
     </button>
-    <div class="link-theme-container" id="menu-links">
-      <ul class="links-container">
-        <li><a href="/about/" class="link-item">About</a></li>
-        <li><a href="/blog/" class="link-item">Blog</a></li>
-        <li><a href="/projects/" class="link-item">Projects</a></li>
+    <div class="menu-panel" id="menu-panel">
+      <ul class="menu-links">
+        <li><a href="/about/" class="menu-link">About</a></li>
+        <li><a href="/blog/" class="menu-link">Blog</a></li>
+        <li><a href="/projects/" class="menu-link">Projects</a></li>
       </ul>
       <ButtonColor />
     </div>
@@ -48,7 +47,15 @@ import ButtonColor from "./ButtonColor.astro";
   }); // Terminación de scroll con requestAnimationFrame
 
   const hamburger = document.getElementById("hamburger");
-  const navMenu = document.getElementById("menu-links");
+  const navMenu = document.getElementById("menu-panel");
+
+  document.addEventListener("click", (e) => {
+  if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+    navMenu.classList.remove("active");
+    hamburger.classList.remove("active");
+    document.body.classList.remove("no-scroll");
+  }
+});
 
   if (hamburger && navMenu) {
     hamburger.addEventListener("click", () => {
@@ -71,7 +78,7 @@ import ButtonColor from "./ButtonColor.astro";
     });
 
     // Cerrar al hacer click en los links
-    const navLinks = navMenu.querySelectorAll(".link-item");
+    const navLinks = navMenu.querySelectorAll(".menu-link");
     navLinks.forEach((link) => {
       link.addEventListener("click", () => {
         hamburger.classList.remove("active");
@@ -81,10 +88,12 @@ import ButtonColor from "./ButtonColor.astro";
       });
     });
   }
+
+  
 </script>
 
 <style>
-.logo-container {
+.logo-box {
   font-size: 2rem;
   font-weight: bold;
 }
@@ -115,8 +124,7 @@ import ButtonColor from "./ButtonColor.astro";
   border-radius: 3px;
   margin: 6px 0;
   background: var(--color-text);
-  transition: all 1s
-    linear(0, 0.039 1%, 0.153 2.1%, 1.022 7.8%, 1.172 9.6%, 1.231 11.4%, 1.23 12.5%, 1.204 13.8%, 0.99 19.9%, 0.959 21.6%, 0.946 23.3%, 0.952 25.7%, 1.002 31.8%, 1.012 35.1%, 0.997 46.9%, 1);
+  transition: all 0.35s cubic-bezier(.4, 0, .2, 1);
 }
 
 .hamburger.active .bar {
@@ -135,7 +143,7 @@ import ButtonColor from "./ButtonColor.astro";
   transform: translateY(-9px) rotate(-45deg);
 }
 
-.navbar-container {
+.navbar {
   position: fixed;
   top: 0;
   left: 0;
@@ -146,13 +154,13 @@ import ButtonColor from "./ButtonColor.astro";
   transition: all 0.3s ease;
 }
 
-.navbar-container.scrolled {
+.navbar.scrolled {
   background-color: var(--color-bg);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(10px);
 }
 
-.navbar-content {
+.nav-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -165,13 +173,13 @@ import ButtonColor from "./ButtonColor.astro";
   font-family: var(--font-title);
 }
 
-.link-theme-container {
+.menu-panel {
   display: flex;
   align-items: center;
   gap: 2rem;
 }
 
-.links-container {
+.menu-links {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -180,28 +188,28 @@ import ButtonColor from "./ButtonColor.astro";
   gap: 2rem;
 }
 
-.links-container a {
+.menu-links a {
   font-family: var(--font-title);
   font-size: 1.2rem;
   text-decoration: none;
   color: var(--color-text);
 }
 
-.link-item {
+.menu-link {
   text-transform: uppercase;
   transition: color 0.3s ease;
 }
 
-.links-container .link-item:hover {
+.menu-links .menu-link:hover {
   color: var(--color-primary);
 }
 
 @media (width < 1199px) {
-  .navbar-container {
+  .navbar {
     width: 100%;
   }
   
-  .navbar-content {
+  .nav-content {
     width: 100%;
     margin: 0;
   }
@@ -213,11 +221,12 @@ import ButtonColor from "./ButtonColor.astro";
     display: block;
   }
 
-  .link-theme-container {
+  .menu-panel {
     position: absolute;
     top: 100%;
-    right: -100%;
-    width: 100%;
+    left: 0;
+    transform: translateX(100vw);
+    width: 100vw;
     padding: 0.1rem 0;
     background-color: var(--color-bg);
     box-shadow: 0 16px 20px rgba(0, 0, 0, 0.15);
@@ -228,32 +237,26 @@ import ButtonColor from "./ButtonColor.astro";
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
     overflow-y: auto;
-    transition: right 0.3s
-      linear(
-        0,
-        0.012 0.9%, 0.05 2%, 0.411 9.2%, 0.517 11.8%, 0.611 14.6%,
-        0.694 17.7%, 0.765 21.1%, 0.824 24.8%, 0.872 28.9%, 0.91 33.4%,
-        0.939 38.4%, 0.977 50.9%, 0.994 68.4%, 1
-      );
+    gap: 0;
+      transition: transform 0.3s ease-out;
   }
 
-  .link-theme-container.active {
-    right: 0;
+  .menu-panel.active {
+    transform: translateX(0);
   }
 
-  .links-container {
+  .menu-links {
     flex-direction: column;
     width: 100%;
     gap: 0;
   }
 
-  .links-container li {
+  .menu-links li {
     width: 100%;
   }
 
-  .links-container li a {
+  .menu-links li a {
     display: block;
     width: 100%;
     padding: 1rem 0;

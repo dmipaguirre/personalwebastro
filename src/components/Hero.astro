@@ -1,6 +1,6 @@
 ---
 import SocialIcon from "./icons/SocialIcon.astro";
-import "../styles/global.css";
+
 
 const socialMedia = [
   {
@@ -167,13 +167,15 @@ const socialMedia = [
   }
 
   @media (width < 600px) {
+    .hero-container {
+      margin: 4rem 0;
+    }
     .avatar-hero {
-      width: 70%;
+      width: 80%;
     }
 
     .hero-container {
-      flex-direction: column;
-      
+      flex-direction: column;      
     }
 
     .icons-container {
