@@ -36,31 +36,20 @@ import "../styles/global.css";
   }
   .quote .english,
   .quote .spanish {
-    margin: 3rem 0;
+    margin: 2rem 0;
     text-align: center;
   }
   .quote .english {
-    font-size: 3rem;
+    font-size: 2rem;
   }
   .quote .spanish {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     opacity: 0.3;
   }
   .section-quote {
-    border-left: 10px solid var(--color-primary);
+    border-left: 3px solid var(--color-primary);
     background-color: var(--color-bgsecondary);
     padding: 2rem 1.2rem;
-  }
-  .quote::before {
-    content: '"';
-    position: absolute;
-    font-size: clamp(10rem, 30vw, 30rem);
-    top: 0;
-    left: 0;
-    transform: translate(-80%, -1%);
-    opacity: 0.1;
-    line-height: 1;
-    pointer-events: none;
   }
 
   @media (width < 1200px) {
@@ -68,16 +57,11 @@ import "../styles/global.css";
       width: 100%;
     }
 
-    .quote::before {
-      content: '"';
-      top: 50%;
-      left: 50%;
-    }
     .quote .english {
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
     .quote .spanish {
-      font-size: 1.3rem;
+      font-size: 1rem;
     }
   }
 </style>
