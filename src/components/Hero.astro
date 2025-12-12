@@ -18,20 +18,20 @@ const socialMedia = [
 ];
 ---
 
-<section class="hero-container">
-  <div class="txt-hero">
-    <p class="name">Hi, I'm Miguel.</p>
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-name">Hi, I'm Miguel.</p>
     <h1>
       A creative
-      <span class="txt-skill">Freelance Web Developer</span>
+      <span class="hero-skill">Freelance Web Developer</span>
     </h1>
     <p>
       — highly passionate about technology, programming, cybersecurity, and
       robotics.
     </p>
   </div>
-  <div class="avatar-hero">
-    <div class="box"></div>
+  <div class="hero-avatar">
+    <div class="avatar-box"></div>
     <img
       src="/images/Users.avif"
       alt="Miguel's profile photo"
@@ -41,14 +41,14 @@ const socialMedia = [
       decoding="sync"
     />
   </div>
-  <div class="icons-container">
+  <div class="hero-icons">
     {socialMedia.map((social) => <SocialIcon {...social} />)}
   </div>
 </section>
 
 <style>
   /* --- Layout principal --- */
-  .hero-container {
+  .hero {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -59,18 +59,18 @@ const socialMedia = [
     font-family: var(--font-title);
     gap: 2rem;
   }
-  .txt-hero {
+  .hero-text {
     flex: 1;
     min-width: 0;
   }
-  .txt-hero .name {
+  .hero-text .hero-name {
     font-size: 2.5rem;
     font-family: var(--font-text);
     line-height: 1.2;
     margin: 1rem 0;
   }
 
-  .txt-hero h1 {
+  .hero-text h1 {
     font-family: var(--font-title);
     color: var(--color-text);
     font-size: 4.6rem;
@@ -78,7 +78,7 @@ const socialMedia = [
     margin: 1rem 0;
   }
 
-  .txt-skill {
+  .hero-skill {
     font-family: var(--font-style);
     font-weight: 100;
     font-size: 7rem;
@@ -87,7 +87,7 @@ const socialMedia = [
     display: block;
   }
 
-  .txt-hero p {
+  .hero-text p {
     font-family: var(--font-text);
     color: var(--color-text);
     font-size: 2.6rem;
@@ -95,7 +95,7 @@ const socialMedia = [
     margin: 1rem 0;
   }
 
-  .avatar-hero .box {
+  .hero-avatar .avatar-box {
     position: absolute;
     width: 90%;
     height: 90%;
@@ -106,10 +106,10 @@ const socialMedia = [
     transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
     z-index: -1;
   }
-  .avatar-hero:hover .box {
+  .hero-avatar:hover .avatar-box {
     transform: rotate(3deg);
   }
-  .avatar-hero {
+  .hero-avatar {
     position: relative;
     display: flex;
     justify-content: center;
@@ -121,7 +121,7 @@ const socialMedia = [
     
   }
 
-  .avatar-hero img {
+  .hero-avatar img {
     position: absolute;
     width: 90%;
     height: 90%;
@@ -131,7 +131,7 @@ const socialMedia = [
     box-shadow: 0 0 4px var(--color-primary);
   }
 
-  .icons-container {
+  .hero-icons {
     min-width: fit-content;
     display: flex;
     justify-content: center;
@@ -139,48 +139,50 @@ const socialMedia = [
     align-items: center;
     gap: 2rem;
     align-self: center;
+    margin-left: 2rem;
   }
 
   @media (width < 1199px) {
-      .hero-container {
+      .hero {
       width: 100%;
       justify-content: center;
   }
   }
 
-  @media (width < 800px) {
-    .hero-container {
+  @media (width < 900px) {
+    .hero {
       width: 100%;
       gap: 1rem;
     }
 
-    .txt-hero h1 {
+    .hero-text h1 {
       font-size: 3.5rem;
     }
-    .txt-hero p {
+    .hero-text p {
       font-size: 1.6rem;
     }
-    .txt-skill {
+    .hero-skill {
       font-size: 5rem;
       display: block;
     }
   }
 
   @media (width < 600px) {
-    .hero-container {
+    .hero {
       margin: 4rem 0;
     }
-    .avatar-hero {
+    .hero-avatar {
       width: 80%;
     }
 
-    .hero-container {
+    .hero {
       flex-direction: column;      
     }
 
-    .icons-container {
+    .hero-icons {
       flex-direction: row;
       margin: 0;
+      margin-left: 0;
     }
   }
 </style>

@@ -1,15 +1,11 @@
----
-
----
-
-<section class="article-container">
-  <div class="section-quote">
-    <blockquote class="quote">
-      <p class="english">
+<section class="quote-section">
+  <div class="quote-box">
+    <blockquote class="quote-block">
+      <p class="quote-en">
         "Life is a comedy for those who think and a tragedy for those who feel."
         <cite class="quote-author">— Horace Walpole</cite>
       </p>
-      <p class="spanish">
+      <p class="quote-es">
         La vida es una comedia para quienes piensan y una tragedia para quienes
         sienten
       </p>
@@ -18,7 +14,7 @@
 </section>
 
 <style>
-  .article-container {
+  .quote-section {
     padding: 2rem 1.3rem;
     width: var(--width-container);
     max-width: 1200px;
@@ -28,39 +24,39 @@
     font-size: 1.4rem;
     line-height: 1.4;
   }
-  .quote {
+  .quote-block {
     max-width: 700px;
     margin-inline: auto;
     padding-inline: 1rem;
     position: relative;
   }
-  .quote .english,
-  .quote .spanish {
+  .quote-block .quote-en,
+  .quote-block .quote-es {
     margin: 2rem 0;
     text-align: center;
   }
-  .quote .english {
+  .quote-block .quote-en {
     font-size: 2rem;
   }
-  .quote .spanish {
+  .quote-block .quote-es {
     font-size: 1.3rem;
     opacity: 0.3;
   }
-  .section-quote {
+  .quote-box {
     border-left: 3px solid var(--color-primary);
     background-color: var(--color-bgsecondary);
     padding: 2rem 1.2rem;
   }
 
   @media (width < 1200px) {
-    .article-container {
+    .quote-section {
       width: 100%;
     }
 
-    .quote .english {
+    .quote-block .quote-en {
       font-size: 1.5rem;
     }
-    .quote .spanish {
+    .quote-block .quote-es {
       font-size: 1rem;
     }
   }

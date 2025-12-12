@@ -17,22 +17,22 @@ const skills = [
 ]
 
 ---
-<section class="skill-section" aria-label="Technical Skills">
+<section class="skills" aria-label="Technical Skills">
   {skills.map((skill, index) => (
     <>
-      <div class="section-content">
+      <div class="skill-card">
         <h2>{skill.title}</h2>
         <p>{skill.description}</p>
       </div>
       {index < skills.length - 1 && (
-        <div class="divider" aria-hidden="true"></div>
+        <div class="skill-divider" aria-hidden="true"></div>
       )}
     </>
   ))}
 </section>
 
 <style>
-  .skill-section {
+  .skills {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -42,18 +42,18 @@ const skills = [
     margin: 1rem auto;
     gap: 2rem;
   }
-  .divider {
+  .skill-divider {
     width: 1px;
     background-color: var(--color-primary);
     height: 180px;
   }
-  .section-content {
+  .skill-card {
     display: flex;
     flex-direction: column;
     justify-content: center;
     flex: 1;
   }
-  .section-content h2 {
+  .skill-card h2 {
     font-family: var(--font-title);
     color: var(--color-text);
     font-size: 1.5rem;
@@ -61,7 +61,7 @@ const skills = [
     margin: 0 0 1rem 0;
     font-weight: 300;
   }
-  .section-content p {
+  .skill-card p {
     font-family: var(--font-text);
     color: var(--color-text);
     font-size: 1.3rem;
@@ -69,21 +69,21 @@ const skills = [
   }
 
   @media (width < 1200px) {
-    .skill-section {
+    .skills {
       width: 100%;
     }
   }
   @media (width < 800px) {
-    .skill-section {
+    .skills {
       flex-direction: column;
       gap: 1rem;
     }
-    .divider {
+    .skill-divider {
       height: 1px;
       width: 100%;
       margin: 0 auto;
     }
-    .section-content {
+    .skill-card {
       max-width: 100%;
       margin: 1rem 0;
       
