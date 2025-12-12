@@ -3,38 +3,98 @@
 ---
 
 <section class="footer-container">
-    <p>&copy; <span id="current-year"></span> Miguel Páez. Todos los derechos reservados.</p>
+    <section class="footer-info">
+    <h2>Miguel Páez<span class="underscore-pulser">_</span></h2>
+    <p>Creating digital experiences with passion and precision.</p>
+    </section>
+  <div class="footer-meta">
+    <p>&copy; <span id="current-year"></span> Miguel Páez. All rights reserved.</p>
+    <p class="footer-note">Made with ❤️ and Astro.</p>
+  </div>
 </section>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const yearElement = document.getElementById('current-year');
-        
-        if (yearElement) {
-            yearElement.textContent = new Date().getFullYear().toString();
-        }
-    });
+  document.addEventListener("DOMContentLoaded", function () {
+    const yearElement = document.getElementById("current-year");
+
+    if (yearElement) {
+      yearElement.textContent = new Date().getFullYear().toString();
+    }
+  });
 </script>
 
 <style>
+  .footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: var(--width-container);
+    max-width: 1200px;
+    margin: 1rem auto;
+    padding: 3rem 1.3rem;
+    text-align: center;
+    border-top: 1px solid var(--color-primary);
+  }
+  .footer-container p {
+    font-family: var(--font-text);
+    color: var(--color-text);
+    font-size: 1.2rem;
+    opacity: 0.6;
+  }
+
+  .footer-info {
+    text-align: left;
+    width: 30%;
+    font-family: var(--font-title);
+  }
+
+  .footer-info h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+  }
+  
+  .underscore-pulser {
+    animation: pulser 1s infinite;
+    color: var(--color-primary);
+  }
+  @keyframes pulser {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.1;
+    }
+
+  }
+  .footer-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  @media (width < 1200px) {
     .footer-container {
-        width: var(--width-container);
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 5rem 1.3rem;
-        text-align: center;
-        border-top: 1px solid var(--color-primary);
+      width: 90%;
+      padding: 3rem 1.3rem;
     }
-    .footer-container p {
-        font-family: var(--font-text);
-        color: var(--color-text);
-        font-size: 1.2rem;
-        opacity: 0.6;
+  }
+  @media (width < 600px) {
+    .footer-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
     }
-    @media (width < 1200px) {
-        .footer-container {
-            width: 90%;
-            padding: 3rem 1.3rem;
-        }
+
+    .footer-info {
+      width: 100%;
+      text-align: center;
     }
+
+    .footer-meta {
+      justify-content: center;
+      flex-wrap: wrap;
+      text-align: center;
+      width: 100%;
+  }
 </style>

@@ -223,9 +223,9 @@ import ButtonColor from "./ButtonColor.astro";
 
   .menu-panel {
     position: absolute;
-    top: 100%;
+    top: 60px;
     left: 0;
-    transform: translateX(100vw);
+    transform: translateX(100%);
     width: 100vw;
     padding: 0.1rem 0;
     background-color: var(--color-bg);
@@ -239,12 +239,12 @@ import ButtonColor from "./ButtonColor.astro";
     align-items: center;
     overflow-y: auto;
     gap: 0;
-      transition: transform 0.3s ease-out;
+    transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1);
   }
 
   .menu-panel.active {
     transform: translateX(0);
-  }
+   }
 
   .menu-links {
     flex-direction: column;

@@ -1,21 +1,5 @@
 ---
 import SocialIcon from "./icons/SocialIcon.astro";
-
-
-const socialMedia = [
-  {
-    url: "https://www.linkedin.com/in/dmpaeza/",
-    icon: "icon-tabler-brand-linkedin",
-  },
-  {
-    url: "https://www.instagram.com/dmiguelpaez/",
-    icon: "icon-tabler-brand-instagram",
-  },
-  {
-    url: "https://www.facebook.com/miguel.paezaguirre",
-    icon: "icon-tabler-brand-facebook",
-  },
-];
 ---
 
 <section class="hero">
@@ -42,7 +26,7 @@ const socialMedia = [
     />
   </div>
   <div class="hero-icons">
-    {socialMedia.map((social) => <SocialIcon {...social} />)}
+    <SocialIcon />
   </div>
 </section>
 
