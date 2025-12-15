@@ -2,7 +2,7 @@
 import SocialIcon from "./icons/SocialIcon.astro";
 ---
 
-<section class="hero">
+<section class="hero" role="banner">
   <div class="hero-text">
     <p class="hero-name">Hi, I'm Miguel.</p>
     <h1>
@@ -102,7 +102,6 @@ import SocialIcon from "./icons/SocialIcon.astro";
     flex: 1;
     aspect-ratio: 1;
     align-self: center;
-    
   }
 
   .hero-avatar img {
@@ -127,10 +126,10 @@ import SocialIcon from "./icons/SocialIcon.astro";
   }
 
   @media (width < 1199px) {
-      .hero {
+    .hero {
       width: 100%;
       justify-content: center;
-  }
+    }
   }
 
   @media (width < 900px) {
@@ -155,12 +154,23 @@ import SocialIcon from "./icons/SocialIcon.astro";
     .hero {
       margin: 4rem 0;
     }
+
     .hero-avatar {
       width: 80%;
+      order: 1;
+    }
+
+    .hero-text {
+      order: 2;
+      text-align: center;
+    }
+
+    .hero-icons {
+      order: 3;
     }
 
     .hero {
-      flex-direction: column;      
+      flex-direction: column;
     }
 
     .hero-icons {
