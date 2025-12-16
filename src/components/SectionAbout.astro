@@ -1,3 +1,7 @@
+---
+import Experience from './Experience.astro';
+---
+
 <article class="about-section">
   <h2>About Me</h2>
   <p>
@@ -12,6 +16,7 @@
     firmly believe that knowledge and fun can go hand in hand.
   </p>
 </article>
+<Experience />
 <style>
   .about-section {
     display: flex;
@@ -48,6 +53,7 @@
   @media (width < 800px) {
     .about-section {
       flex-direction: column;
+      margin: 4rem auto;
 
       & h2 {
         width: 100%;

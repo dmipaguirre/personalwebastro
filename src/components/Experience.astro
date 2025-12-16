@@ -1,0 +1,143 @@
+---
+const experience = [
+  {
+    year: "2025 - Present",
+    role: "Freelance Web Developer",
+    company: "Self-employed",
+    description:
+      "Developing custom web solutions and automation scripts for international clients.",
+  },
+  {
+    year: "2024 - 2025",
+    role: "Data Analyst",
+    company: "Self-employed",
+    description:
+      "Developing automation scripts with python for international clients.",
+  },
+];
+---
+<section class="experience-container">
+  <div class="experience-box">
+    <h2>Experience</h2>
+  </div>
+  <div class="experience-content">
+    {experience.map((item) => (
+      <div class="experience-items">
+        <h3>{item.year}</h3>
+        <p><strong>{item.role}</strong></p>
+        <p>{item.company}</p>
+        <p>{item.description}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .experience-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 1.2rem 1.3rem;
+    width: var(--width-container);
+    max-width: 1200px;
+    margin: 8rem auto 4rem auto;
+  }
+
+  .experience-box {
+    font-family: var(--font-title);
+    color: var(--color-text);
+    line-height: 1;
+    margin: 0;
+    font-weight: 300;
+    width: 20%;
+
+    & h2 {
+      font-size: 2.5rem;
+    }
+  }
+
+  .experience-content {
+    width: 80%;
+
+    & h3 {
+      font-family: var(--font-title);
+      color: var(--color-primary);
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      font-weight: 400;
+    }
+
+    & p {
+      font-size: 1.4rem;
+      font-family: var(--font-text);
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+
+    & strong {
+      font-size: 1.5rem;
+      font-family: var(--font-title);
+    }
+  }
+
+  .experience-items {
+    --size-point: 16px;
+    --border-timeline: 3px;
+
+    position: relative;
+    border-left: var(--border-timeline) solid #575757;
+    padding-left: 2rem;
+    margin: 1rem;
+  }
+
+  .experience-items::before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 0;
+    width: var(--size-point);
+    height: var(--size-point);
+    background-color: var(--color-bgsecondary);
+    border-radius: 50%;
+    border: 2px solid var(--color-primary);
+    box-sizing: border-box;
+  }
+
+  /* Punto destacado para el trabajo actual */
+  .experience-items:first-child::before {
+    background-color: var(--color-primary);    
+  }
+
+  .experience-items:hover::before {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+}
+  .experience-items {
+  transition: padding-left 0.3s ease;
+}
+
+.experience-items:hover {
+  padding-left: 2.5rem;
+}
+  @media (width < 1200px) {
+    .experience-container {
+      width: 100%;
+    }
+  }
+
+  @media (width < 800px) {
+    .experience-container {
+      flex-direction: column;
+      gap: 2rem;
+      margin: 1rem auto;
+  }
+
+  .experience-content {
+    width: 100%;
+  }
+
+  .experience-box {
+    width: 100%;
+    text-align: center;
+  }
+</style>

@@ -1,7 +1,6 @@
 ---
-
 const posts = Object.values(
-  import.meta.glob("../pages/post/*.md", { eager: true }),
+  import.meta.glob("../pages/post/*.md", { eager: true })
 );
 ---
 
@@ -15,27 +14,29 @@ const posts = Object.values(
               <h3 class="card-title">{post.frontmatter.title}</h3>
               <p class="card-text">{post.frontmatter.description}</p>
             </div>
-            <p class="card-meta">
-              by {post.frontmatter.author}
-              <span class="meta-dot">
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  class="icon icon-tabler icons-tabler-filled icon-tabler-point"
-                >
-                  <>
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
-                  </>
-                </svg>
-              </span>
-              {post.frontmatter.readingTime} min read
-            </p>
+            <div class="card-meta">
+              <p class="card-meta-text">
+                by {post.frontmatter.author}
+                <span class="meta-dot">
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="icon icon-tabler icons-tabler-filled icon-tabler-point"
+                  >
+                    <>
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+                    </>
+                  </svg>
+                </span>
+                {post.frontmatter.readingTime} min read
+              </p>
+            </div>
           </div>
         </a>
       </div>
@@ -111,18 +112,17 @@ const posts = Object.values(
     }
 
     .card-meta {
-      margin-top: auto;
+      display:flex;
+      justify-content: flex-start;
       font-size: 0.9rem;
       color: var(--color-text);
       opacity: 0.8;
       font-family: var(--font-text);
     }
   }
-
-  .meta-dot {
-    display: inline-flex;
-    align-items: center;
-    margin: 0 0.3rem;
+  .meta-dot svg {
+    width: 10px;
+    height: 10px;
   }
 
   @media (width < 1200px) {
