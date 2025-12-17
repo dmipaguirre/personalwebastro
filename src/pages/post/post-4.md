@@ -1,12 +1,12 @@
 ---
 layout: ../../layouts/BlogLayout.astro
-title: 'Scrol infinito'
+title: 'Scroll infinito'
 publishDate: 'November 24, 2025'
-description: 'Scrol infinito.'
+description: 'Scroll infinito.'
 author: 'Miguel Páez'
 slug: "hamburger-menu"
 icon: "pending"
-readingTime: '5'
+readingTime: '2'
 ---
 # Scroll infinito
 

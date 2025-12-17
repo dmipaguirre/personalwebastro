@@ -9,7 +9,7 @@ icon: "brand-ubuntu"
 readingTime: '5'
 ---
 
-Linux is, for many people, the doorway into the world of open-source software and system administration. Its terminal—powerful, minimalistic, and incredibly flexible—allows you to control every aspect of the system with precision, speed, and elegance. In this introductory guide, we’ll explore how basic commands can transform the way you interact with your computer and help you understand how an operating system really works.
+Linux is, for many people, the doorway into the world of open-source software and system administration. Its terminal powerful, minimalistic, and incredibly flexibleallows you to control every aspect of the system with precision, speed, and elegance. In this introductory guide, we’ll explore how basic commands can transform the way you interact with your computer and help you understand how an operating system really works.
 
 ## Why learn the terminal in 2025?
 
@@ -42,4 +42,4 @@ With just these commands, you can manage almost everything in your working envir
 
 Linux gives you freedom. It lets you customize everything, automate tasks with scripts, install only what you need, and optimize your system to the maximum. Its community and the philosophy of sharing knowledge mean there are always resources and people willing to help you learn.
 
-For many, Linux is not just an operating system—it’s an invitation to understand, experiment, and build.
+For many, Linux is not just an operating system it’s an invitation to understand, experiment, and build.

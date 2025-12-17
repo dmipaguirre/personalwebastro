@@ -3,11 +3,12 @@ import Layout from "./Layout.astro";
 import "../styles/global.css";
 
 const { frontmatter } = Astro.props;
-const regardingTimeText = frontmatter.regardingTime
-  ? `${frontmatter.regardingTime} min to read`
+const timeValue = frontmatter.regardingTime ?? frontmatter.readingTime ?? frontmatter.reading ?? frontmatter['reading-time'];
+const regardingTimeText = timeValue
+  ? `${timeValue} min to read`
   : "4 min to read";
----
 
+---
 <Layout pageTitle={frontmatter.title}>
   <article class="blog-content">
     <section class="blog-header">

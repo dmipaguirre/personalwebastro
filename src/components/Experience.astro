@@ -17,25 +17,25 @@ const experience = [
 ];
 ---
 <section class="experience-container">
-  <div class="experience-box">
+  <div class="experience-header">
     <h2>Experience</h2>
   </div>
-  <div class="experience-content">
+  <ol class="experience-list">
     {experience.map((item) => (
-      <div class="experience-items">
-        <h3>{item.year}</h3>
+      <li class="experience-item">
+        <time>{item.year}</time>
         <p><strong>{item.role}</strong></p>
         <p>{item.company}</p>
         <p>{item.description}</p>
-      </div>
+      </li>
     ))}
-  </div>
+  </ol>
 </section>
 
 <style>
   .experience-container {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 20% 1fr;    
     gap: 3rem;
     padding: 1.2rem 1.3rem;
     width: var(--width-container);
@@ -43,23 +43,27 @@ const experience = [
     margin: 8rem auto 4rem auto;
   }
 
-  .experience-box {
+  .experience-header {
+    display: flex;
+    align-items: center;
     font-family: var(--font-title);
     color: var(--color-text);
     line-height: 1;
     margin: 0;
     font-weight: 300;
-    width: 20%;
-
+    
+    
     & h2 {
+        width: 100%;
       font-size: 2.5rem;
     }
   }
 
-  .experience-content {
-    width: 80%;
+  .experience-list {
+    list-style: none;
+    padding: 0;
 
-    & h3 {
+    & time {
       font-family: var(--font-title);
       color: var(--color-primary);
       font-size: 1.3rem;
@@ -78,22 +82,25 @@ const experience = [
       font-size: 1.5rem;
       font-family: var(--font-title);
     }
+
+    & li {
+        margin: 0 0 2rem 0;
+    }
   }
 
-  .experience-items {
+  .experience-item {
     --size-point: 16px;
-    --border-timeline: 3px;
 
     position: relative;
-    border-left: var(--border-timeline) solid #575757;
+    border-left: 3px solid #575757;
     padding-left: 2rem;
     margin: 1rem;
   }
 
-  .experience-items::before {
+  .experience-item::before {
     content: "";
     position: absolute;
-    left: -10px;
+    left: -9px;
     top: 0;
     width: var(--size-point);
     height: var(--size-point);
@@ -104,19 +111,20 @@ const experience = [
   }
 
   /* Punto destacado para el trabajo actual */
-  .experience-items:first-child::before {
+  .experience-item:first-child::before {
     background-color: var(--color-primary);    
   }
 
-  .experience-items:hover::before {
+  .experience-item:hover::before {
   transform: scale(1.2);
   transition: transform 0.3s ease;
 }
-  .experience-items {
+
+  .experience-item {
   transition: padding-left 0.3s ease;
 }
 
-.experience-items:hover {
+.experience-item:hover {
   padding-left: 2.5rem;
 }
   @media (width < 1200px) {
@@ -127,17 +135,11 @@ const experience = [
 
   @media (width < 800px) {
     .experience-container {
-      flex-direction: column;
+      grid-template-columns: 1fr;
       gap: 2rem;
       margin: 1rem auto;
   }
-
-  .experience-content {
-    width: 100%;
-  }
-
-  .experience-box {
-    width: 100%;
+  .experience-header {
     text-align: center;
   }
 </style>
