@@ -39,10 +39,10 @@
 }
 
 :root {
-  --color-primary: #d17f04;
+  --color-primary: #6a4001;
   --color-text: #0e0d0d;
-  --color-bg: #cecac5;
-  --color-bgsecondary: #c9c6c0;
+  --color-bg: #f1ede9;
+  --color-bgsecondary: #e6e5e4;
   --width-container: 100%;
   --font-title: "BebasNeue", system-ui, sans-serif;
   --font-text: "Instrument Serif", Georgia, serif;
@@ -50,10 +50,10 @@
 }
 
 .darkmode {
-  --color-primary: #a2b30c;
+  --color-primary: #fbde00;
   --color-text: #ebe4e4;
-  --color-bg: #252525;
-  --color-bgsecondary: #30302e;
+  --color-bg: #0f0f0f;
+  --color-bgsecondary: #292928bd;
 }
 
 * {

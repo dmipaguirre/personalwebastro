@@ -4,6 +4,9 @@ title: 'Scroll infinito'
 publishDate: 'November 24, 2025'
 description: 'Scroll infinito.'
 author: 'Miguel Páez'
+image:
+  url: "https://docs.astro.build/assets/rose.webp"
+  alt: "The Astro logo on a dark background with a pink glow."
 slug: "hamburger-menu"
 icon: "pending"
 readingTime: '2'

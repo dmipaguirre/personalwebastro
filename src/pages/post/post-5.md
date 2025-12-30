@@ -4,6 +4,9 @@ title: 'Understanding the inset property in CSS'
 publishDate: 'December 17, 2025'
 description: 'Understanding the inset property in CSS.'
 author: 'Miguel Páez'
+image:
+  url: "https://docs.astro.build/assets/rose.webp"
+  alt: "The Astro logo on a dark background with a pink glow."
 slug: ""
 icon: "pending"
 readingTime: '5'
