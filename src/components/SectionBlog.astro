@@ -1,50 +1,54 @@
 ---
 const postFiles = import.meta.glob("../pages/post/*.md", { eager: true });
 const posts = Object.values(postFiles)
-  .filter(post => post?.frontmatter)
+  .filter((post) => post?.frontmatter)
   .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
 ---
 
 <article class="blog" aria-labelledby="blog-heading">
   <h2 id="blog-heading" class="blog-title">Blog</h2>
-  
+
   <div class="container-card">
-    {posts.map((post) => {
-      const { frontmatter, url } = post;
-      const { title, description, author, readingTime, image } = frontmatter;
-      
-      return (
-        <section class="blog-card">
-          <a href={url} aria-label={`Leer artículo: ${title}`}>
-            <div class="card-content">
-              <div class="image-wrapper">
-              <img
-                class="card-image"
-                src={image?.url || '/placeholder.jpg'}
-                alt={image?.alt || title}
-                loading="lazy"
-                width="240"
-                height="180"
-              />
-              </div>
-              <div class="text-container">
-                <h3 class="card-title">{title}</h3>
-                <p class="card-text">{description}</p>
-                <div class="card-meta">
-                  <p class="card-meta-text">
-                    by {author}
-                    <span class="meta-dot" aria-hidden="true">•</span>
-                    <time datetime={`PT${readingTime}M`}>
-                      {readingTime} min read
-                    </time>
-                  </p>
+    {
+      posts.map((post) => {
+        const { frontmatter, url } = post;
+        const { title, description, author, readingTime, image } = frontmatter;
+
+        return (
+          <section class="blog-card">
+            <a href={url} aria-label={`Leer artículo: ${title}`}>
+              <div class="card-content">
+                <div class="image-wrapper">
+                  <img
+                    class="card-image"
+                    src={image?.url || "/placeholder.jpg"}
+                    alt={image?.alt || title}
+                    loading="lazy"
+                    width="240"
+                    height="180"
+                  />
+                </div>
+                <div class="text-container">
+                  <h3 class="card-title">{title}</h3>
+                  <p class="card-text">{description}</p>
+                  <div class="card-meta">
+                    <p class="card-meta-text">
+                      by {author}
+                      <span class="meta-dot" aria-hidden="true">
+                        •
+                      </span>
+                      <time datetime={`PT${readingTime}M`}>
+                        {readingTime} min read
+                      </time>
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </a>
-        </section>
-      );
-    })}
+            </a>
+          </section>
+        );
+      })
+    }
   </div>
 </article>
 
@@ -64,6 +68,79 @@ const posts = Object.values(postFiles)
     color: var(--color-text);
   }
 
+  .container-card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    margin-top: 3rem;
+  }
+
+  .blog-card {
+    background-color: #575757;
+    border-radius: 2rem;
+    overflow: hidden;
+    position: relative;
+
+    & a {
+      text-decoration: none;
+      color: var(--color-text);
+    }
+  }
+
+  .card-content {
+    height: 300px;
+    display: flex;
+  }
+
+  .image-wrapper {
+    flex: 0 0 42%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .image-wrapper .card-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: all 0.4s ease;
+    opacity: 0.9;
+  }
+
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 3rem 2rem 2rem;
+    gap: 0.8rem;
+    flex: 1;
+    color: var(--color-text);
+
+    & .card-title {
+      font-size: clamp(1.3rem, 2vw, 2rem);
+      font-family: var(--font-title);
+      font-weight: 300;
+    }
+
+    & .card-text {
+      font-size: 1.4rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      max-width: 90%;
+    }
+  }
+  .blog-card:hover .image-wrapper .card-image {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+
+  .blog-card a:hover .card-title {
+    text-decoration: underline 2px;
+    color: var(--color-primary);
+  }
+  /*
   .container-card {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
@@ -103,22 +180,22 @@ const posts = Object.values(postFiles)
   }
 
   .card-image {
-  transition: transform 0.4s ease, filter 0.4s ease;
+  transition: transform 0.4s ease, 0.4s ease;
 }
 
 .blog-card a:hover .card-image {
   transform: scale(1.1);
-  filter: brightness(1.1);
+
 }
 
 .blog-card a:focus .card-image {
   transform: scale(1.1);
-  filter: brightness(1.1);
+
 }
 
 .blog-card a:hover .card-title,
 .blog-card a:focus .card-title {
-  text-decoration: underline;
+  text-decoration: underline 2px;
   color: var(--color-primary);
 }
 
@@ -183,5 +260,5 @@ const posts = Object.values(postFiles)
       width: 100%;
       height: 200px;
     }
-  }
+  }*/
 </style>
