@@ -78,8 +78,8 @@ const posts = Object.values(postFiles)
   .container-card {
     display: grid;
     /* Responsive automático sin media queries excesivos */
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr));
-    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.3rem;
   }
 
   /* --- Tarjeta --- */
@@ -92,28 +92,35 @@ const posts = Object.values(postFiles)
       transform 0.3s ease,
       box-shadow 0.3s ease;
     height: auto;
+  }
 
-    & a {
-      text-decoration: none;
-      color: var(--color-text);
-      display: block;
-      cursor: pointer;
-    }
+  .blog-card a {
+    text-decoration: none;
+    color: var(--color-text);
+    display: block;
+    cursor: pointer;
+    height: 100%;
+  }
 
-    &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-    }
+  .blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .blog-card a:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 4px;
   }
 
   .card-content {
     display: flex;
     flex-direction: column;
+    height: 100%;
   }
 
   /* --- Imagen --- */
   .image-wrapper {
-    flex: 0 0 200px; /* La imagen ocupa el 40% del ancho */
+    height: 200px; /* La imagen ocupa el 40% del ancho */
     position: relative;
     overflow: hidden;
   }
@@ -134,10 +141,9 @@ const posts = Object.values(postFiles)
   .text-container {
     display: flex;
     flex-direction: column;
-    padding: 1.5rem 2rem;
+    padding: 1.5rem;
     gap: 1rem;
     flex: 1;
-    justify-content: center;
   }
 
   .card-title {
@@ -176,10 +182,7 @@ const posts = Object.values(postFiles)
   /* --- RESPONSIVE / MEDIA QUERIES --- */
 
   /* Punto de quiebre: Cuando la tarjeta se vuelve muy estrecha */
-  @media (max-width: 768px) {
-    .container-card {
-      grid-template-columns: 1fr; /* Una sola columna */
-    }
+  @media (max-width: 800px) {
 
     .card-content {
       flex-direction: column; /* Cambia a vertical: Imagen arriba, texto abajo */
