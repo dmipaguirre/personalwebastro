@@ -39,7 +39,7 @@
 }
 
 :root {
-  --color-primary: #719805;
+  --color-primary: #8A4600;
   --color-text: #0e0d0d;
   --color-bg: #f1ede9;
   --color-bgsecondary: #e6e5e4;
@@ -50,7 +50,7 @@
 }
 
 .darkmode {
-  --color-primary: #3425d7;
+  --color-primary: #d79925;
   --color-text: #ebe4e4;
   --color-bg: #0f0f0f;
   --color-bgsecondary: #292928bd;
