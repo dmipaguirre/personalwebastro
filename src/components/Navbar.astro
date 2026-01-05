@@ -31,8 +31,7 @@ import ButtonColor from "./ButtonColor.astro";
 </nav>
 
 <script>
-  // Scroll optimizado con requestAnimationFrame
-
+  // Scroll Logic (comentada como en tu original)
   /*
   let ticking = false;
   window.addEventListener("scroll", () => {
@@ -46,17 +45,20 @@ import ButtonColor from "./ButtonColor.astro";
       });
       ticking = true;
     }
-  }); // Terminación de scroll con requestAnimationFrame
+  }); 
    */
 
   const hamburger = document.getElementById("hamburger");
   const navMenu = document.getElementById("menu-panel");
 
+  // Cerrar al hacer click fuera
   document.addEventListener("click", (e) => {
-    if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-      navMenu.classList.remove("active");
-      hamburger.classList.remove("active");
-      document.body.classList.remove("no-scroll");
+    // @ts-ignore
+    if (navMenu && hamburger && !navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+        navMenu.classList.remove("active");
+        hamburger.classList.remove("active");
+        document.body.classList.remove("no-scroll");
+        hamburger.setAttribute("aria-expanded", "false");
     }
   });
 
@@ -105,15 +107,17 @@ import ButtonColor from "./ButtonColor.astro";
     font-size: 2.9rem;
   }
 
-  /* Hamburger Menu */
+  /* --- HAMBURGER MENU REFACTORIZADO --- */
   .hamburger {
-    display: none;
-    /* Reset para iOS (CRÍTICO) */
+    display: none; /* Oculto en escritorio */
+    
+    /* Resets críticos para iOS */
     -webkit-appearance: none;
     appearance: none;
     background: transparent;
     border: none;
     -webkit-tap-highlight-color: transparent;
+    
     cursor: pointer;
     padding: 0;
     width: 30px;
@@ -127,15 +131,19 @@ import ButtonColor from "./ButtonColor.astro";
     height: 3px;
     width: 100%;
     border-radius: 3px;
-    margin: 6px 0;
     background: var(--color-text);
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.35s cubic-bezier(.4, 0, .2, 1);
+    transform-origin: center;
+    /* Importante: Sin márgenes, usamos gap en el padre */
+    margin: 0;
   }
 
   .hamburger.active .bar {
     background: var(--color-primary);
   }
 
+  /* Animación X */
+  /* Cálculo: Barra(3px) + Gap(6px) = 9px de desplazamiento */
   .hamburger.active .bar:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
   }
@@ -148,6 +156,7 @@ import ButtonColor from "./ButtonColor.astro";
     transform: translateY(-9px) rotate(-45deg);
   }
 
+  /* --- NAVBAR STYLES --- */
   .navbar {
     position: fixed;
     top: 0;
@@ -226,7 +235,7 @@ import ButtonColor from "./ButtonColor.astro";
     .navbar {
       width: 100%;
     }
-
+    
     .nav-content {
       width: 100%;
       margin: 0;
@@ -236,7 +245,11 @@ import ButtonColor from "./ButtonColor.astro";
   /* Mobile */
   @media (width < 600px) {
     .hamburger {
-      display: block;
+      /* Aquí activamos el Flexbox mágico */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px; /* Espacio exacto entre barras */
     }
 
     .menu-panel {
