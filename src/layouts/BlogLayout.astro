@@ -1,7 +1,6 @@
 ---
 import Layout from "./Layout.astro";
 
-
 const { frontmatter } = Astro.props;
 const timeValue = frontmatter.regardingTime ?? frontmatter.readingTime ?? frontmatter.reading ?? frontmatter['reading-time'];
 const regardingTimeText = timeValue

@@ -1,0 +1,87 @@
+---
+const pathname = Astro.url.pathname;
+
+// Divide la ruta y elimina strings vacíos
+const segments = pathname.split("/").filter(Boolean);
+
+// Construye los breadcrumbs acumulando la ruta
+const breadcrumbs = segments.map((segment, index) => {
+  const href = "/" + segments.slice(0, index + 1).join("/");
+
+  // Mejora visual del texto
+  const label = segment
+    .replace(/-/g, " ")
+    .replace(/\b\w/g, (l) => l.toUpperCase());
+
+  return { label, href };
+});
+---
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol class="breadcrumb-list">
+    <li class="breadcrumb-item">
+      <a href="/">Inicio</a>
+    </li>
+
+    {
+      breadcrumbs.map((crumb, index) => (
+        <>
+          <li class="breadcrumb-separator" aria-hidden="true">
+            /
+          </li>
+
+          <li
+            class={`breadcrumb-item ${
+              index === breadcrumbs.length - 1 ? "breadcrumb-current" : ""
+            }`}
+            aria-current={index === breadcrumbs.length - 1 ? "page" : undefined}
+          >
+            {index === breadcrumbs.length - 1 ? (
+              crumb.label
+            ) : (
+              <a href={crumb.href}>{crumb.label}</a>
+            )}
+          </li>
+        </>
+      ))
+    }
+  </ol>
+</nav>
+
+<style>
+  .breadcrumb {
+    margin: 1.5rem 0 2.5rem;
+    font-size: 0.95rem;
+  }
+
+  .breadcrumb-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .breadcrumb-item a {
+    color: var(--color-text);
+    text-decoration: none;
+    opacity: 0.7;
+  }
+
+  .breadcrumb-item a:hover {
+    opacity: 1;
+    color: var(--color-primary);
+  }
+
+  .breadcrumb-current {
+    font-weight: 500;
+    opacity: 0.9;
+  }
+
+  .breadcrumb-separator {
+    opacity: 0.4;
+    user-select: none;
+  }
+</style>

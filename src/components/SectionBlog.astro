@@ -1,6 +1,6 @@
 ---
-// Si usas Astro v2+, considera usar 'getCollection' en lugar de glob imports para mejor tipado.
-// Por ahora mantenemos tu lógica pero limpia.
+import Breadcrumbs from "./Breadcrumbs.astro";
+
 const postFiles = import.meta.glob("../pages/post/*.md", { eager: true });
 const posts = Object.values(postFiles)
   .filter((post) => post?.frontmatter)
@@ -9,7 +9,7 @@ const posts = Object.values(postFiles)
 
 <section class="blog-section" aria-labelledby="blog-heading">
   <h2 id="blog-heading" class="blog-title">Blog</h2>
-
+  <Breadcrumbs />
   <div class="container-card">
     {
       posts.map((post) => {

@@ -123,5 +123,3 @@ Estructura de nuestro documento HTML:
   <p>Right Content</p>
 </div>
 ```
-
-npx ttf2woff ./src/fonts/InstrumentSerif-Regular.ttf ./src/fonts/InstrumentSerif-Regular.woff

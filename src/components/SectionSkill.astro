@@ -1,34 +1,37 @@
 ---
-
-
 const skills = [
   {
     title: "Frontend Architecture",
-    description: "Crafting pixel-perfect, responsive interfaces with clean, semantic code. I specialize in HTML5, modern CSS, and JavaScript to ensure high performance and accessibility across all devices."
+    description:
+      "Crafting pixel-perfect, responsive interfaces with clean, semantic code. I specialize in HTML5, modern CSS, and JavaScript to ensure high performance and accessibility across all devices.",
   },
   {
     title: "Python & Automation",
-    description: "Leveraging Python for powerful backend solutions and data processing. My focus includes web scraping, workflow automation, and data analysis using libraries like Pandas to turn raw data into insights."
+    description:
+      "Leveraging Python for powerful backend solutions and data processing. My focus includes web scraping, workflow automation, and data analysis using libraries like Pandas to turn raw data into insights.",
   },
   {
-    title: "React Ecosystem",
-    description: "Building dynamic Single Page Applications with React.js. I focus on component-based architecture to create scalable, interactive, and fast user interfaces."
-  }
-]
-
+    title: "Astro Development",
+    description:
+      "Creating secure and fast websites with Astro. I focus on pre-rendering content to ensure instant page loads and seamless performance, avoiding the complexity of heavy client-side frameworks.",
+  },
+];
 ---
+
 <section class="skills" aria-label="Technical Skills">
-  {skills.map((skill, index) => (
-    <>
-      <div class="skill-card">
-        <h2>{skill.title}</h2>
-        <p>{skill.description}</p>
-      </div>
-      {index < skills.length - 1 && (
-        <div class="skill-divider" aria-hidden="true"></div>
-      )}
-    </>
-  ))}
+  {
+    skills.map((skill, index) => (
+      <>
+        <div class="skill-card">
+          <h2>{skill.title}</h2>
+          <p>{skill.description}</p>
+        </div>
+        {index < skills.length - 1 && (
+          <div class="skill-divider" aria-hidden="true" />
+        )}
+      </>
+    ))
+  }
 </section>
 
 <style>
@@ -86,7 +89,7 @@ const skills = [
     .skill-card {
       max-width: 100%;
       margin: 1rem 0;
-      
+
       & p {
         font-size: 1.4rem;
       }
