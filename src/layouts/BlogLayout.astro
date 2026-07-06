@@ -131,6 +131,76 @@ const regardingTimeText = timeValue
     & li {
       margin-left: 20px;
     }
+
+    & code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.85em;
+      background-color: var(--color-bgsecondary);
+      padding: 0.15em 0.45em;
+      border-radius: 0.3rem;
+      color: var(--color-primary);
+    }
+
+    & pre {
+      background-color: color-mix(in srgb, var(--color-bgsecondary) 80%, #000000);
+      border: 1px solid color-mix(in srgb, var(--color-bgsecondary) 90%, transparent);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 1.5rem 0;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    & pre code {
+      background: none;
+      padding: 0;
+      border-radius: 0;
+      color: inherit;
+      font-size: inherit;
+    }
+
+    & blockquote {
+      border-left: 4px solid var(--color-primary);
+      padding: 0.5rem 1.5rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      opacity: 0.85;
+    }
+
+    & table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 1rem;
+    }
+
+    & th,
+    & td {
+      border: 1px solid var(--color-bgsecondary);
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+
+    & th {
+      background-color: var(--color-bgsecondary);
+      font-family: var(--font-title);
+      font-weight: 300;
+      font-size: 1.1rem;
+    }
+
+    & tr:nth-child(even) {
+      background-color: color-mix(in srgb, var(--color-bgsecondary) 40%, transparent);
+    }
+
+    & hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+      margin: 2.5rem auto;
+      max-width: 60%;
+    }
   }
 
   @media (width < 1200px) {
