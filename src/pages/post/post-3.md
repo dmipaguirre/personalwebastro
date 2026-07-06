@@ -196,23 +196,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ---
 
-    <header class="navbar">
-        <a href="#" class="logo">Mi Sitio</a>
-        
-        <nav class="nav-menu" id="navMenu">
-            <a href="#">Inicio</a>
-            <a href="#">Acerca de</a>
-            <a href="#">Servicios</a>
-            <a href="#">Contacto</a>
-        </nav>
+```html
+<header class="navbar">
+    <a href="#" class="logo">Mi Sitio</a>
+    
+    <nav class="nav-menu" id="navMenu">
+        <a href="#">Inicio</a>
+        <a href="#">Acerca de</a>
+        <a href="#">Servicios</a>
+        <a href="#">Contacto</a>
+    </nav>
 
-        <div class="hamburger" id="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-    </header>
+    <div class="hamburger" id="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+</header>
+```
 
+```css
 /* Estilos Globales y de la Barra de Navegación */
 body {
     margin: 0;
@@ -265,30 +268,27 @@ body {
 /* ------------------------------------- */
 /* ESTILOS PARA LA VISTA MÓVIL (Menú Responsive) */
 /* ------------------------------------- */
-   .hamburger.active .bar:nth-child(2) {
-        opacity: 0; /* Desaparece la barra central */
-    }
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
 
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg); /* Gira y se mueve la barra superior */
-    }
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
 
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg); /* Gira y se mueve la barra inferior */
-    }
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
 
 @media screen and (max-width: 768px) {
-    
-    /* Mostrar el icono de hamburguesa */
     .hamburger {
         display: block;
     }
 
-    /* Estilos de la Lista de Navegación en Móvil */
     .nav-menu {
-        position: fixed; /* Fijo en la pantalla */
-        top: 60px; /* Debajo de la navbar */
-        left: 100%; /* Inicialmente fuera de la pantalla (oculto) */
+        position: fixed;
+        top: 60px;
+        left: 100%;
         width: 100%;
         height: 100%;
         background-color: #222;
@@ -298,7 +298,6 @@ body {
         padding: 20px 0;
     }
 
-    /* Clase que muestra el menú (agregada por JS) */
     .nav-menu.active {
         left: 0;
     }
@@ -312,29 +311,24 @@ body {
     .nav-menu a:last-child {
         border-bottom: none;
     }
-
-    /* Animación del Icono de Hamburguesa (Clase agregada por JS) */
- 
 }
-// Seleccionar el icono de la hamburguesa y el menú de navegación
+```
+
+```javascript
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
 
-// Añadir un "escuchador de eventos" para el clic en la hamburguesa
 hamburger.addEventListener('click', () => {
-    // Alternar la clase 'active' tanto en el icono de la hamburguesa
-    // como en el menú de navegación.
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
 });
 
-// Opcional: Cerrar el menú al hacer clic en un enlace (para mejor UX en móvil)
 const navLinks = navMenu.querySelectorAll('a');
 
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
-        // Asegurarse de que el menú se cierre y el icono vuelva a ser una hamburguesa
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
     });
 });
+```

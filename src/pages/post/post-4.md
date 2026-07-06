@@ -7,7 +7,7 @@ author: 'Miguel Páez'
 image:
   url: "https://docs.astro.build/assets/rose.webp"
   alt: "The Astro logo on a dark background with a pink glow."
-slug: "hamburger-menu"
+slug: "scroll-infinito"
 icon: "pending"
 readingTime: '2'
 ---
@@ -24,24 +24,24 @@ readingTime: '2'
     </div>
   </div>
 </div>
+```
 
-
+```css
 .big-name {
    width: 100%;
-   overflow: hidden; /* IMPORTANTE: oculta lo que sale */
+   overflow: hidden;
 }
 
 .name-h1 {
    display: flex;
- /* Ajusta al contenido */
 }
 
 .name-wrap {
-   animation: scroll-infinite 22s linear infinite; /* Aquí la magia */
+   animation: scroll-infinite 22s linear infinite;
 }
 
 p {
-pointer-events: none;
+   pointer-events: none;
    display: flex;
    align-items: center;
    color: var(--color-white);
@@ -57,7 +57,6 @@ pointer-events: none;
    padding: 0 3vw;
 }
 
-/* La animación */
 @keyframes scroll-infinite {
    0% {
       transform: translateX(0);
@@ -66,3 +65,4 @@ pointer-events: none;
       transform: translateX(-100%);
    }
 }
+```

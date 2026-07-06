@@ -7,7 +7,7 @@ author: 'Miguel Páez'
 image:
   url: "https://docs.astro.build/assets/rose.webp"
   alt: "The Astro logo on a dark background with a pink glow."
-slug: ""
+slug: "css-inset-property"
 icon: "pending"
 readingTime: '5'
 ---

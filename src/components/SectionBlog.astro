@@ -4,7 +4,7 @@ import Breadcrumbs from "./Breadcrumbs.astro";
 const postFiles = import.meta.glob("../pages/post/*.md", { eager: true });
 const posts = Object.values(postFiles)
   .filter((post) => post?.frontmatter)
-  .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
+  .sort((a, b) => new Date(b.frontmatter.publishDate) - new Date(a.frontmatter.publishDate));
 ---
 
 <section class="blog-section" aria-labelledby="blog-heading">
