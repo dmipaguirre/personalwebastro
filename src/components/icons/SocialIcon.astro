@@ -116,11 +116,13 @@ const socialMedia = [
       color: var(--color-primary);
     }
 
-    .link-click.link-hover:hover .link-text svg {
-      transform: translateY(-115%) rotate(0.001deg);
-    }
+    @media (hover: hover) {
+      .link-click.link-hover:hover .link-text svg {
+        transform: translateY(-115%) rotate(0.001deg);
+      }
 
-    .link-click.link-hover:hover .link-text svg.duplicate {
-      transform: translateY(5%) rotate(0.001deg);
+      .link-click.link-hover:hover .link-text svg.duplicate {
+        transform: translateY(5%) rotate(0.001deg);
+      }
     }
   </style>
