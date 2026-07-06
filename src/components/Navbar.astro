@@ -21,9 +21,36 @@ import ButtonColor from "./ButtonColor.astro";
     </button>
     <div class="menu-panel" id="menu-panel">
       <ul class="menu-links">
-        <li><a href="/about/" class="menu-link">About</a></li>
-        <li><a href="/blog/" class="menu-link">Blog</a></li>
-        <li><a href="/projects/" class="menu-link">Projects</a></li>
+        <li class="link">
+          <a href="/about/" class="menu-link link-click link-hover">
+            <div class="link-content">
+              <div class="link-text">
+                <span>About</span>
+                <span class="duplicate">About</span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="link">
+          <a href="/blog/" class="menu-link link-click link-hover">
+            <div class="link-content">
+              <div class="link-text">
+                <span>Blog</span>
+                <span class="duplicate">Blog</span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="link">
+          <a href="/projects/" class="menu-link link-click link-hover">
+            <div class="link-content">
+              <div class="link-text">
+                <span>Projects</span>
+                <span class="duplicate">Projects</span>
+              </div>
+            </div>
+          </a>
+        </li>
       </ul>
       <ButtonColor />
     </div>
@@ -54,11 +81,16 @@ import ButtonColor from "./ButtonColor.astro";
   // Cerrar al hacer click fuera
   document.addEventListener("click", (e) => {
     // @ts-ignore
-    if (navMenu && hamburger && !navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-        navMenu.classList.remove("active");
-        hamburger.classList.remove("active");
-        document.body.classList.remove("no-scroll");
-        hamburger.setAttribute("aria-expanded", "false");
+    if (
+      navMenu &&
+      hamburger &&
+      !navMenu.contains(e.target) &&
+      !hamburger.contains(e.target)
+    ) {
+      navMenu.classList.remove("active");
+      hamburger.classList.remove("active");
+      document.body.classList.remove("no-scroll");
+      hamburger.setAttribute("aria-expanded", "false");
     }
   });
 
@@ -115,14 +147,14 @@ import ButtonColor from "./ButtonColor.astro";
   /* --- HAMBURGER MENU REFACTORIZADO --- */
   .hamburger {
     display: none; /* Oculto en escritorio */
-    
+
     /* Resets críticos para iOS */
     -webkit-appearance: none;
     appearance: none;
     background: transparent;
     border: none;
     -webkit-tap-highlight-color: transparent;
-    
+
     cursor: pointer;
     padding: 0;
     width: 30px;
@@ -137,7 +169,7 @@ import ButtonColor from "./ButtonColor.astro";
     width: 100%;
     border-radius: 3px;
     background: var(--color-text);
-    transition: all 0.35s cubic-bezier(.4, 0, .2, 1);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: center;
     /* Importante: Sin márgenes, usamos gap en el padre */
     margin: 0;
@@ -217,30 +249,64 @@ import ButtonColor from "./ButtonColor.astro";
     align-items: center;
     list-style: none;
     margin: 0;
-    gap: 2rem;
   }
 
-  .menu-links a {
+  .menu-link {
     font-family: var(--font-title);
     font-size: 1.2rem;
     text-decoration: none;
     color: var(--color-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 2.4em;
   }
 
-  .menu-link {
+  .link-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1em;
+    height: 100%;
+  }
+
+  .link-text {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0.2em 0;
+  }
+
+  .link-text span {
+    white-space: nowrap;
     text-transform: uppercase;
-    transition: color 0.3s ease;
+    transform: translateY(5%) rotate(0.001deg);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
-  .menu-links .menu-link:hover {
+  .link-text span.duplicate {
+    position: absolute;
+    transform: translateY(125%) rotate(0.001deg);
     color: var(--color-primary);
+  }
+
+  @media (hover: hover) {
+    .link > .link-hover:hover .link-text span {
+      transform: translateY(-115%) rotate(0.001deg);
+    }
+    .link > .link-hover:hover .link-text span.duplicate {
+      transform: translateY(5%) rotate(0.001deg);
+    }
   }
 
   @media (width < 1199px) {
     .navbar {
       width: 100%;
     }
-    
+
     .nav-content {
       width: 100%;
 
