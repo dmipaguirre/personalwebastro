@@ -55,6 +55,11 @@ const posts = Object.values(postFiles)
 </section>
 
 <style>
+  :root {
+    --shadow-card: 0 6px 18px rgba(2,6,23,0.08), 0 2px 6px rgba(2,6,23,0.04);
+    --shadow-card-hover: 0 18px 36px rgba(2,6,23,0.12), 0 8px 16px rgba(2,6,23,0.06);
+  }
+
   /* --- Estructura General --- */
   .blog-section {
     padding: 1.2rem 1.3rem;
@@ -82,7 +87,7 @@ const posts = Object.values(postFiles)
 
   /* --- Tarjeta --- */
   .blog-card {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-card);
     border: 1px solid var(--color-bgsecondary);
     border-radius: 1.5rem;
     overflow: hidden;
@@ -154,7 +159,7 @@ const posts = Object.values(postFiles)
 
   .blog-card:hover {
     border-color: var(--color-primary);
-    box-shadow: 0 0 2px var(--color-primary);
+    box-shadow: var(--shadow-card-hover);
   }
 
   .card-text {
@@ -209,6 +214,16 @@ const posts = Object.values(postFiles)
 
     .text-container {
       padding: 1.5rem;
+    }
+  }
+
+  /* Preferencias de movimiento reducido */
+  @media (prefers-reduced-motion: reduce) {
+    .blog-card {
+      transition: none;
+    }
+    .blog-card:hover {
+      transform: none;
     }
   }
 </style>
