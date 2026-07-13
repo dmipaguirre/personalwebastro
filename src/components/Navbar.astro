@@ -26,7 +26,7 @@ import ButtonColor from "./ButtonColor.astro";
             <div class="link-content">
               <div class="link-text">
                 <span>About</span>
-                <span class="duplicate">About</span>
+                <span class="duplicate" aria-hidden="true">About</span>
               </div>
             </div>
           </a>
@@ -36,7 +36,7 @@ import ButtonColor from "./ButtonColor.astro";
             <div class="link-content">
               <div class="link-text">
                 <span>Blog</span>
-                <span class="duplicate">Blog</span>
+                <span class="duplicate" aria-hidden="true">Blog</span>
               </div>
             </div>
           </a>
@@ -46,7 +46,7 @@ import ButtonColor from "./ButtonColor.astro";
             <div class="link-content">
               <div class="link-text">
                 <span>Projects</span>
-                <span class="duplicate">Projects</span>
+                <span class="duplicate" aria-hidden="true">Projects</span>
               </div>
             </div>
           </a>
@@ -58,23 +58,6 @@ import ButtonColor from "./ButtonColor.astro";
 </nav>
 
 <script>
-  // Scroll Logic (comentada como en tu original)
-  /*
-  let ticking = false;
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        const navbar = document.getElementById("navbar");
-        if (navbar) {
-          navbar.classList.toggle("scrolled", window.scrollY > 2);
-        }
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }); 
-   */
-
   const hamburger = document.getElementById("hamburger");
   const navMenu = document.getElementById("menu-panel");
 
@@ -102,7 +85,7 @@ import ButtonColor from "./ButtonColor.astro";
       navMenu.classList.toggle("active");
       hamburger.setAttribute("aria-expanded", (!isActive).toString());
 
-      document.body.style.overflow = isActive ? "" : "hidden";
+      document.body.classList.toggle("no-scroll", !isActive);
     });
 
     document.addEventListener("keydown", (e) => {
@@ -110,7 +93,7 @@ import ButtonColor from "./ButtonColor.astro";
         hamburger.classList.remove("active");
         navMenu.classList.remove("active");
         hamburger.setAttribute("aria-expanded", "false");
-        document.body.style.overflow = "";
+        document.body.classList.remove("no-scroll");
       }
     });
 
@@ -121,7 +104,7 @@ import ButtonColor from "./ButtonColor.astro";
         hamburger.classList.remove("active");
         navMenu.classList.remove("active");
         hamburger.setAttribute("aria-expanded", "false");
-        document.body.style.overflow = "";
+        document.body.classList.remove("no-scroll");
       });
     });
   }
@@ -144,11 +127,10 @@ import ButtonColor from "./ButtonColor.astro";
     display: inline-block;
   }
 
-  /* --- HAMBURGER MENU REFACTORIZADO --- */
+  /* --- HAMBURGER MENU --- */
   .hamburger {
-    display: none; /* Oculto en escritorio */
+    display: none;
 
-    /* Resets críticos para iOS */
     -webkit-appearance: none;
     appearance: none;
     background: transparent;
@@ -171,7 +153,6 @@ import ButtonColor from "./ButtonColor.astro";
     background: var(--color-text);
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: center;
-    /* Importante: Sin márgenes, usamos gap en el padre */
     margin: 0;
   }
 
@@ -179,8 +160,6 @@ import ButtonColor from "./ButtonColor.astro";
     background: var(--color-primary);
   }
 
-  /* Animación X */
-  /* Cálculo: Barra(3px) + Gap(6px) = 9px de desplazamiento */
   .hamburger.active .bar:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
   }
@@ -216,12 +195,6 @@ import ButtonColor from "./ButtonColor.astro";
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
       backdrop-filter: blur(10px);
     }
-  }
-
-  .navbar .scrolled {
-    background-color: var(--color-bg);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(10px);
   }
 
   .nav-content {
@@ -318,11 +291,10 @@ import ButtonColor from "./ButtonColor.astro";
   /* Mobile */
   @media (width < 600px) {
     .hamburger {
-      /* Aquí activamos el Flexbox mágico */
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 6px; /* Espacio exacto entre barras */
+      gap: 6px;
     }
 
     .menu-panel {
