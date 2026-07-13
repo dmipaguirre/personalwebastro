@@ -14,36 +14,20 @@ const posts = Object.values(postFiles)
     {
       posts.map((post) => {
         const { frontmatter, url } = post;
-        const { title, description, author, readingTime, image } = frontmatter;
+        const { title, description, readingTime } = frontmatter;
 
         return (
           <article class="blog-card">
             <a href={url} aria-label={`Leer artículo: ${title}`}>
               <div class="card-content">
-                <div class="image-wrapper">
-                  <img
-                    class="card-image"
-                    src={image?.url || "/placeholder.jpg"}
-                    alt={image?.alt || title}
-                    loading="lazy"
-                    width="240"
-                    height="180"
-                  />
-                </div>
+                  <p class="reading-time">
+                    <time datetime={`PT${readingTime}M`}>
+                      {readingTime} min read
+                    </time>
+                  </p>
                 <div class="text-container">
-                  <div class="card-meta">
-                    <p class="card-meta-text">
-                      by {author}
-                      <span class="meta-dot" aria-hidden="true" />
-                      <time datetime={`PT${readingTime}M`}>
-                        {readingTime} min read
-                      </time>
-                    </p>
-                  </div>
-                  <div class="card-container">
-                    <h3 class="card-title">{title}</h3>
-                    <p class="card-text">{description}</p>
-                  </div>
+                  <h3 class="card-title">{title}</h3>
+                  <p class="card-text">{description}</p>
                 </div>
               </div>
             </a>
@@ -110,42 +94,39 @@ const posts = Object.values(postFiles)
   .card-content {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     height: 100%;
+    min-height: 220px;
+    padding: 2rem;
+    gap: 1rem;
   }
 
-  /* --- Imagen --- */
-  .image-wrapper {
-    height: 200px; /* La imagen ocupa el 40% del ancho */
-    position: relative;
-    overflow: hidden;
-  }
-
-  .card-image {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-  }
-
-  /* Efecto Zoom en imagen al hover */
-  .blog-card:hover .card-image {
-    transform: scale(1.05);
+  .reading-time {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    font-weight: 600;
+    flex-shrink: 0;
   }
 
   /* --- Texto --- */
   .text-container {
+    flex: 1;
     display: flex;
-    padding: 1.5rem;
-    gap: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    width: 100%;
   }
 
   .card-title {
-    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    font-size: clamp(1.4rem, 2vw, 1.8rem);
     font-family: var(--font-title);
     font-weight: 600;
     line-height: 1.3;
     transition: color 0.3s ease;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
   }
 
   .blog-card:hover .card-title {
@@ -174,45 +155,15 @@ const posts = Object.values(postFiles)
     overflow: hidden;
   }
 
-  .card-meta {
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    margin-right: 0.6rem;
-    letter-spacing: 1px;
-    font-size: 1rem;
-    padding-top: 0.6rem;
-    white-space: nowrap;
-  }
-
-  .meta-dot {
-    display: inline-block;
-    width: 4px;
-    height: 4px;
-    margin: 0.5rem 0;
-    background-color: currentColor;
-    border-radius: 50%;
-    opacity: 0.4;
-  }
-
   /* --- RESPONSIVE / MEDIA QUERIES --- */
 
-  /* Punto de quiebre: Cuando la tarjeta se vuelve muy estrecha */
   @media (max-width: 800px) {
     .blog-section {
       margin: 4rem auto;
     }
+
     .card-content {
-      flex-direction: column; /* Cambia a vertical: Imagen arriba, texto abajo */
-      height: auto; /* La altura ya no es fija */
-    }
-
-    .image-wrapper {
-      flex: none; /* Resetea el flex */
-      width: 100%;
-      height: 200px; /* Altura fija para la imagen en móvil */
-    }
-
-    .text-container {
+      min-height: 160px;
       padding: 1.5rem;
     }
   }
