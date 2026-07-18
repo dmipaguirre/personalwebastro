@@ -6,7 +6,7 @@ description: 'Responsive Web Design with Flexbox and Grid'
 author: 'Miguel Páez'
 image:
   url: "/images/Responsive.png"
-  alt: "The Astro logo on a dark background with a pink glow."
+  alt: "Diagrama visual sobre diseño web responsive."
 slug: "responsive-web-design"
 icon: "layout"
 readingTime: '4'

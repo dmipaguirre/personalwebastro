@@ -10,10 +10,11 @@ import ButtonColor from "./ButtonColor.astro";
 
     <button
       class="hamburger"
+      type="button"
       id="hamburger"
       aria-expanded="false"
       aria-controls="menu-panel"
-      aria-label="Menú de navegación"
+      aria-label="navigation menu"
     >
       <span class="bar"></span>
       <span class="bar"></span>
@@ -25,8 +26,8 @@ import ButtonColor from "./ButtonColor.astro";
           <a href="/about/" class="menu-link link-click link-hover">
             <div class="link-content">
               <div class="link-text">
-                <span>About</span>
-                <span class="duplicate" aria-hidden="true">About</span>
+              <span>About me</span>
+              <span class="duplicate" aria-hidden="true">About me</span>
               </div>
             </div>
           </a>
@@ -45,8 +46,8 @@ import ButtonColor from "./ButtonColor.astro";
           <a href="/projects/" class="menu-link link-click link-hover">
             <div class="link-content">
               <div class="link-text">
-                <span>Projects</span>
-                <span class="duplicate" aria-hidden="true">Projects</span>
+              <span>Projects</span>
+              <span class="duplicate" aria-hidden="true">Projects</span>
               </div>
             </div>
           </a>
@@ -63,12 +64,13 @@ import ButtonColor from "./ButtonColor.astro";
 
   // Cerrar al hacer click fuera
   document.addEventListener("click", (e) => {
-    // @ts-ignore
+    const target = e.target;
     if (
       navMenu &&
       hamburger &&
-      !navMenu.contains(e.target) &&
-      !hamburger.contains(e.target)
+      target instanceof Node &&
+      !navMenu.contains(target) &&
+      !hamburger.contains(target)
     ) {
       navMenu.classList.remove("active");
       hamburger.classList.remove("active");
@@ -299,7 +301,7 @@ import ButtonColor from "./ButtonColor.astro";
 
     .menu-panel {
       position: absolute;
-      top: 65px;
+      top: 63px;
       left: 0;
       transform: translateX(100%);
       width: 100vw;

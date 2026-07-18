@@ -6,7 +6,7 @@ description: 'Scroll infinito.'
 author: 'Miguel Páez'
 image:
   url: "https://docs.astro.build/assets/rose.webp"
-  alt: "The Astro logo on a dark background with a pink glow."
+  alt: "Ilustración abstracta para un artículo sobre scroll infinito."
 slug: "scroll-infinito"
 icon: "pending"
 readingTime: '2'

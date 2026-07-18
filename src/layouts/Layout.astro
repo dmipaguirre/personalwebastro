@@ -1,43 +1,68 @@
 ---
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
-const { pageTitle, description = "Portfolio personal de Miguel Páez - Desarrollador Web Freelance. Proyectos, blog y experiencia en desarrollo web." } = Astro.props;
+interface Props {
+  pageTitle: string;
+  description?: string;
+  image?: string;
+  imageAlt?: string;
+  type?: "website" | "article";
+  publishedTime?: string;
+}
+
+const {
+  pageTitle,
+  description = "Portfolio personal de Miguel Páez, desarrollador web freelance. Proyectos, blog y experiencia en desarrollo web.",
+  image = "/images/Users.avif",
+  imageAlt = "Miguel Páez, desarrollador web",
+  type = "website",
+  publishedTime,
+} = Astro.props;
+const siteUrl = Astro.site ?? Astro.url;
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const imageUrl = image.startsWith("http")
+  ? image
+  : new URL(image, siteUrl).href;
 import "@/styles/global.css";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+		<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="canonical" href={canonicalUrl} />
 		<link rel="preload" href="/fonts/BebasNeue-Regular.woff2" as="font" type="font/woff2" crossorigin>
 		<link rel="preload" href="/fonts/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin>
 		<link rel="preload" href="/fonts/InstrumentSerif-Italic.woff2" as="font" type="font/woff2" crossorigin>
 		<link rel="preload" href="/fonts/Allison-Regular.woff2" as="font" type="font/woff2" crossorigin>
 
 		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
+		<title>{pageTitle} | Miguel Páez</title>
 		
 		<!-- SEO Meta Tags -->
 		<meta name="description" content={description} />
 		<meta name="keywords" content="desarrollo web, freelance, portfolio, Miguel Páez, frontend, programación, blog" />
 		<meta name="author" content="Miguel Páez" />
-		<meta name="language" content="es" />
+		<meta name="robots" content="index, follow" />
 		
 		<!-- Open Graph Meta Tags -->
-		<meta property="og:title" content={pageTitle} />
+		<meta property="og:title" content={`${pageTitle} | Miguel Páez`} />
 		<meta property="og:description" content={description} />
-		<meta property="og:type" content="website" />
+		<meta property="og:type" content={type} />
 		<meta property="og:locale" content="es_ES" />
-		<meta property="og:image" content="/images/Users.avif" />
-		<meta property="og:image:alt" content="Miguel Páez - Desarrollador Web" />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:image" content={imageUrl} />
+		<meta property="og:image:alt" content={imageAlt} />
+		{publishedTime && <meta property="article:published_time" content={publishedTime} />}
 		
 		<!-- Twitter Card Meta Tags -->
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:title" content={`${pageTitle} | Miguel Páez`} />
 		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content="/images/Users.avif" />
+		<meta name="twitter:image" content={imageUrl} />
+		<meta name="twitter:image:alt" content={imageAlt} />
 	</head>
 	<body>
 		<header>
@@ -49,6 +74,16 @@ import "@/styles/global.css";
 		<footer>
 			<Footer />
 		</footer>
+		<script is:inline>
+			try {
+				const savedTheme = localStorage.getItem("theme");
+				const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+				if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+					document.documentElement.classList.add("darkmode");
+				}
+			} catch {
+				// El tema por defecto se mantiene si el navegador bloquea el almacenamiento.
+			}
+		</script>
 	</body>
 </html>
-

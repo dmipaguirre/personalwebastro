@@ -2,13 +2,27 @@
 import Layout from "./Layout.astro";
 
 const { frontmatter } = Astro.props;
-const timeValue = frontmatter.regardingTime ?? frontmatter.readingTime ?? frontmatter.reading ?? frontmatter['reading-time'];
+const timeValue = frontmatter.readingTime;
 const regardingTimeText = timeValue
   ? `${timeValue} min to read`
-  : "4 min to read";
+  : "4 min de lectura";
+const publishedDate = new Date(frontmatter.publishDate);
+const publishedTime = publishedDate.toISOString();
+const publishedDateText = new Intl.DateTimeFormat("es-ES", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+}).format(publishedDate);
 
 ---
-<Layout pageTitle={frontmatter.title}>
+<Layout
+  pageTitle={frontmatter.title}
+  description={frontmatter.description}
+  image={frontmatter.image?.url}
+  imageAlt={frontmatter.image?.alt}
+  type="article"
+  publishedTime={publishedTime}
+>
   <article class="blog-content">
     <section class="blog-header">
       <h1>{frontmatter.title}</h1>
@@ -51,8 +65,8 @@ const regardingTimeText = timeValue
               x2="21"
               y2="10"></line></svg
           >
-          <time datetime={frontmatter.publishDate}>
-            {frontmatter.publishDate}
+          <time datetime={publishedTime}>
+            {publishedDateText}
           </time>
         </div>
       </div>

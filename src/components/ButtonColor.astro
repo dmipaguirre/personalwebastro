@@ -1,5 +1,5 @@
 <div class="theme-wrapper">
-  <button class="theme-btn">
+  <button class="theme-btn" type="button" aria-label="Cambiar tema de color">
     <span class="moon-icon">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -47,20 +47,25 @@
 
 <script>
   const html = document.documentElement;
-  const btn = document.querySelector(".theme-btn");
+  const btn = document.querySelector<HTMLButtonElement>(".theme-btn");
 
-  // Leer tema guardado
-  if (localStorage.getItem("theme") === "dark") {
-    html.classList.add("darkmode");
+  if (btn) {
+    btn.setAttribute("aria-pressed", html.classList.contains("darkmode").toString());
+
+    btn.addEventListener("click", () => {
+      const isDark = html.classList.toggle("darkmode");
+
+      try {
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+      } catch {
+        // El tema sigue funcionando aunque el almacenamiento esté bloqueado.
+      }
+
+      btn.setAttribute("aria-pressed", isDark.toString());
+      btn.classList.add("animating");
+      setTimeout(() => btn.classList.remove("animating"), 500);
+    });
   }
-
-  btn.addEventListener("click", () => {
-    // toggle de tema
-    const isDark = html.classList.toggle("darkmode");
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-    btn.classList.add("animating");
-    setTimeout(() => btn.classList.remove("animating"), 500);
-  });
 </script>
 
 <style>

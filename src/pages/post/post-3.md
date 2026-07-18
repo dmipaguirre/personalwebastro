@@ -6,7 +6,7 @@ description: 'Two way by construction navegacion bar.'
 author: 'Miguel Páez'
 image:
   url: "https://docs.astro.build/assets/rose.webp"
-  alt: "The Astro logo on a dark background with a pink glow."
+  alt: "Ilustración de una barra de navegación responsive."
 slug: "hamburger-menu"
 icon: "pending"
 readingTime: '5'

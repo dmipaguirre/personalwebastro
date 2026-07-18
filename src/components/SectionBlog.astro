@@ -1,10 +1,29 @@
 ---
 import Breadcrumbs from "./Breadcrumbs.astro";
 
-const postFiles = import.meta.glob("../pages/post/*.md", { eager: true });
+interface PostFrontmatter {
+  title: string;
+  description: string;
+  author: string;
+  publishDate: string;
+  readingTime: string;
+  image?: {
+    url: string;
+    alt: string;
+  };
+}
+
+const postFiles = import.meta.glob<{ frontmatter: PostFrontmatter; url: string }>(
+  "../pages/post/*.md",
+  { eager: true },
+);
 const posts = Object.values(postFiles)
   .filter((post) => post?.frontmatter)
-  .sort((a, b) => new Date(b.frontmatter.publishDate) - new Date(a.frontmatter.publishDate));
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.publishDate).getTime() -
+      new Date(a.frontmatter.publishDate).getTime(),
+  );
 ---
 
 <section class="blog-section" aria-labelledby="blog-heading">
@@ -14,29 +33,19 @@ const posts = Object.values(postFiles)
     {
       posts.map((post) => {
         const { frontmatter, url } = post;
-        const { title, description, author, readingTime, image } = frontmatter;
+        const { title, description, author, readingTime } = frontmatter;
 
         return (
           <article class="blog-card">
             <a href={url} aria-label={`Leer artículo: ${title}`}>
               <div class="card-content">
-                <div class="image-wrapper">
-                  <img
-                    class="card-image"
-                    src={image?.url || "/placeholder.jpg"}
-                    alt={image?.alt || title}
-                    loading="lazy"
-                    width="240"
-                    height="180"
-                  />
-                </div>
                 <div class="text-container">
                   <div class="card-meta">
                     <p class="card-meta-text">
                       by {author}
                       <span class="meta-dot" aria-hidden="true" />
                       <time datetime={`PT${readingTime}M`}>
-                        {readingTime} min read
+                        {readingTime} min of reading
                       </time>
                     </p>
                   </div>
@@ -113,25 +122,6 @@ const posts = Object.values(postFiles)
     height: 100%;
   }
 
-  /* --- Imagen --- */
-  .image-wrapper {
-    height: 200px; /* La imagen ocupa el 40% del ancho */
-    position: relative;
-    overflow: hidden;
-  }
-
-  .card-image {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-  }
-
-  /* Efecto Zoom en imagen al hover */
-  .blog-card:hover .card-image {
-    transform: scale(1.05);
-  }
-
   /* --- Texto --- */
   .text-container {
     display: flex;
@@ -201,17 +191,6 @@ const posts = Object.values(postFiles)
     .blog-section {
       margin: 4rem auto;
     }
-    .card-content {
-      flex-direction: column; /* Cambia a vertical: Imagen arriba, texto abajo */
-      height: auto; /* La altura ya no es fija */
-    }
-
-    .image-wrapper {
-      flex: none; /* Resetea el flex */
-      width: 100%;
-      height: 200px; /* Altura fija para la imagen en móvil */
-    }
-
     .text-container {
       padding: 1.5rem;
     }

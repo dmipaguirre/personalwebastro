@@ -5,8 +5,8 @@ publishDate: 'June 15, 2026'
 description: 'A simple and clear guide to understanding the fundamentals of the Linux command line.'
 author: 'Miguel Páez'
 image:
-  url: "/images/Terminal.png"
-  alt: "Minimalist illustration representing the Linux terminal, with a dark background and subtle glowing accents that evoke command-line interaction and open-source technology."
+  url: "/images/terminal.svg"
+  alt: "Ilustración de una terminal de Linux con comandos básicos."
 slug: "basic-linux-commands"
 icon: "brand-ubuntu"
 readingTime: '5'
