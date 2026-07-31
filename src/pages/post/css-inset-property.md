@@ -1,13 +1,12 @@
 ---
 layout: ../../layouts/BlogLayout.astro
-title: 'Understanding the inset property in CSS'
-publishDate: 'December 17, 2025'
-description: 'Understanding the inset property in CSS.'
+title: 'Understanding the inset Property in CSS'
+publishDate: '2025-12-17'
+description: 'Understand how the CSS inset shorthand positions elements and how the inset() function creates rectangular masks.'
 author: 'Miguel Páez'
 image:
-  url: "https://docs.astro.build/assets/rose.webp"
-  alt: "Ilustración abstracta para un artículo sobre la propiedad inset de CSS."
-slug: "css-inset-property"
+  url: "/images/social-card.png"
+  alt: "Miguel Páez web development notes."
 icon: "pending"
 readingTime: '5'
 ---

@@ -65,6 +65,14 @@ body {
   background-color: var(--color-bg);
   font-family: var(--font-text);
 }
+body.no-scroll {
+  overflow: hidden;
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 4px;
+}
 @view-transition {
   navigation: auto;
 }

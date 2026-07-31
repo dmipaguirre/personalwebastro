@@ -1,0 +1,109 @@
+<section class="projects-placeholder" aria-labelledby="projects-title">
+  <p class="eyebrow">Work in progress</p>
+  <h1 id="projects-title">Projects, documented properly.</h1>
+  <p class="intro">
+    I am preparing a focused selection of case studies that explains the
+    problem, the decisions behind the build, and the result instead of showing
+    a wall of screenshots.
+  </p>
+
+  <ul class="focus-list" aria-label="Current areas of work">
+    <li>Accessible web interfaces</li>
+    <li>Fast content sites built with Astro</li>
+    <li>Python automation and data workflows</li>
+  </ul>
+
+  <div class="project-links">
+    <a href="https://github.com/dmipaguirre" target="_blank" rel="noopener noreferrer">
+      View current work on GitHub
+    </a>
+    <a href="/blog/">Read the development notes</a>
+  </div>
+</section>
+
+<style>
+  .projects-placeholder {
+    width: 100%;
+    max-width: 900px;
+    margin: 10rem auto 6rem;
+    padding: 1.2rem 1.3rem;
+    color: var(--color-text);
+  }
+
+  .eyebrow {
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+    font-family: var(--font-title);
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    max-width: 760px;
+    font-family: var(--font-title);
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    font-weight: 300;
+    line-height: 0.9;
+  }
+
+  .intro {
+    max-width: 680px;
+    margin: 2rem 0 3rem;
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+    line-height: 1.45;
+  }
+
+  .focus-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0;
+    padding: 0;
+    border-block: 1px solid var(--color-primary);
+    list-style: none;
+  }
+
+  .focus-list li {
+    padding: 1.5rem;
+    font-size: 1.2rem;
+    line-height: 1.35;
+  }
+
+  .focus-list li + li {
+    border-left: 1px solid var(--color-primary);
+  }
+
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+    margin-top: 2.5rem;
+  }
+
+  .project-links a {
+    color: var(--color-text);
+    font-size: 1.15rem;
+    text-decoration-color: var(--color-primary);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3em;
+  }
+
+  .project-links a:hover {
+    color: var(--color-primary);
+  }
+
+  @media (width < 650px) {
+    .projects-placeholder {
+      margin-top: 7rem;
+    }
+
+    .focus-list {
+      grid-template-columns: 1fr;
+    }
+
+    .focus-list li + li {
+      border-top: 1px solid var(--color-primary);
+      border-left: 0;
+    }
+  }
+</style>

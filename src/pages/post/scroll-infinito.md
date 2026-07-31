@@ -1,17 +1,18 @@
 ---
 layout: ../../layouts/BlogLayout.astro
-title: 'Scroll infinito'
-publishDate: 'November 24, 2025'
-description: 'Scroll infinito.'
+title: 'Creating an Infinite Scrolling Text Marquee'
+publishDate: '2025-11-24'
+description: 'Create a seamless horizontal text marquee with duplicated content and a lightweight CSS animation.'
 author: 'Miguel Páez'
 image:
-  url: "https://docs.astro.build/assets/rose.webp"
-  alt: "Ilustración abstracta para un artículo sobre scroll infinito."
-slug: "scroll-infinito"
+  url: "/images/social-card.png"
+  alt: "Miguel Páez web development notes."
 icon: "pending"
 readingTime: '2'
 ---
-# Scroll infinito
+An infinite marquee works by placing two identical content blocks side by side and translating each block by its full width. When one leaves the viewport, the duplicate maintains the visual loop.
+
+## HTML structure
 
 ```html
 <div class="big-name">
@@ -25,6 +26,8 @@ readingTime: '2'
   </div>
 </div>
 ```
+
+## CSS animation
 
 ```css
 .big-name {
@@ -64,5 +67,15 @@ p {
    100% {
       transform: translateX(-100%);
    }
+}
+```
+
+Because the movement is decorative, disable it for people who prefer reduced motion:
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  .name-wrap {
+    animation: none;
+  }
 }
 ```
