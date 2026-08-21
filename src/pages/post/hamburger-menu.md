@@ -1,31 +1,28 @@
 ---
 layout: ../../layouts/BlogLayout.astro
-title: 'Two way by construction navegacion bar'
-publishDate: 'November 24, 2025'
-description: 'Two way by construction navegacion bar.'
+title: 'Building a Responsive Hamburger Menu'
+publishDate: '2025-11-24'
+description: 'Two practical approaches to building a responsive navigation bar with a hamburger menu for small screens.'
 author: 'Miguel Páez'
 image:
-  url: "https://docs.astro.build/assets/rose.webp"
-  alt: "Ilustración de una barra de navegación responsive."
-slug: "hamburger-menu"
+  url: "/images/social-card.png"
+  alt: "Miguel Páez web development notes."
 icon: "pending"
 readingTime: '5'
 ---
-# Navbar Responsive con Menú Hamburguesa
-
-Este es el **código completo (HTML + CSS + JS)** para una barra de navegación responsive que incluye menú hamburguesa en móviles.
+This article presents two compact ways to build a responsive navigation bar that collapses into a hamburger menu on small screens.
 
 
 
-## Código Completo
+## Approach one: a compact complete example
 
 ```html
 <!-- ====== HTML ====== -->
 
 <header class="navbar">
-    <div class="logo">Mi Marca</div>
+    <div class="logo">My Brand</div>
     
-    <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
@@ -33,17 +30,17 @@ Este es el **código completo (HTML + CSS + JS)** para una barra de navegación 
 
     <nav class="nav-menu">
         <ul>
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#portafolio">Portafolio</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 </header>
 
 <main style="padding: 20px;">
-    <h1>Contenido Principal</h1>
-    <p>Ajusta el tamaño de la ventana para ver cómo el menú de navegación se colapsa en el icono de hamburguesa.</p>
+    <h1>Main content</h1>
+    <p>Resize the window to see the navigation collapse into a hamburger icon.</p>
 </main>
 
 
@@ -181,6 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', navMenu.classList.contains('active'));
     });
 
     document.querySelectorAll('.nav-menu ul li a').forEach(link => {
@@ -194,29 +192,31 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
----
+```
+
+## Approach two: an off-canvas menu
 
 ```html
 <header class="navbar">
-    <a href="#" class="logo">Mi Sitio</a>
+    <a href="#" class="logo">My Site</a>
     
     <nav class="nav-menu" id="navMenu">
-        <a href="#">Inicio</a>
-        <a href="#">Acerca de</a>
-        <a href="#">Servicios</a>
-        <a href="#">Contacto</a>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
     </nav>
 
-    <div class="hamburger" id="hamburger">
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
-    </div>
+    </button>
 </header>
 ```
 
 ```css
-/* Estilos Globales y de la Barra de Navegación */
+/* Global and navigation styles */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -249,9 +249,11 @@ body {
     color: #ff9900;
 }
 
-/* Estilos del Icono de Hamburguesa */
+/* Hamburger icon */
 .hamburger {
-    display: none; /* Oculto en escritorio */
+    display: none; /* Hidden on desktop */
+    border: 0;
+    background: transparent;
     cursor: pointer;
     padding: 5px;
 }
@@ -266,7 +268,7 @@ body {
 }
 
 /* ------------------------------------- */
-/* ESTILOS PARA LA VISTA MÓVIL (Menú Responsive) */
+/* Responsive mobile menu */
 /* ------------------------------------- */
 .hamburger.active .bar:nth-child(2) {
     opacity: 0;
@@ -321,6 +323,7 @@ const navMenu = document.getElementById('navMenu');
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', navMenu.classList.contains('active'));
 });
 
 const navLinks = navMenu.querySelectorAll('a');
@@ -332,3 +335,5 @@ navLinks.forEach(link => {
     });
 });
 ```
+
+These examples focus on the layout mechanics. In production, also return focus when the menu closes and prevent hidden links from remaining in the keyboard tab order.

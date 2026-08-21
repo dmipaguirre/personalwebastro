@@ -1,11 +1,11 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Construction404 from "@/components/Construction404.astro";
+import ProjectsPlaceholder from "@/components/ProjectsPlaceholder.astro";
 const pageTitle = "Projects";
-const description = "Projects and experiments of Miguel Páez in web development, automation and technology.";
+const description = "Upcoming case studies about Miguel Páez's work in accessible web development, Astro, and Python automation.";
 
 ---
 
-    <Layout pageTitle={pageTitle} description={description}>
-    <Construction404 />
+<Layout pageTitle={pageTitle} description={description} robots="noindex, follow">
+    <ProjectsPlaceholder />
 </Layout>

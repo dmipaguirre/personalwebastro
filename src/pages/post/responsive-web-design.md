@@ -1,30 +1,28 @@
 ---
 layout: ../../layouts/BlogLayout.astro
 title: 'A Guide to Responsive Web Design'
-publishDate: 'November 19, 2025'
-description: 'Responsive Web Design with Flexbox and Grid'
+publishDate: '2025-11-19'
+description: 'Learn how Flexbox and CSS Grid adapt page layouts across desktop, tablet, and mobile screens.'
 author: 'Miguel Páez'
 image:
-  url: "/images/Responsive.png"
-  alt: "Diagrama visual sobre diseño web responsive."
-slug: "responsive-web-design"
+  url: "/images/social-card.png"
+  alt: "Miguel Páez web development notes."
 icon: "layout"
 readingTime: '4'
 ---
 
 
-Con el creciente auge de dispositivos electrónicos como tablets, smartphones y computadores portátiles, el diseño web moderno debe adaptarse a pantallas de diferentes tamaños y resoluciones. 
+As tablets, smartphones, and laptops have become ubiquitous, modern websites must adapt to screens with different sizes and resolutions.
 
-Dentro del desarrollo web, especialmente en el diseño responsivo, existen técnicas que permiten adaptar la estructura de un sitio utilizando propiedades de CSS como Flexbox y CSS Grid. Ambas herramientas facilitan la organización del contenido y su redistribución según el tamaño del dispositivo.
+Flexbox and CSS Grid provide complementary ways to organize content and redistribute it according to the available space.
 
-## ¿Qué son Flexbox y CSS Grid?
+## What are Flexbox and CSS Grid?
 
+Flexbox is designed for one-dimensional layouts arranged in a row or column. CSS Grid controls rows and columns together, making it a better fit for broader page structures. Both can be combined with media queries to change a layout at meaningful breakpoints.
 
+## Building the layout with Flexbox
 
-## Comportamiento de cajas utilizando Flexbox
-
-
-Estructura del nuestro documento CSS:
+CSS structure:
 
 
 ```astro
@@ -61,7 +59,7 @@ body {
   }
 }
 ```
-Estructura de nuestro documento HTML:
+HTML structure:
 
 ```astro
 <div class="left">
@@ -76,8 +74,9 @@ Estructura de nuestro documento HTML:
 ```
 
 
-## Comportamiento de cajas con propiedades CSS Grid
-Estructura de nuestro documento CSS:
+## Building the layout with CSS Grid
+
+CSS structure:
 
 ```astro
 * {
@@ -110,7 +109,7 @@ body {
   }
 }
 ```
-Estructura de nuestro documento HTML:
+HTML structure:
 
 ```astro
 <div class="left">
@@ -123,3 +122,7 @@ Estructura de nuestro documento HTML:
   <p>Right Content</p>
 </div>
 ```
+
+## Choosing between them
+
+Use Flexbox when content primarily flows along one axis. Use Grid when rows and columns need to align as a system. The best responsive layouts often use both tools at different levels of the page.

@@ -27,7 +27,7 @@ const posts = Object.values(postFiles)
 ---
 
 <section class="blog-section" aria-labelledby="blog-heading">
-  <h2 id="blog-heading" class="blog-title">Blog</h2>
+  <h1 id="blog-heading" class="blog-title">Blog</h1>
   <Breadcrumbs />
   <div class="container-card">
     {
@@ -37,7 +37,7 @@ const posts = Object.values(postFiles)
 
         return (
           <article class="blog-card">
-            <a href={url} aria-label={`Leer artículo: ${title}`}>
+            <a href={url} aria-label={`Read article: ${title}`}>
               <div class="card-content">
                   <p class="reading-time">
                     <time datetime={`PT${readingTime}M`}>
@@ -45,7 +45,7 @@ const posts = Object.values(postFiles)
                     </time>
                   </p>
                 <div class="text-container">
-                  <h3 class="card-title">{title}</h3>
+                  <h2 class="card-title">{title}</h2>
                   <p class="card-text">{description}</p>
                 </div>
               </div>
@@ -121,11 +121,11 @@ const posts = Object.values(postFiles)
   }
 
   .reading-time {
-    font-size: 0.8rem;
-    letter-spacing: 1px;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    font-family: var(--font-title);
     text-transform: uppercase;
     color: var(--color-primary);
-    font-weight: 600;
     flex-shrink: 0;
   }
 

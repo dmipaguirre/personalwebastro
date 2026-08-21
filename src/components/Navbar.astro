@@ -5,7 +5,7 @@ import ButtonColor from "./ButtonColor.astro";
 <nav class="navbar" id="navbar">
   <div class="nav-content">
     <div class="logo-box">
-      <a href="/" class="logo">MP88</a>
+      <a href="/" class="logo">MP</a>
     </div>
 
     <button
@@ -14,7 +14,7 @@ import ButtonColor from "./ButtonColor.astro";
       id="hamburger"
       aria-expanded="false"
       aria-controls="menu-panel"
-      aria-label="navigation menu"
+      aria-label="Open navigation menu"
     >
       <span class="bar"></span>
       <span class="bar"></span>
@@ -59,55 +59,64 @@ import ButtonColor from "./ButtonColor.astro";
 </nav>
 
 <script>
-  const hamburger = document.getElementById("hamburger");
-  const navMenu = document.getElementById("menu-panel");
-
-  // Cerrar al hacer click fuera
-  document.addEventListener("click", (e) => {
-    const target = e.target;
-    if (
-      navMenu &&
-      hamburger &&
-      target instanceof Node &&
-      !navMenu.contains(target) &&
-      !hamburger.contains(target)
-    ) {
-      navMenu.classList.remove("active");
-      hamburger.classList.remove("active");
-      document.body.classList.remove("no-scroll");
-      hamburger.setAttribute("aria-expanded", "false");
-    }
-  });
+  const hamburger = document.querySelector<HTMLButtonElement>("#hamburger");
+  const navMenu = document.querySelector<HTMLElement>("#menu-panel");
+  const mobileMenu = window.matchMedia("(max-width: 599px)");
 
   if (hamburger && navMenu) {
-    hamburger.addEventListener("click", () => {
-      const isActive = hamburger.classList.contains("active");
+    const setMenuState = (
+      open: boolean,
+      options: { focusMenu?: boolean; restoreFocus?: boolean } = {},
+    ) => {
+      const isOpen = mobileMenu.matches && open;
 
-      hamburger.classList.toggle("active");
-      navMenu.classList.toggle("active");
-      hamburger.setAttribute("aria-expanded", (!isActive).toString());
+      hamburger.classList.toggle("active", isOpen);
+      navMenu.classList.toggle("active", isOpen);
+      hamburger.setAttribute("aria-expanded", isOpen.toString());
+      hamburger.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu",
+      );
+      navMenu.inert = mobileMenu.matches && !isOpen;
+      document.body.classList.toggle("no-scroll", isOpen);
 
-      document.body.classList.toggle("no-scroll", !isActive);
+      if (isOpen && options.focusMenu) {
+        navMenu.querySelector<HTMLAnchorElement>(".menu-link")?.focus();
+      } else if (!isOpen && options.restoreFocus) {
+        hamburger.focus();
+      }
+    };
+
+    const syncMenuForViewport = () => setMenuState(false);
+    syncMenuForViewport();
+    mobileMenu.addEventListener("change", syncMenuForViewport);
+
+    hamburger.addEventListener("click", (event) => {
+      setMenuState(!navMenu.classList.contains("active"), {
+        focusMenu: event.detail === 0,
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+      if (
+        target instanceof Node &&
+        !navMenu.contains(target) &&
+        !hamburger.contains(target)
+      ) {
+        setMenuState(false);
+      }
     });
 
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && navMenu.classList.contains("active")) {
-        hamburger.classList.remove("active");
-        navMenu.classList.remove("active");
-        hamburger.setAttribute("aria-expanded", "false");
-        document.body.classList.remove("no-scroll");
+        setMenuState(false, { restoreFocus: true });
       }
     });
 
-    // Cerrar al hacer click en los links
     const navLinks = navMenu.querySelectorAll(".menu-link");
     navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        hamburger.classList.remove("active");
-        navMenu.classList.remove("active");
-        hamburger.setAttribute("aria-expanded", "false");
-        document.body.classList.remove("no-scroll");
-      });
+      link.addEventListener("click", () => setMenuState(false));
     });
   }
 </script>
@@ -123,6 +132,7 @@ import ButtonColor from "./ButtonColor.astro";
     color: var(--color-bg);
     background-color: var(--color-primary);
     font-size: 2.1rem;
+    line-height: 1;
     padding: 0.25rem 0.75rem;
     border-radius: 0.5rem;
     transform: rotate(-3deg);
@@ -141,8 +151,8 @@ import ButtonColor from "./ButtonColor.astro";
 
     cursor: pointer;
     padding: 0;
-    width: 30px;
-    height: 30px;
+    width: 44px;
+    height: 44px;
     position: relative;
     z-index: 1000;
   }
@@ -303,6 +313,8 @@ import ButtonColor from "./ButtonColor.astro";
       top: 63px;
       left: 0;
       transform: translateX(100%);
+      visibility: hidden;
+      pointer-events: none;
       width: 100vw;
       padding: 0.1rem 0;
       background-color: var(--color-bg);
@@ -316,11 +328,16 @@ import ButtonColor from "./ButtonColor.astro";
       align-items: center;
       overflow-y: auto;
       gap: 0;
-      transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+      transition:
+        transform 0.3s cubic-bezier(0.33, 1, 0.68, 1),
+        visibility 0s linear 0.3s;
     }
 
     .menu-panel.active {
       transform: translateX(0);
+      visibility: visible;
+      pointer-events: auto;
+      transition-delay: 0s;
     }
 
     .menu-links {

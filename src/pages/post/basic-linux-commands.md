@@ -1,13 +1,12 @@
 ---
 layout: ../../layouts/BlogLayout.astro
 title: 'Essential Linux Commands for Beginners'
-publishDate: 'June 15, 2026'
+publishDate: '2026-06-15'
 description: 'A simple and clear guide to understanding the fundamentals of the Linux command line.'
 author: 'Miguel Páez'
 image:
-  url: "/images/terminal.svg"
-  alt: "Ilustración de una terminal de Linux con comandos básicos."
-slug: "basic-linux-commands"
+  url: "/images/social-card.png"
+  alt: "Miguel Páez web development notes."
 icon: "brand-ubuntu"
 readingTime: '5'
 ---

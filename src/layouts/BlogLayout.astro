@@ -5,13 +5,14 @@ const { frontmatter } = Astro.props;
 const timeValue = frontmatter.readingTime;
 const regardingTimeText = timeValue
   ? `${timeValue} min to read`
-  : "4 min de lectura";
+  : "4 min to read";
 const publishedDate = new Date(frontmatter.publishDate);
 const publishedTime = publishedDate.toISOString();
-const publishedDateText = new Intl.DateTimeFormat("es-ES", {
+const publishedDateText = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
   month: "long",
   year: "numeric",
+  timeZone: "UTC",
 }).format(publishedDate);
 
 ---
