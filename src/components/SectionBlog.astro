@@ -35,13 +35,9 @@ const formatDate = (iso: string) => {
 ---
 
 <section class="blog-section" aria-labelledby="blog-heading">
-  <header class="blog-header">
-    <span class="blog-eyebrow">Notes</span>
+  <section class="blog-header">
     <h1 id="blog-heading" class="blog-title">Blog</h1>
-    <p class="blog-subtitle">
-      Articles about web development, Linux, CSS and the tools I use.
-    </p>
-  </header>
+  </section>
 
   <div class="container-card">
     {
@@ -110,16 +106,6 @@ const formatDate = (iso: string) => {
     margin-bottom: 3rem;
   }
 
-  .blog-eyebrow {
-    display: block;
-    font-family: var(--font-text);
-    font-style: italic;
-    font-size: 1.1rem;
-    color: var(--color-text);
-    opacity: 0.6;
-    margin-bottom: 0.6rem;
-  }
-
   .blog-title {
     font-family: var(--font-title);
     font-size: clamp(3rem, 5vw, 4.5rem);
@@ -128,16 +114,6 @@ const formatDate = (iso: string) => {
     text-align: left;
     color: var(--color-text);
     margin: 0 0 0.8rem 0;
-  }
-
-  .blog-subtitle {
-    font-family: var(--font-text);
-    font-size: 1.2rem;
-    line-height: 1.4;
-    color: var(--color-text);
-    opacity: 0.7;
-    max-width: 52ch;
-    margin: 0;
   }
 
   /* --- Grid --- */
@@ -207,6 +183,7 @@ const formatDate = (iso: string) => {
     gap: 0.8rem;
     padding-bottom: 0.9rem;
     border-bottom: 1px dashed var(--color-primary);
+    flex: 1;
   }
 
   .tag--color {
@@ -239,6 +216,7 @@ const formatDate = (iso: string) => {
     flex-direction: column;
     text-align: left;
     gap: 0.6rem;
+    flex: 1;
   }
 
   .card-title {
@@ -284,6 +262,7 @@ const formatDate = (iso: string) => {
     margin-top: auto;
     padding-top: 0.9rem;
     border-top: 1px dashed var(--color-primary);
+    flex: 1;
   }
 
   .card-date {

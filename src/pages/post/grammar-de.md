@@ -17,8 +17,8 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
 
 ## 1. Los 6 Tiempos Verbales Principales
 
-### 1. **Präsens** (presente)
-### Formación
+### 1.1 **Präsens** (presente)
+#### Formación
 | Persona | Terminación regular (-en) | Verbos irregulares |
 |---------|---------------------------|--------------------|
 | ich | -e | ich gehe, ich habe |
@@ -35,7 +35,7 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
   * *Ich lerne Deutsch.* ("Estoy aprendiendo / aprendo alemán". Para el gerundio continuo se puede usar *gerade*).
   * *Er arbeitet jeden Tag.* ("Él trabaja todos los días").
 
-### 2. **Perfekt** (pretérito perfecto)
+### 1.2 **Perfekt** (pretérito perfecto)
 ### Formación
 | Persona | haben/sein + Partizip II |
 |---------|--------------------------|
@@ -47,12 +47,12 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
 | sie/Sie | haben gearbeitet / sind gegangen |
 
 * **Función:** Principalmente para hablar de acciones concluidas en el **habla coloquial**. Sustituye casi por completo al *Präteritum* en la comunicación diaria (excepto con verbos modales, *haben* y *sein*).
-* **Formación:** `Sujeto + haben/sein (en presente) + Participio II`
+* **Estructura:** `Sujeto + haben/sein (en presente) + Participio II`
 * **Ejemplos:**
   * *Ich habe ein Buch gelesen.* ("He leído un libro").
   * *Wir sind nach Berlin gefahren.* ("Hemos viajado a Berlín").
 
-### 3. **Präteritum** (pretérito indefinido / imperfecto)
+### 1.3 **Präteritum** (pretérito indefinido / imperfecto)
 ### Formación
 | Persona | Terminación regular (-en) | Verbos fuertes/irregulares |
 |---------|---------------------------|----------------------------|
@@ -64,12 +64,12 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
 | sie/Sie | -ten | sie arbeiteten |
 
 * **Función:** Textos escritos, narraciones, cuentos y noticias. En el habla cotidiana solo se usa de forma habitual con *sein*, *haben* y los verbos modales.
-* **Formación (Regular):** Raíz + terminaciones de pasado (*-te, -test, -te, -ten, -tet, -ten*).
+* **Estructura:** `Sujeto + Pretérito-raíz (*-te, -test, -te, -ten, -tet, -ten*)`
 * **Ejemplos:**
   * *Er ging nach Hause.* ("Él fue a casa" - escrito).
   * *Ich war gestern im Kino.* ("Fui al cine ayer" - *sein* en coloquial).
 
-### 4. **Plusquamperfekt** (pretérito pluscuamperfecto)
+### 1.4 **Plusquamperfekt** (pretérito pluscuamperfecto)
 ### Formación
 | Persona | haber/sein en Pretérito + Partizip II |
 |---------|---------------------------------------|
@@ -81,18 +81,11 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
 | sie/Sie | hatten gearbeitet / waren gegangen |
 
 * **Función:** Acción completada antes de otra acción en el pasado ("el pasado del pasado").
-* **Formación:** `Sujeto + haben/sein (en Präteritum) + Participio II`
+* **Estructura:** `Sujeto + haben/sein (en Präteritum) + Participio II`
 * **Ejemplo:**
   * *Als ich ankam, hatte er schon gegessen.* ("Cuando llegué, él ya había comido").
 
-### 5. **Futur I** (Futuro I)
-* **Función:** Acciones futuras, promesas, predicciones o intenciones.
-* **Formación:** `werden (presente) + Infinitivo (al final de la frase)`
-* **Ejemplos:**
-  * *Ich werde Deutsch lernen.* ("Voy a aprender alemán").
-  * *Er wird morgen kommen.* ("Él vendrá mañana").
-
-### 6. **Futur II** (Futuro II)
+### 1.5 **Futur I** (Futuro I)
 ### Formación
 | Persona | werden + Infinitivo |
 |---------|---------------------|
@@ -102,9 +95,15 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
 | wir | werden gehen |
 | ihr | werdet gehen |
 | sie/Sie | werden gehen |
+* **Función:** Acciones futuras, promesas, predicciones o intenciones.
+* **Estructura:** `Sujeto + werden (presente) + Infinitivo (al final de la frase)`
+* **Ejemplos:**
+  * *Ich werde Deutsch lernen.* ("Voy a aprender alemán").
+  * *Er wird morgen kommen.* ("Él vendrá mañana").
 
+### 1.6 **Futur II** (Futuro II)
 * **Función:** Acciones que se habrán completado en un momento determinado del futuro. *(Muy poco común en el habla diaria)*.
-* **Formación:** `werden + Participio II + haben/sein (infinitivo)`
+* **Estructura:** `werden + Participio II + haben/sein (infinitivo)`
 * **Ejemplo:**
   * *Bis 2030 werde ich Deutsch fließend gesprochen haben.* ("Para 2030 habré hablado alemán con fluidez").
 
