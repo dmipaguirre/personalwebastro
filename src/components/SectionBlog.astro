@@ -78,9 +78,6 @@ const formatDate = (iso: string) => {
                   <span class="card-date">
                     <time datetime={frontmatter.publishDate}>{dateLabel}</time>
                   </span>
-                  <span class="card-author-sep" aria-hidden="true">
-                    ·
-                  </span>
                   <span class="card-author">{author}</span>
                 </section>
               </div>
@@ -281,15 +278,6 @@ const formatDate = (iso: string) => {
     letter-spacing: 0.08em;
     color: var(--color-primary);
     line-height: 1;
-  }
-
-  .card-date::before {
-    content: "";
-    width: 6px;
-    height: 6px;
-    background: var(--color-primary);
-    border-radius: 50%;
-    flex-shrink: 0;
   }
 
   .card-author-sep {
