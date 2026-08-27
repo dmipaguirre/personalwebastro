@@ -11,12 +11,6 @@ icon: ""
 readingTime: '5'
 sizeLayout: ""
 titleCategory: "Idiomas"
-category: "grammatik"
-codePreview: |
-  # Konsolenausgabe: Deklinationstest
-  Nominativ: Der Hund (Subjekt)
-  Akkusativ: Ich sehe den Hund (Objekt)
-  Dativ:     Ich helfe dem Mann (Ind. Obj)
 ---
 
 Esta guía enseña de forma clara y estructurada los seis tiempos verbales principales del alemán, sus auxiliares y sus formas de uso.

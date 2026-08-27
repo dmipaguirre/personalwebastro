@@ -7,8 +7,6 @@ interface PostFrontmatter {
   readingTime: string;
   sizeLayout?: "wide" | "tall" | "featured";
   titleCategory?: string;
-  category?: "grammatik" | "verben" | "wortschatz" | "syntax" | "redewendung";
-  codePreview?: string;
   image?: {
     url: string;
     alt: string;
@@ -51,19 +49,15 @@ const formatDate = (iso: string) => {
           author,
           readingTime,
           titleCategory,
-          category,
-          codePreview,
         } = frontmatter;
         const sizeClass = frontmatter.sizeLayout
           ? `blog-card--${frontmatter.sizeLayout}`
           : "";
-        const dateLabel = frontmatter.publishDate
-          ? formatDate(frontmatter.publishDate)
-          : null;
+        const dateLabel = formatDate(frontmatter.publishDate);
         const ariaLabel = `Leer: ${title} — por ${author}`;
 
         return (
-          <article class={`blog-card ${sizeClass}`} data-category={category}>
+          <article class={`blog-card ${sizeClass}`}>
             <a href={url} aria-label={ariaLabel} class="blog-card__link">
               <div class="card-content">
                 <div class="card-meta">
@@ -78,11 +72,6 @@ const formatDate = (iso: string) => {
                 </div>
                 <div class="text-container">
                   <h2 class="card-title">{title}</h2>
-                  {codePreview && (
-                    <pre class="card-code">
-                      <code>{codePreview}</code>
-                    </pre>
-                  )}
                   <p class="card-text">{description}</p>
                 </div>
                 <section class="card-footer">
