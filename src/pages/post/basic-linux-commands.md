@@ -9,6 +9,7 @@ image:
   alt: "Miguel Páez web development notes."
 icon: "brand-ubuntu"
 readingTime: '5'
+titleHeader: "Linux"
 ---
 
 Linux is, for many people, the doorway into the world of open-source software and system administration. Its terminal—powerful, minimalistic, and incredibly flexible—allows you to control every aspect of the system with precision, speed, and elegance. In this introductory guide, we'll explore how basic commands can transform the way you interact with your computer and help you understand how an operating system really works.

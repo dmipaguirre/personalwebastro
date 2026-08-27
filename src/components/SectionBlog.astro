@@ -7,16 +7,18 @@ interface PostFrontmatter {
   author: string;
   publishDate: string;
   readingTime: string;
+  sizeLayout?: "wide" | "tall" | "featured";
+  titleHeader?: string;
   image?: {
     url: string;
     alt: string;
   };
 }
 
-const postFiles = import.meta.glob<{ frontmatter: PostFrontmatter; url: string }>(
-  "../pages/post/*.md",
-  { eager: true },
-);
+const postFiles = import.meta.glob<{
+  frontmatter: PostFrontmatter;
+  url: string;
+}>("../pages/post/*.md", { eager: true });
 const posts = Object.values(postFiles)
   .filter((post) => post?.frontmatter)
   .sort(
@@ -28,22 +30,28 @@ const posts = Object.values(postFiles)
 
 <section class="blog-section" aria-labelledby="blog-heading">
   <h1 id="blog-heading" class="blog-title">Blog</h1>
-  <Breadcrumbs />
   <div class="container-card">
     {
       posts.map((post) => {
         const { frontmatter, url } = post;
-        const { title, description, readingTime } = frontmatter;
+        const { title, description, readingTime, titleHeader } = frontmatter;
+        const sizeClass = frontmatter.sizeLayout
+          ? `blog-card--${frontmatter.sizeLayout}`
+          : "";
 
         return (
-          <article class="blog-card">
+          <article class={`blog-card ${sizeClass}`}>
             <a href={url} aria-label={`Read article: ${title}`}>
               <div class="card-content">
-                  <p class="reading-time">
-                    <time datetime={`PT${readingTime}M`}>
-                      {readingTime} min read
-                    </time>
-                  </p>
+                <div class="container__header">
+                <span class="tag--color">{titleHeader}</span>
+                <p class="reading-time">
+                  <time datetime={`PT${readingTime}M`}>
+                    {readingTime} min read
+                  </time>
+                </p>
+                </div>
+                <!---Que se inyecte acá el cuadro-->
                 <div class="text-container">
                   <h2 class="card-title">{title}</h2>
                   <p class="card-text">{description}</p>
@@ -59,16 +67,16 @@ const posts = Object.values(postFiles)
 
 <style>
   :root {
-    --shadow-card: 0 6px 18px rgba(2,6,23,0.08), 0 2px 6px rgba(2,6,23,0.04);
-    --shadow-card-hover: 0 18px 36px rgba(2,6,23,0.12), 0 8px 16px rgba(2,6,23,0.06);
+    --shadow-card:
+      0 6px 18px rgba(2, 6, 23, 0.08), 0 2px 6px rgba(2, 6, 23, 0.04);
+    --shadow-card-hover:
+      0 18px 36px rgba(2, 6, 23, 0.12), 0 8px 16px rgba(2, 6, 23, 0.06);
   }
 
   /* --- Estructura General --- */
   .blog-section {
     padding: 1.2rem 1.3rem;
-    width: var(
-      --width-container
-    ); /* Asegúrate de que esta variable exista en global */
+    width: var(--width-container);
     max-width: 1200px;
     margin: 8rem auto 4rem auto;
   }
@@ -84,8 +92,14 @@ const posts = Object.values(postFiles)
 
   .container-card {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.3rem;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: minmax(280px, auto);
+    grid-auto-flow: dense;
+    column-gap: 1.8rem;
+    row-gap: 2.3rem;
+    justify-content: center;
+    max-width: 1440px;
+    margin: 0 auto;
   }
 
   /* --- Tarjeta --- */
@@ -98,8 +112,21 @@ const posts = Object.values(postFiles)
       border-color 0.3s ease,
       box-shadow 0.3s ease,
       transform 0.3s ease;
-    height: auto;
+    height: 100%;
+    grid-column: span 2;
+  }
 
+  .blog-card--wide {
+    grid-column: span 4;
+  }
+
+  .blog-card--tall {
+    grid-row: span 2;
+  }
+
+  .blog-card--featured {
+    grid-column: span 2;
+    grid-row: span 2;
   }
 
   .blog-card a {
@@ -112,21 +139,45 @@ const posts = Object.values(postFiles)
 
   .card-content {
     display: flex;
+    width: 100%;
     flex-direction: column;
-    align-items: flex-start;
     height: 100%;
     min-height: 220px;
-    padding: 2rem;
     gap: 1rem;
+    justify-content: space-between;
+  }
+
+  .tag--color {
+    color: #1d6ac2;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.1rem 0.6rem;
+    font-size: 0.9rem;
+    font-family: var(--font-title);
+    text-transform: uppercase;
+  }
+  .container__header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border-bottom: 1px dashed var(--color-primary);
   }
 
   .reading-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     font-size: 1rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.01em;
     font-family: var(--font-title);
-    text-transform: uppercase;
     color: var(--color-primary);
     flex-shrink: 0;
+    padding: 0.1rem 0.6rem;
+    border-radius: 6px;
+
+    border: 1px solid var(--color-primary);
   }
 
   /* --- Texto --- */
@@ -134,16 +185,17 @@ const posts = Object.values(postFiles)
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     text-align: left;
     width: 100%;
+    padding: 1rem 1.2rem;
   }
 
   .card-title {
-    font-size: clamp(1.4rem, 2vw, 1.8rem);
+    font-size: clamp(1.9rem, 2vw, 1.8rem);
     font-family: var(--font-title);
-    font-weight: 600;
-    line-height: 1.3;
+    font-weight: 400;
+    line-height: 1.02;
     transition: color 0.3s ease;
     margin-bottom: 0.8rem;
   }
@@ -163,10 +215,9 @@ const posts = Object.values(postFiles)
   }
 
   .card-text {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     line-height: 1.6;
     opacity: 0.85;
-
     /* Truncar texto a 3 líneas */
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -176,9 +227,38 @@ const posts = Object.values(postFiles)
 
   /* --- RESPONSIVE / MEDIA QUERIES --- */
 
+  @media (max-width: 1100px) {
+    .container-card {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .blog-card {
+      grid-column: span 2;
+    }
+    .blog-card--wide {
+      grid-column: span 4;
+    }
+    .blog-card--featured {
+      grid-column: span 4;
+    }
+  }
+
   @media (max-width: 800px) {
     .blog-section {
       margin: 4rem auto;
+    }
+
+    .container-card {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 1.2rem;
+      row-gap: 1.8rem;
+    }
+
+    .blog-card,
+    .blog-card--wide,
+    .blog-card--tall,
+    .blog-card--featured {
+      grid-column: span 2;
+      grid-row: span 1;
     }
 
     .card-content {

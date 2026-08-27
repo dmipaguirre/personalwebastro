@@ -9,7 +9,10 @@ image:
   alt: "Miguel Páez web development notes."
 icon: "pending"
 readingTime: '5'
+sizeLayout: "tall"
+titleHeader:
 ---
+
 This article presents two compact ways to build a responsive navigation bar that collapses into a hamburger menu on small screens.
 
 

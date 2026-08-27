@@ -20,6 +20,7 @@ In this context, `inset()` is a geometric function that defines a rectangle. Its
 | Property  | Function                       | Primary Use                                |
 |-----------|--------------------------------|--------------------------------------------|
 | `clip-path` | `inset(top right bottom left)` | Creates a rectangular mask over the element. Everything outside that rectangle becomes invisible. |
+
 **Example:**
 
 ```css
