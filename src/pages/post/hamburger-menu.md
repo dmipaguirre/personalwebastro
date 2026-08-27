@@ -10,7 +10,7 @@ image:
 icon: "pending"
 readingTime: '5'
 sizeLayout: "tall"
-titleHeader: "CSS Hamburger"
+titleCategory: "CSS Hamburger"
 ---
 
 This article presents two compact ways to build a responsive navigation bar that collapses into a hamburger menu on small screens.

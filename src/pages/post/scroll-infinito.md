@@ -9,7 +9,7 @@ image:
   alt: "Miguel Páez web development notes."
 icon: "pending"
 readingTime: '2'
-titleHeader: "CSS Animation"
+titleCategory: "CSS Animation"
 ---
 An infinite marquee works by placing two identical content blocks side by side and translating each block by its full width. When one leaves the viewport, the duplicate maintains the visual loop.
 

@@ -6,7 +6,9 @@ interface PostFrontmatter {
   publishDate: string;
   readingTime: string;
   sizeLayout?: "wide" | "tall" | "featured";
-  titleHeader?: string;
+  titleCategory?: string;
+  category?: "grammatik" | "verben" | "wortschatz" | "syntax" | "redewendung";
+  codePreview?: string;
   image?: {
     url: string;
     alt: string;
@@ -43,21 +45,30 @@ const formatDate = (iso: string) => {
     {
       posts.map((post) => {
         const { frontmatter, url } = post;
-        const { title, description, author, readingTime, titleHeader } =
-          frontmatter;
+        const {
+          title,
+          description,
+          author,
+          readingTime,
+          titleCategory,
+          category,
+          codePreview,
+        } = frontmatter;
         const sizeClass = frontmatter.sizeLayout
           ? `blog-card--${frontmatter.sizeLayout}`
           : "";
-        const dateLabel = formatDate(frontmatter.publishDate);
+        const dateLabel = frontmatter.publishDate
+          ? formatDate(frontmatter.publishDate)
+          : null;
         const ariaLabel = `Leer: ${title} — por ${author}`;
 
         return (
-          <article class={`blog-card ${sizeClass}`}>
+          <article class={`blog-card ${sizeClass}`} data-category={category}>
             <a href={url} aria-label={ariaLabel} class="blog-card__link">
               <div class="card-content">
                 <div class="card-meta">
-                  {titleHeader && (
-                    <span class="tag--color">{titleHeader}</span>
+                  {titleCategory && (
+                    <span class="tag--color">{titleCategory}</span>
                   )}
                   <span class="reading-time">
                     <time datetime={`PT${readingTime}M`}>
@@ -67,15 +78,22 @@ const formatDate = (iso: string) => {
                 </div>
                 <div class="text-container">
                   <h2 class="card-title">{title}</h2>
+                  {codePreview && (
+                    <pre class="card-code">
+                      <code>{codePreview}</code>
+                    </pre>
+                  )}
                   <p class="card-text">{description}</p>
                 </div>
-                <footer class="card-footer">
+                <section class="card-footer">
                   <span class="card-date">
                     <time datetime={frontmatter.publishDate}>{dateLabel}</time>
                   </span>
-                  <span class="card-author-sep" aria-hidden="true">·</span>
+                  <span class="card-author-sep" aria-hidden="true">
+                    ·
+                  </span>
                   <span class="card-author">{author}</span>
-                </footer>
+                </section>
               </div>
             </a>
           </article>
@@ -125,14 +143,14 @@ const formatDate = (iso: string) => {
     row-gap: 2rem;
     max-width: 1440px;
     margin: 0 auto;
-    align-items: start;
+    align-items: stretch;
   }
 
   /* --- Tarjeta --- */
   .blog-card {
     background: var(--color-bg);
     border: 1px solid var(--color-bgsecondary);
-    border-radius: 1.5rem;
+    border-radius: 1rem;
     overflow: hidden;
     box-shadow: var(--shadow-card);
     transition:
@@ -170,9 +188,10 @@ const formatDate = (iso: string) => {
   .card-content {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     flex: 1;
-    padding: 1.2rem 1.4rem;
     gap: 1rem;
+    height: 100%;
   }
 
   /* Meta header */
@@ -181,9 +200,8 @@ const formatDate = (iso: string) => {
     justify-content: space-between;
     align-items: center;
     gap: 0.8rem;
-    padding-bottom: 0.9rem;
+    padding: 1rem 1.25rem;
     border-bottom: 1px dashed var(--color-primary);
-    flex: 1;
   }
 
   .tag--color {
@@ -191,12 +209,13 @@ const formatDate = (iso: string) => {
     align-items: center;
     background: color-mix(in srgb, var(--color-primary) 12%, transparent);
     color: var(--color-primary);
-    padding: 0.25rem 0.7rem;
-    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
     font-family: var(--font-title);
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
+    gap: 0.5rem;
   }
 
   .reading-time {
@@ -216,7 +235,7 @@ const formatDate = (iso: string) => {
     flex-direction: column;
     text-align: left;
     gap: 0.6rem;
-    flex: 1;
+    padding: 1rem 1.25rem
   }
 
   .card-title {
@@ -259,10 +278,9 @@ const formatDate = (iso: string) => {
     justify-content: space-between;
     align-items: center;
     gap: 0.6rem;
-    margin-top: auto;
-    padding-top: 0.9rem;
+    padding: 1rem 1.25rem;
     border-top: 1px dashed var(--color-primary);
-    flex: 1;
+    
   }
 
   .card-date {

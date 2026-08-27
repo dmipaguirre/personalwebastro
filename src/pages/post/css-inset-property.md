@@ -9,7 +9,7 @@ image:
   alt: "Miguel Páez web development notes."
 icon: "pending"
 readingTime: '5'
-titleHeader: "Css"
+titleCategory: "Css"
 ---
 
 The inset keyword is one of the most powerful and modern CSS shortcuts. It can be confusing because it functions both as a value function and a shorthand property, leading to very different effects.

@@ -9,8 +9,14 @@ image:
   alt: "Miguel Páez web development notes."
 icon: ""
 readingTime: '5'
-sizeLayout: "default"
-titleHeader: "Idiomas"
+sizeLayout: ""
+titleCategory: "Idiomas"
+category: "grammatik"
+codePreview: |
+  # Konsolenausgabe: Deklinationstest
+  Nominativ: Der Hund (Subjekt)
+  Akkusativ: Ich sehe den Hund (Objekt)
+  Dativ:     Ich helfe dem Mann (Ind. Obj)
 ---
 
 Esta guía enseña de forma clara y estructurada los seis tiempos verbales principales del alemán, sus auxiliares y sus formas de uso.
@@ -36,7 +42,7 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
   * *Er arbeitet jeden Tag.* ("Él trabaja todos los días").
 
 ### 1.2 **Perfekt** (pretérito perfecto)
-### Formación
+#### Formación
 | Persona | haben/sein + Partizip II |
 |---------|--------------------------|
 | ich | habe gearbeitet / bin gegangen |
@@ -53,7 +59,7 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
   * *Wir sind nach Berlin gefahren.* ("Hemos viajado a Berlín").
 
 ### 1.3 **Präteritum** (pretérito indefinido / imperfecto)
-### Formación
+#### Formación
 | Persona | Terminación regular (-en) | Verbos fuertes/irregulares |
 |---------|---------------------------|----------------------------|
 | ich | -te / -te | ich arbeitete / ich ging |
@@ -70,7 +76,7 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
   * *Ich war gestern im Kino.* ("Fui al cine ayer" - *sein* en coloquial).
 
 ### 1.4 **Plusquamperfekt** (pretérito pluscuamperfecto)
-### Formación
+#### Formación
 | Persona | haber/sein en Pretérito + Partizip II |
 |---------|---------------------------------------|
 | ich | hatte gearbeitet / war gegangen |
@@ -86,7 +92,7 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
   * *Als ich ankam, hatte er schon gegessen.* ("Cuando llegué, él ya había comido").
 
 ### 1.5 **Futur I** (Futuro I)
-### Formación
+#### Formación
 | Persona | werden + Infinitivo |
 |---------|---------------------|
 | ich | werde gehen |
