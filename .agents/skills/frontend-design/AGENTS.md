@@ -33,5 +33,5 @@
 
 ## Restricciones
 - **Package Manager**: pnpm (not npm)
-- No levantes servidores ni hagas `builds`, simplemente avisa, que lo hará un humano.
+- No levantes servidores ni hagas `build`, simplemente avisa, que lo hará un humano.
 - Si una página se está repitiendo mucho, contempla separarlo a un componente Astro.
