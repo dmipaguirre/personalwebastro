@@ -192,6 +192,7 @@ import ButtonColor from "./ButtonColor.astro";
     right: 0;
     z-index: 1000;
     background-color: var(--color-bg);
+    padding-block: 0.5rem;
 
     animation: fadeInDown linear forwards;
     animation-timeline: scroll() !important;
@@ -217,7 +218,7 @@ import ButtonColor from "./ButtonColor.astro";
     width: 100%;
     max-width: 1200px;
     height: 100%;
-    margin: 0.5rem auto;
+    margin: 0 auto;
     font-family: var(--font-title);
   }
 
@@ -293,9 +294,6 @@ import ButtonColor from "./ButtonColor.astro";
 
     .nav-content {
       width: 100%;
-
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
     }
   }
 
@@ -310,7 +308,7 @@ import ButtonColor from "./ButtonColor.astro";
 
     .menu-panel {
       position: absolute;
-      top: 63px;
+      top: 100%;
       left: 0;
       transform: translateX(100%);
       visibility: hidden;
