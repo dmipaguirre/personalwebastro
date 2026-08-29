@@ -1,28 +1,26 @@
 ---
 name: blog-architecture
-description: Architecture and implementation rules for the Astro blog, including typed Markdown content, blog-specific landing pages, shared article rendering, and visual variants.
+description: Architecture and implementation rules for Astro blogs, including typed content, stable routes, listings, article pages, and visual variants.
 ---
 
-# Blog Architecture
+# Astro Blog Architecture
 
-Use this skill when creating, migrating, or modifying blog content, blog indexes, article cards, blog landing pages, or the individual article layout in this project.
+Use these rules when creating, migrating, or modifying blog content, indexes, article cards, blog landing pages, and individual articles.
 
 ## Objective
 
-Keep these concerns separate:
+Keep responsibilities separate:
 
-- Markdown content contains article data and article body content.
-- Blog configuration defines the identity and visual direction of each blog.
-- Data helpers discover, validate, filter, and sort posts.
-- Landing components compose a blog overview.
-- Article cards render one post preview.
-- `BlogLayout.astro` renders one article and its shared metadata.
+- Markdown contains each article’s data and body.
+- Blog configuration defines identity, SEO, and visual direction.
+- Data helpers query, validate, filter, sort, and paginate articles.
+- Landing pages and components compose each blog overview.
+- Article cards render an article preview.
+- The article layout renders the individual content and shared metadata.
 
-Do not solve different blog landing pages by adding a growing set of conditionals to one monolithic component.
+Do not solve different blog landing pages by adding an increasing number of conditionals to a monolithic component.
 
-## Canonical Content Structure
-
-The target structure is:
+## Canonical Structure
 
 ```text
 src/
@@ -32,198 +30,279 @@ src/
 │       │   ├── basic-linux-commands.md
 │       │   └── css-inset-property.md
 │       └── languages/
-│           └── grammar-de.md
+│           └── english-phrasal-verbs.md
+│
 ├── content.config.ts
 ├── data/
-│   ├── blogs.ts
+│   └── blogs.ts
+├── lib/
 │   └── blogPosts.ts
 ├── components/
 │   └── blog/
 │       ├── ArticleCard.astro
 │       ├── BlogDirectory.astro
-│       ├── BlogLanding.astro
 │       ├── BlogGrid.astro
-│       └── BlogEditorial.astro
+│       └── BlogLanding.astro
+├── layouts/
+│   └── BlogLayout.astro
 └── pages/
-    ├── blog/
-    │   ├── index.astro
-    │   └── [blog]/
-    │       └── index.astro
-    └── post/
-        └── [slug].astro
+    └── blog/
+        ├── index.astro
+        ├── [blog]/
+        │   └── index.astro
+        └── [blog]/
+            └── [slug].astro
 ```
 
-Use one canonical content source. Do not maintain equivalent `.md` and `.mdx` copies of the same article. The current articles do not require MDX, so prefer Markdown unless an article genuinely needs embedded Astro components.
+Each folder directly under `src/content/blog/` represents a blog. Its name must match the `slug` configured in `src/data/blogs.ts`.
 
-During migration, `src/data/blogPosts.ts` may temporarily adapt the existing `import.meta.glob` implementation. New code should not duplicate content discovery in page components.
+Do not mix articles from distinct blogs in a flat structure when there are dedicated landing pages for each blog.
+
+## Content Collection
+
+Define collections in `src/content.config.ts` using Astro’s current Content Layer, `glob()`, and a Zod schema.
+
+```ts
+import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
+
+const blog = defineCollection({
+  loader: glob({
+    pattern: '**/*.{md,mdx}',
+    base: './src/content/blog',
+  }),
+  schema: z.object({
+    title: z.string().min(1),
+    description: z.string().min(1),
+    publishDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    draft: z.boolean().default(false),
+    author: z.string().min(1),
+    category: z.string().min(1),
+    tags: z.array(z.string()).default([]),
+    slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).optional(),
+    image: z.object({
+      src: z.string().min(1),
+      alt: z.string().min(1),
+    }).optional(),
+    cardVariant: z.enum(['default', 'wide', 'tall', 'featured']).default('default'),
+  }),
+});
+
+export const collections = { blog };
+```
+
+A typed, validated schema is required. Do not accept dates, numbers, or URLs without validation.
 
 ## Frontmatter Rules
 
-Use a typed content schema. Common fields should have stable types:
+Example:
 
 ```yaml
 ---
 title: "Essential Linux Commands for Beginners"
-description: "A simple and clear guide..."
+description: "A clear guide to getting started with the terminal."
 publishDate: 2026-06-15
+updatedDate: 2026-08-01
 author: "Miguel Paez"
-readingTime: 5
 category: "Linux"
+tags: ["linux", "terminal", "tutorial"]
 image:
-  src: "/images/linux.png"
-  alt: "Linux terminal"
+  src: "/images/blog/linux-terminal.webp"
+  alt: "Linux terminal with commands entered"
+cardVariant: "featured"
 ---
 ```
 
 Rules:
 
-- Use a date type or a validated ISO date, never unchecked date strings.
-- Use a number for `readingTime`, not a numeric string.
-- Keep `image` optional and validate both its source and alternative text.
-- Use `category` for article metadata. Do not introduce overlapping names such as `titleCategory` without a concrete reason.
-- Use the content folder as the canonical blog identity. Avoid duplicating the same identity in frontmatter.
-- Do not use placeholder values such as `"****"` for URLs.
-- Do not put a layout path in frontmatter when rendering through a content collection and a dynamic article route.
-- Keep presentation overrides exceptional. If most articles in a blog share a behavior, put that behavior in the blog configuration instead.
-
-If a one-off card composition is necessary, use a narrow field such as `cardVariant: "default" | "wide" | "tall" | "featured"`. Do not use article metadata to describe the entire landing page design.
+- `publishDate` must be validated as a date.
+- `updatedDate` is optional and should only be used when the article has a meaningful update.
+- `readingTime` should be calculated from content at build time. Do not store it manually unless there is a justified editorial exception.
+- `draft: true` excludes the article from production and public listings.
+- `category` describes the article; do not create overlapping fields such as `titleCategory`.
+- `tags` provide additional classification; they do not replace the category.
+- `slug` is optional. When defined, it is the canonical public URL segment; otherwise, derive it from the file name.
+- Images are optional, but must have meaningful alternative text when present.
+- Do not use placeholder values such as `"****"` or fake URLs.
+- Do not include layout paths in frontmatter.
+- `cardVariant` is an exceptional visual override; do not use article metadata to define an entire blog’s landing-page design.
 
 ## Blog Configuration
 
-Define the editorial and visual identity of each blog in `src/data/blogs.ts`:
+`src/data/blogs.ts` is the source of truth for every public blog.
 
 ```ts
 export const blogs = {
   development: {
-    title: "Development",
-    description: "Web development, CSS, Linux, and useful tools.",
-    variant: "grid",
-    showImages: true,
+    slug: 'development',
+    title: 'Development',
+    description: 'Practical guides on web development, Linux, and tools.',
+    accent: 'var(--color-accent-development)',
+    landingVariant: 'editorial',
   },
   languages: {
-    title: "Languages",
-    description: "Practical language learning guides.",
-    variant: "editorial",
-    showImages: false,
+    slug: 'languages',
+    title: 'Languages',
+    description: 'Resources and explanations for learning languages.',
+    accent: 'var(--color-accent-languages)',
+    landingVariant: 'grid',
   },
 } as const;
 ```
 
-The configuration may control:
+Each configuration must include at least:
 
-- Landing variant.
-- Header and description.
-- Whether cards show images, excerpts, categories, or dates.
-- Featured article behavior.
-- Accent color or scoped CSS variables.
-- Blog navigation and related links.
+- `slug`
+- `title`
+- `description`
+- `landingVariant`
+- Additional SEO metadata when needed
 
-Prefer a small finite set of named variants over arbitrary style values in Markdown. Add a new variant only when the information hierarchy or composition is genuinely different.
+Do not duplicate the blog slug in every article’s frontmatter. Derive it from the article folder.
+
+## Data and Helpers
+
+`src/lib/blogPosts.ts` centralizes content access logic:
+
+- Query the collection.
+- Exclude drafts and future posts.
+- Derive the blog from the entry ID or folder.
+- Sort by descending `publishDate`.
+- Resolve the public slug.
+- Calculate estimated reading time.
+- Apply pagination when a listing grows.
+
+Presentation components must not query content or generate routes by themselves.
 
 ## Component Responsibilities
 
 ### `ArticleCard.astro`
 
-- Present one post preview.
-- Receive a typed post entry and explicit display options.
-- Remain independent of content discovery and route generation.
-- Support optional image, category, excerpt, date, and card variant.
+- Renders a single article preview.
+- Receives a typed entry and explicit display options.
+- Does not query content or generate routes.
+- Supports image, category, excerpt, date, and card variant.
 
 ### `BlogGrid.astro`
 
-- Render a collection of article cards.
-- Own grid-specific layout and responsive behavior.
-- Accept posts and configuration through props.
-
-### Blog-specific landing components
-
-Use separate components such as `BlogGrid.astro`, `BlogEditorial.astro`, or `BlogVisual.astro` when the DOM structure and information hierarchy differ. Keep shared primitives reusable, but do not force every blog into the same grid.
-
-### `BlogLanding.astro`
-
-- Receive one blog configuration and its posts.
-- Select the appropriate landing component from the finite variant registry.
-- Coordinate composition only; do not contain every visual implementation inline.
+- Renders a prepared collection of article cards.
+- Owns grid layout and responsive behavior.
+- Does not filter or sort articles.
 
 ### `BlogDirectory.astro`
 
-- Render the aggregate `/blog` page.
-- Present links and descriptions for the available blogs.
-- Optionally show a small recent-post preview, but do not turn the aggregate page into an accidental duplicate of every blog landing page.
+- Renders the aggregate directory of all blogs.
+- Receives blog configuration and summaries.
+
+### `BlogLanding.astro`
+
+- Composes a blog-specific landing page.
+- Selects small, controlled composition variants.
+- Does not contain content-query logic.
 
 ### `SectionBlog.astro`
 
-Treat the existing `SectionBlog.astro` as legacy code. It currently discovers content, sorts posts, renders cards, and owns all listing styles. Do not expand it to render every blog variant.
+Treat the existing component as legacy code if it mixes content discovery, sorting, article cards, and listing styles.
 
-Prefer one of these outcomes:
+Valid options:
 
-- Rename it to `BlogPreviewSection.astro` and use it only for a limited homepage preview.
-- Convert it into a generic section that receives already-prepared posts and options.
-- Remove it after the new blog landing architecture replaces its usage.
+- Rename it to `BlogPreviewSection.astro` and limit it to a homepage preview.
+- Convert it into a generic component that receives prepared articles.
+- Remove it after the new architecture replaces all its uses.
 
-It must not be the source of truth for content discovery or blog-specific design.
+It must not be the source of truth for content discovery or define every blog’s design.
 
 ### `BlogLayout.astro`
 
-Keep this layout focused on an individual article:
+Keep this layout focused exclusively on the individual article:
 
-- Shared site layout and SEO metadata.
-- Article title, author, date, and reading time.
-- Article body slot.
-- Optional blog-aware class, accent, or breadcrumb.
+- Shared site layout.
+- SEO metadata, canonical URL, and Open Graph metadata.
+- Title, author, dates, and reading time.
+- Breadcrumbs.
+- Article body.
+- Blog-specific class or accent when needed.
 
-Do not place blog listing grids, card selection, or landing-page variants in this layout. Avoid generic global selectors such as `.blog-header` when an article-specific class can prevent collisions. Scope Markdown styles beneath the article content wrapper.
+Do not include grids, card selection, or landing variants. Scope Markdown styles to the article-content wrapper.
 
 ## Routing
 
-Use one canonical route for each responsibility:
+Use one canonical URL per responsibility:
 
-- `/blog`: aggregate directory in `src/pages/blog/index.astro`.
-- `/blog/:blog`: blog-specific landing in `src/pages/blog/[blog]/index.astro`.
-- `/post/:slug`: individual article in `src/pages/post/[slug].astro`.
+- `/blog`: aggregate directory.
+- `/blog/:blog`: blog landing page.
+- `/blog/:blog/:slug`: individual article.
 
-Do not keep both `src/pages/blog.astro` and `src/pages/blog/index.astro` as competing implementations of `/blog`. Prefer `blog/index.astro` because it supports sibling dynamic blog routes.
+Examples:
 
-Preserve existing article slugs during migration whenever possible. If a content collection adds directory segments to entry IDs, map the public slug explicitly instead of changing URLs unintentionally.
-
-## Styling Variants
-
-Use semantic classes and scoped blog modifiers:
-
-```html
-<main class="blog-landing blog-landing--editorial" data-blog="languages">
+```text
+/blog
+/blog/development
+/blog/development/basic-linux-commands
+/blog/languages/english-phrasal-verbs
 ```
 
-Use CSS variables or modifier classes for controlled differences. Do not mutate global theme tokens for one blog. Keep each landing component responsible for its own layout, and ensure every variant works on desktop and mobile.
+Do not maintain both `src/pages/blog.astro` and `src/pages/blog/index.astro` as competing implementations of `/blog`.
 
-Every variant must provide:
+In static output mode, dynamic routes must declare `getStaticPaths()`.
 
-- Visible keyboard focus states.
-- Readable contrast in light and dark themes.
-- Responsive behavior without relying on dense desktop-only grids.
-- Reduced-motion behavior for animated decoration.
-- Meaningful alternative text when images are present.
+Preserve existing URLs during a migration. If the previous structure uses `/post/:slug`, create redirects to the new canonical URL before removing legacy routes.
+
+## SEO and Publishing
+
+Every article and landing page should include:
+
+- Canonical URL.
+- Open Graph metadata.
+- Unique title and description.
+- Sitemap.
+- RSS feed.
+- Exclusion of drafts and future posts.
+- A 404 page or equivalent response for missing blogs and slugs.
+
+Do not index draft pages or duplicate URLs.
+
+## Visual Variants and Accessibility
+
+Use semantic classes and scoped modifiers:
+
+```html
+<main class="blog-landing blog-landing--editorial" data-blog="development">
+```
+
+Rules:
+
+- Use CSS variables or modifier classes for controlled differences.
+- Do not alter global theme tokens for one blog.
+- Every variant must work on desktop and mobile.
+- Include visible keyboard focus states.
+- Maintain readable contrast in light and dark themes.
+- Respect `prefers-reduced-motion`.
+- Use meaningful image alternative text.
+- Avoid dense grids that only work on large screens.
 
 ## Migration Sequence
 
-When migrating the current implementation:
+1. Inventory existing content, public URLs, and duplicates.
+2. Choose one canonical article source.
+3. Define the typed collection in `src/content.config.ts`.
+4. Organize articles by blog folder.
+5. Create `blogs.ts` with public blogs and their variants.
+6. Centralize querying, filtering, sorting, and slug resolution in `blogPosts.ts`.
+7. Extract the reusable card into `ArticleCard.astro`.
+8. Build `/blog` as the aggregate directory.
+9. Build `/blog/[blog]` as the blog-specific landing page.
+10. Build `/blog/[blog]/[slug]` using `BlogLayout.astro`.
+11. Create and verify redirects from legacy routes.
+12. Add sitemap and RSS.
+13. Remove legacy components only after all uses have been migrated.
 
-1. Choose one canonical content source and remove duplicate article copies only after verifying the chosen source.
-2. Introduce the typed post model and centralize discovery in `blogPosts.ts`.
-3. Add blog grouping through canonical content folders.
-4. Create `blogs.ts` with a small set of landing variants.
-5. Extract the current card into `ArticleCard.astro`.
-6. Build `/blog` as the aggregate directory.
-7. Build `/blog/[blog]` with a landing component selected from configuration.
-8. Implement `/post/[slug]` with static paths and the shared `BlogLayout.astro`.
-9. Preserve legacy article redirects and URLs.
-10. Remove the legacy `SectionBlog.astro` only after all usages are migrated.
-
-Do not combine content relocation, visual redesign, and URL changes without checking each resulting route independently.
+Do not combine content relocation, visual redesign, and URL changes without verifying every resulting route.
 
 ## Project Constraints
 
-- Use Astro and TypeScript strict mode.
+- Use Astro and TypeScript in strict mode.
 - Use `pnpm`, never `npm`, for project commands.
 - Use plain CSS and the existing CSS variable design system unless a scoped blog variant requires an extension.
 - Use `apply_patch` for manual edits.
