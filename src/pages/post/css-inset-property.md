@@ -9,6 +9,7 @@ image:
   alt: "Miguel Páez web development notes."
 icon: "pending"
 readingTime: '5'
+titleCategory: "Css"
 ---
 
 The inset keyword is one of the most powerful and modern CSS shortcuts. It can be confusing because it functions both as a value function and a shorthand property, leading to very different effects.
@@ -20,6 +21,7 @@ In this context, `inset()` is a geometric function that defines a rectangle. Its
 | Property  | Function                       | Primary Use                                |
 |-----------|--------------------------------|--------------------------------------------|
 | `clip-path` | `inset(top right bottom left)` | Creates a rectangular mask over the element. Everything outside that rectangle becomes invisible. |
+
 **Example:**
 
 ```css
