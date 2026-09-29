@@ -47,7 +47,7 @@ import SocialIcon from "./icons/SocialIcon.astro";
     min-width: 0;
   }
   .hero-text .hero-name {
-    font-size: 2.5rem;
+    font-size: clamp(1.4rem, 1.5vw + 1rem, 1.9rem);
     font-family: var(--font-text);
     line-height: 1.2;
     margin: 1rem 0;
@@ -56,26 +56,28 @@ import SocialIcon from "./icons/SocialIcon.astro";
   .hero-text h1 {
     font-family: var(--font-title);
     color: var(--color-text);
-    font-size: 5.6rem;
-    line-height: 1.2;
+    font-size: var(--fs-display);
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-tight);
     margin: 1rem 0;
-    font-weight: 100;
+    font-weight: 550;
   }
 
   .hero-skill {
     font-family: var(--font-style);
-    font-weight: 100;
-    font-size: 7rem;
-    line-height: 0.7;
+    font-weight: 400;
+    font-size: clamp(3.2rem, 6vw + 1rem, 5.5rem);
+    line-height: 0.95;
     color: var(--color-primary);
     display: block;
+    margin-top: 0.4rem;
   }
 
   .hero-text p {
     font-family: var(--font-text);
     color: var(--color-text);
-    font-size: 2.6rem;
-    line-height: 1;
+    font-size: clamp(1.25rem, 1.2vw + 1rem, 1.6rem);
+    line-height: 1.45;
     margin: 1rem 0;
   }
 
@@ -139,13 +141,13 @@ import SocialIcon from "./icons/SocialIcon.astro";
     }
 
     .hero-text h1 {
-      font-size: 3.5rem;
+      font-size: var(--fs-h1);
     }
     .hero-text p {
-      font-size: 1.6rem;
+      font-size: 1.25rem;
     }
     .hero-skill {
-      font-size: 5rem;
+      font-size: clamp(2.8rem, 12vw, 4rem);
       display: block;
     }
   }

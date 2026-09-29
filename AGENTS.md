@@ -35,3 +35,20 @@
 - **Package Manager**: pnpm (not npm)
 - No levantes servidores ni hagas `build`, simplemente avisa, que lo hará un humano.
 - Si una página se está repitiendo mucho, contempla separarlo a un componente Astro.
+- No levantes servidores sin previa autorización
+
+## Tareas pendientes
+
+[] Reestructurar los componentes relacionados con la seción de blog "SectionBlog"
+[] Construir un componente que será la landing que agrupará las categorías de los blog (en este caso, tecnología y lenguajes). Sería BlogDirectory.astro:
+    BlogLanding
+    ├── título del tema
+    ├── descripción del tema
+    ├── título de sección: “Últimos artículos”
+    └── BlogGrid
+[] Completar el componente ArticleCard.astro que pintará un único cuadro de un artículo
+[] BlogGrid.astro coloca muchas tarjetas en cuadrícula. Su única resposabilidad es el diseño de la cuadrícula
+    logGrid
+    ├── ArticleCard: Terminal Linux
+    ├── ArticleCard: CSS Grid
+    └── ArticleCard: Flexbox

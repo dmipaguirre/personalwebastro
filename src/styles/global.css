@@ -1,41 +1,59 @@
 @font-face {
-  font-family: "BebasNeue";
-  src: url("/fonts/BebasNeue-Regular.woff2") format("woff2"),
-    url("/fonts/BebasNeue-Regular.woff") format("woff"),
-    url("/fonts/BebasNeue-Regular.ttf") format("truetype");
-  font-weight: normal;
+  font-family: "Jost";
+  src: url("/fonts/Jost.woff2") format("woff2");
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Instrument Serif";
-  src: url("/fonts/InstrumentSerif-Regular.woff2") format("woff2"),
-    url("/fonts/InstrumentSerif-Regular.woff") format("woff"),
-    url("/fonts/InstrumentSerif-Regular.ttf") format("truetype");
-  font-weight: normal;
+  src: url("/fonts/InstrumentSerif-Regular.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Instrument Serif";
-  src: url("/fonts/InstrumentSerif-Italic.woff2") format("woff2"),
-    url("/fonts/InstrumentSerif-Italic.woff") format("woff"),
-    url("/fonts/InstrumentSerif-Italic.ttf") format("truetype");
-  font-weight: normal;
+  src: url("/fonts/InstrumentSerif-Italic.woff2") format("woff2");
+  font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Allison-Regular";
-  src: url("/fonts/Allison-Regular.woff2") format("woff2"),
-    url("/fonts/Allison-Regular.woff") format("woff"),
-    url("/fonts/Allison-Regular.ttf") format("truetype");
-  font-weight: normal;
+  src: url("/fonts/Allison-Regular.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
+}
+
+@font-face {
+  font-family: "Fire Code";
+  src: url("/fonts/FireCode.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jost Fallback";
+  src: local("Arial");
+  size-adjust: 97%;
+  ascent-override: 100%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Instrument Serif Fallback";
+  src: local("Georgia");
+  size-adjust: 90%;
+  ascent-override: 105%;
+  descent-override: 30%;
+  line-gap-override: 0%;
 }
 
 :root {
@@ -44,9 +62,25 @@
   --color-bg: #f1ede9;
   --color-bgsecondary: #e6e5e4;
   --width-container: 100%;
-  --font-title: "BebasNeue", system-ui, sans-serif;
-  --font-text: "Instrument Serif", Georgia, serif;
+  --font-title: "Jost", "Jost Fallback", system-ui, sans-serif;
+  --font-text: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
   --font-style: "Allison-Regular", cursive;
+  --font-code: "Fire Code", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  /* --- Typographic scale (titles, --font-title) --- */
+  --fs-display: clamp(2.9rem, 6vw + 1rem, 5.25rem);
+  --fs-h1: clamp(2.4rem, 4vw + 1rem, 3.75rem);
+  --fs-h2: clamp(1.8rem, 2.5vw + 1rem, 2.5rem);
+  --fs-h3: clamp(1.35rem, 1.5vw + 1rem, 1.75rem);
+  --fs-h4: clamp(1.05rem, 1vw + 0.8rem, 1.25rem);
+  --fs-eyebrow: 0.82rem;
+
+  --leading-display: 1.02;
+  --leading-tight: 1.08;
+  --leading-snug: 1.2;
+
+  --tracking-tight: -0.015em;
+  --tracking-wide: 0.09em;
 }
 
 .darkmode {
@@ -60,6 +94,40 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* --- Base headings: single source of truth for --font-title --- */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-title);
+  color: var(--color-text);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: var(--fs-h2);
+  font-weight: 650;
+}
+
+h3 {
+  font-size: var(--fs-h3);
+  font-weight: 600;
+}
+
+h4 {
+  font-size: var(--fs-h4);
+  font-weight: 600;
+  line-height: var(--leading-snug);
 }
 body {
   background-color: var(--color-bg);
