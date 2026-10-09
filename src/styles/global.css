@@ -132,9 +132,14 @@ h4 {
 body {
   background-color: var(--color-bg);
   font-family: var(--font-text);
+  letter-spacing: var(--tracking-tight);
 }
 body.no-scroll {
   overflow: hidden;
+}
+
+code, pre {
+  letter-spacing: normal;
 }
 a:focus-visible,
 button:focus-visible {

@@ -15,7 +15,7 @@ titleCategory: "Idiomas"
 
 Esta guía enseña de forma clara y estructurada los seis tiempos verbales principales del alemán, sus auxiliares y sus formas de uso.
 
-## 1. Los 6 Tiempos Verbales Principales
+## 1. Los 6 tiempos verbales principales
 
 ### 1.1 **Präsens** (presente)
 #### Formación
