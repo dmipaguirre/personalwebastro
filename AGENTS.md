@@ -14,6 +14,7 @@
 - Blog article: `src/pages/post/[slug].astro` (dynamic `getStaticPaths`, wraps MDX content with `BlogLayout`) → route `/post/:slug`
 - Article preview: `src/components/blog/ArticleCard.astro` (presentational only, no styles; receives `post: PostEntry`)
 - Article layout: `src/layouts/BlogLayout.astro` (full post rendering, SEO, meta)
+- SEO component: `src/components/Seo.astro` (handles meta tags, Open Graph, Twitter Cards, and canonical URLs using `Astro.site`)
 - Legacy: `src/components/SectionBlog.astro` retained as backup (no longer used by `/blog`)
 - Components: `src/components/*.astro`
 - Layouts: `src/layouts/Layout.astro`, `BlogLayout.astro`
