@@ -1,13 +1,11 @@
 ---
 import ButtonColor from "./ButtonColor.astro";
+import Logo from "./Logo.astro";
 ---
 
 <nav class="navbar" id="navbar">
   <div class="nav-content">
-    <div class="logo-box">
-      <a href="/" class="logo">MP</a>
-    </div>
-
+    <Logo />
     <button
       class="hamburger"
       type="button"
@@ -26,8 +24,8 @@ import ButtonColor from "./ButtonColor.astro";
           <a href="/about/" class="menu-link link-click link-hover">
             <div class="link-content">
               <div class="link-text">
-              <span>About me</span>
-              <span class="duplicate" aria-hidden="true">About me</span>
+                <span>About me</span>
+                <span class="duplicate" aria-hidden="true">About me</span>
               </div>
             </div>
           </a>
@@ -46,8 +44,8 @@ import ButtonColor from "./ButtonColor.astro";
           <a href="/projects/" class="menu-link link-click link-hover">
             <div class="link-content">
               <div class="link-text">
-              <span>Projects</span>
-              <span class="duplicate" aria-hidden="true">Projects</span>
+                <span>Projects</span>
+                <span class="duplicate" aria-hidden="true">Projects</span>
               </div>
             </div>
           </a>

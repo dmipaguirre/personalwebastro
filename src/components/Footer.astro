@@ -1,14 +1,12 @@
 ---
-
+import Logo from "./Logo.astro";
 ---
 
 <footer class="footer">
   <div class="footer-glow"></div>
   <div class="footer-content">
     <div class="footer-brand">
-      <a href="/" class="footer-logo">
-        <span class="logo-text">MP</span>
-      </a>
+      <Logo />
       <p class="footer-tagline">
         Creating digital experiences with passion and precision.
       </p>
@@ -21,28 +19,38 @@
           <li>
             <a href="/" class="link-click link-hover"
               ><span class="link-text"
-                ><span>Home</span><span class="duplicate" aria-hidden="true">Home</span></span
-              ></a>
+                ><span>Home</span><span class="duplicate" aria-hidden="true"
+                  >Home</span
+                ></span
+              ></a
+            >
           </li>
           <li>
             <a href="/about/" class="link-click link-hover"
               ><span class="link-text"
-                ><span>About me</span><span class="duplicate" aria-hidden="true">About me</span
+                ><span>About me</span><span class="duplicate" aria-hidden="true"
+                  >About me</span
                 ></span
-              ></a>
+              ></a
+            >
           </li>
           <li>
             <a href="/blog/" class="link-click link-hover"
               ><span class="link-text"
-                ><span>Blog</span><span class="duplicate" aria-hidden="true">Blog</span></span
-              ></a>
+                ><span>Blog</span><span class="duplicate" aria-hidden="true"
+                  >Blog</span
+                ></span
+              ></a
+            >
           </li>
           <li>
             <a href="/projects/" class="link-click link-hover"
               ><span class="link-text"
-                ><span>Projects</span><span class="duplicate" aria-hidden="true">Projects</span
+                ><span>Projects</span><span class="duplicate" aria-hidden="true"
+                  >Projects</span
                 ></span
-              ></a>
+              ></a
+            >
           </li>
         </ul>
       </div>
@@ -67,7 +75,9 @@
                 ></path></svg
               >
               <span class="link-text"
-                ><span>GitHub</span><span class="duplicate" aria-hidden="true">GitHub</span></span
+                ><span>GitHub</span><span class="duplicate" aria-hidden="true"
+                  >GitHub</span
+                ></span
               >
             </a>
           </li>
@@ -89,7 +99,8 @@
                 ></path></svg
               >
               <span class="link-text"
-                ><span>LinkedIn</span><span class="duplicate" aria-hidden="true">LinkedIn</span
+                ><span>LinkedIn</span><span class="duplicate" aria-hidden="true"
+                  >LinkedIn</span
                 ></span
               >
             </a>
@@ -161,32 +172,13 @@
     max-width: 280px;
   }
 
-  .footer-logo {
-    display: inline-block;
-    text-decoration: none;
-    margin-bottom: 1.5rem;
-  }
-
-  .footer-logo .logo-text {
-    font-family: var(--font-title);
-    font-size: 1.6rem;
-    font-weight: 700;
-    background-color: var(--color-primary);
-    color: var(--color-bg);
-    padding: 0.35rem 0.75rem;
-    border-radius: 0.5rem;
-    transform: rotate(-3deg);
-    display: inline-block;
-    line-height: 1;
-    letter-spacing: var(--tracking-tight);
-  }
-
   .footer-tagline {
     font-family: var(--font-text);
     color: var(--color-text);
     opacity: 0.65;
     font-size: 1rem;
     line-height: 1.7;
+    padding-top: 2rem;
   }
 
   .footer-links {
