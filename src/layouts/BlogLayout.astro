@@ -86,7 +86,7 @@ const publishedDateText = new Intl.DateTimeFormat("en-US", {
     padding: 1.2rem 1.3rem;
     font-family: var(--font-text);
     color: var(--color-text);
-    line-height: 2;
+    line-height: 1.6;
   }
 
   .blog-header {
@@ -105,11 +105,13 @@ const publishedDateText = new Intl.DateTimeFormat("en-US", {
   .blog-meta {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
     color: var(--color-text);
-    opacity: 0.8;
-    font-size: 1.1rem;
-    font-family: var(--font-text);
+    opacity: 0.6;
+    font-size: 1rem;
+    font-family: var(--font-title);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
   }
 
   .meta-item {
@@ -135,14 +137,27 @@ const publishedDateText = new Intl.DateTimeFormat("en-US", {
   }
 
   .container-slot {
-    max-width: 800px;
+    max-width: 720px;
     margin: 0 auto;
 
     & p {
       font-size: 1.4rem;
-      line-height: 1.5;
+      line-height: 1.7;
       text-align: left;
-      margin: 1rem 0;
+      margin: 1.5rem 0;
+      opacity: 0.9;
+    }
+
+    & li {
+      font-size: 1.4rem;
+      margin-left: 20px;
+      margin-bottom: 0.5rem;
+    }
+
+    & strong {
+      font-weight: 600;
+      opacity: 1;
+      color: var(--color-text);
     }
 
     h3 {
@@ -160,10 +175,6 @@ const publishedDateText = new Intl.DateTimeFormat("en-US", {
       font-size: var(--fs-h4);
       line-height: var(--leading-snug);
       text-align: left;
-  }
-
-    & li {
-      margin-left: 20px;
     }
 
     & code {
