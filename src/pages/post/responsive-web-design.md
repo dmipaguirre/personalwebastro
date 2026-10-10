@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/BlogLayout.astro
-title: 'A Guide to Responsive Web Design'
+title: 'A guide to responsive Web design'
 publishDate: '2025-11-19'
 description: 'Learn how Flexbox and CSS Grid adapt page layouts across desktop, tablet, and mobile screens.'
 author: 'Miguel Páez'
@@ -9,9 +9,8 @@ image:
   alt: "Miguel Páez web development notes."
 icon: "layout"
 readingTime: '4'
-titleCategory: "CSS Hamburger"
+titleCategory: "CSS Responsive"
 ---
-
 
 As tablets, smartphones, and laptops have become ubiquitous, modern websites must adapt to screens with different sizes and resolutions.
 
@@ -26,7 +25,8 @@ Flexbox is designed for one-dimensional layouts arranged in a row or column. CSS
 CSS structure:
 
 
-```astro
+```css
+
 * {
   box-sizing: border-box;
 }
@@ -62,7 +62,7 @@ body {
 ```
 HTML structure:
 
-```astro
+```html
 <div class="left">
   <p>Left Menu</p>
 </div>
@@ -79,7 +79,7 @@ HTML structure:
 
 CSS structure:
 
-```astro
+```css
 * {
   box-sizing: border-box;
 }
@@ -112,7 +112,7 @@ body {
 ```
 HTML structure:
 
-```astro
+```html
 <div class="left">
   <p>Left Menu</p>
 </div>
