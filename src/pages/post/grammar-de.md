@@ -18,6 +18,14 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
 ## 1. Los 6 tiempos verbales principales
 
 ### 1.1 **Präsens** (presente)
+
+* **Función:** Acción presente, habitual o futuro cercano (acompañado de un marcador temporal como *nächsten Samstag*).
+* **Estructura:** `Sujeto + Verbo + Complementos`
+* **Conjugación regular (-en):** ich (-e), du (-st), er/sie/es (-t), wir (-en), ihr (-t), sie/Sie (-en).
+* **Ejemplos:**
+  * *Ich lerne Deutsch.* ("Estoy aprendiendo / aprendo alemán". Para el gerundio continuo se puede usar *gerade*).
+  * *Er arbeitet jeden Tag.* ("Él trabaja todos los días").
+  
 #### Formación:
 | Persona | Terminación regular (-en) | Verbos irregulares |
 |---------|---------------------------|--------------------|
@@ -28,14 +36,14 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
 | ihr | -t | ihr geht, ihr habt |
 | sie/Sie | -en | sie gehen, Sie haben |
 
-* **Función:** Acción presente, habitual o futuro cercano (acompañado de un marcador temporal como *nächsten Samstag*).
-* **Estructura:** `Sujeto + Verbo + Complementos`
-* **Conjugación regular (-en):** ich (-e), du (-st), er/sie/es (-t), wir (-en), ihr (-t), sie/Sie (-en).
-* **Ejemplos:**
-  * *Ich lerne Deutsch.* ("Estoy aprendiendo / aprendo alemán". Para el gerundio continuo se puede usar *gerade*).
-  * *Er arbeitet jeden Tag.* ("Él trabaja todos los días").
-
 ### 1.2 **Perfekt** (pretérito perfecto)
+
+* **Función:** Principalmente para hablar de acciones concluidas en el **habla coloquial**. Sustituye casi por completo al *Präteritum* en la comunicación diaria (excepto con verbos modales, *haben* y *sein*).
+* **Estructura:** `Sujeto + haben/sein (en presente) + Participio II`
+* **Ejemplos:**
+  * *Ich habe ein Buch gelesen.* ("He leído un libro").
+  * *Wir sind nach Berlin gefahren.* ("Hemos viajado a Berlín").
+
 #### Formación:
 | Persona | haben/sein + Partizip II |
 |---------|--------------------------|
@@ -46,13 +54,14 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
 | ihr | habt gearbeitet / seid gegangen |
 | sie/Sie | haben gearbeitet / sind gegangen |
 
-* **Función:** Principalmente para hablar de acciones concluidas en el **habla coloquial**. Sustituye casi por completo al *Präteritum* en la comunicación diaria (excepto con verbos modales, *haben* y *sein*).
-* **Estructura:** `Sujeto + haben/sein (en presente) + Participio II`
-* **Ejemplos:**
-  * *Ich habe ein Buch gelesen.* ("He leído un libro").
-  * *Wir sind nach Berlin gefahren.* ("Hemos viajado a Berlín").
-
 ### 1.3 **Präteritum** (pretérito indefinido / imperfecto)
+
+* **Función:** Textos escritos, narraciones, cuentos y noticias. En el habla cotidiana solo se usa de forma habitual con *sein*, *haben* y los verbos modales.
+* **Estructura:** `Sujeto + Pretérito-raíz (*-te, -test, -te, -ten, -tet, -ten*)`
+* **Ejemplos:**
+  * *Er ging nach Hause.* ("Él fue a casa" - escrito).
+  * *Ich war gestern im Kino.* ("Fui al cine ayer" - *sein* en coloquial).
+
 #### Formación:
 | Persona | Terminación regular (-en) | Verbos fuertes/irregulares |
 |---------|---------------------------|----------------------------|
@@ -63,13 +72,13 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
 | ihr | -tet | ihr arbeitetet |
 | sie/Sie | -ten | sie arbeiteten |
 
-* **Función:** Textos escritos, narraciones, cuentos y noticias. En el habla cotidiana solo se usa de forma habitual con *sein*, *haben* y los verbos modales.
-* **Estructura:** `Sujeto + Pretérito-raíz (*-te, -test, -te, -ten, -tet, -ten*)`
-* **Ejemplos:**
-  * *Er ging nach Hause.* ("Él fue a casa" - escrito).
-  * *Ich war gestern im Kino.* ("Fui al cine ayer" - *sein* en coloquial).
-
 ### 1.4 **Plusquamperfekt** (pretérito pluscuamperfecto)
+
+* **Función:** Acción completada antes de otra acción en el pasado ("el pasado del pasado").
+* **Estructura:** `Sujeto + haben/sein (en Präteritum) + Participio II`
+* **Ejemplo:**
+  * *Als ich ankam, hatte er schon gegessen.* ("Cuando llegué, él ya había comido").
+
 #### Formación:
 | Persona | haber/sein en Pretérito + Partizip II |
 |---------|---------------------------------------|
@@ -80,12 +89,14 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
 | ihr | hattet gearbeitet / wart gegangen |
 | sie/Sie | hatten gearbeitet / waren gegangen |
 
-* **Función:** Acción completada antes de otra acción en el pasado ("el pasado del pasado").
-* **Estructura:** `Sujeto + haben/sein (en Präteritum) + Participio II`
-* **Ejemplo:**
-  * *Als ich ankam, hatte er schon gegessen.* ("Cuando llegué, él ya había comido").
-
 ### 1.5 **Futur I** (Futuro I)
+
+* **Función:** Acciones futuras, promesas, predicciones o intenciones.
+* **Estructura:** `Sujeto + werden (presente) + Infinitivo (al final de la frase)`
+* **Ejemplos:**
+  * *Ich werde Deutsch lernen.* ("Voy a aprender alemán").
+  * *Er wird morgen kommen.* ("Él vendrá mañana").
+
 #### Formación:
 | Persona | werden + Infinitivo |
 |---------|---------------------|
@@ -95,11 +106,6 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
 | wir | werden gehen |
 | ihr | werdet gehen |
 | sie/Sie | werden gehen |
-* **Función:** Acciones futuras, promesas, predicciones o intenciones.
-* **Estructura:** `Sujeto + werden (presente) + Infinitivo (al final de la frase)`
-* **Ejemplos:**
-  * *Ich werde Deutsch lernen.* ("Voy a aprender alemán").
-  * *Er wird morgen kommen.* ("Él vendrá mañana").
 
 ### 1.6 **Futur II** (Futuro II)
 * **Función:** Acciones que se habrán completado en un momento determinado del futuro. *(Muy poco común en el habla diaria)*.
