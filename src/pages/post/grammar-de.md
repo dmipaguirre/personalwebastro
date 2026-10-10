@@ -18,7 +18,7 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
 ## 1. Los 6 tiempos verbales principales
 
 ### 1.1 **Präsens** (presente)
-#### Formación
+#### Formación:
 | Persona | Terminación regular (-en) | Verbos irregulares |
 |---------|---------------------------|--------------------|
 | ich | -e | ich gehe, ich habe |
@@ -36,7 +36,7 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
   * *Er arbeitet jeden Tag.* ("Él trabaja todos los días").
 
 ### 1.2 **Perfekt** (pretérito perfecto)
-#### Formación
+#### Formación:
 | Persona | haben/sein + Partizip II |
 |---------|--------------------------|
 | ich | habe gearbeitet / bin gegangen |
@@ -53,7 +53,7 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
   * *Wir sind nach Berlin gefahren.* ("Hemos viajado a Berlín").
 
 ### 1.3 **Präteritum** (pretérito indefinido / imperfecto)
-#### Formación
+#### Formación:
 | Persona | Terminación regular (-en) | Verbos fuertes/irregulares |
 |---------|---------------------------|----------------------------|
 | ich | -te / -te | ich arbeitete / ich ging |
@@ -70,7 +70,7 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
   * *Ich war gestern im Kino.* ("Fui al cine ayer" - *sein* en coloquial).
 
 ### 1.4 **Plusquamperfekt** (pretérito pluscuamperfecto)
-#### Formación
+#### Formación:
 | Persona | haber/sein en Pretérito + Partizip II |
 |---------|---------------------------------------|
 | ich | hatte gearbeitet / war gegangen |
@@ -86,7 +86,7 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
   * *Als ich ankam, hatte er schon gegessen.* ("Cuando llegué, él ya había comido").
 
 ### 1.5 **Futur I** (Futuro I)
-#### Formación
+#### Formación:
 | Persona | werden + Infinitivo |
 |---------|---------------------|
 | ich | werde gehen |
@@ -107,7 +107,7 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
 * **Ejemplo:**
   * *Bis 2030 werde ich Deutsch fließend gesprochen haben.* ("Para 2030 habré hablado alemán con fluidez").
 
-## 2. Resumen Comparativo de los Tiempos
+## 2. Resumen oomparativo de los tiempos
 
 | Tiempo | Función Principal | Uso Frecuente |
 | :--- | :--- | :--- |
@@ -118,7 +118,7 @@ Esta guía enseña de forma clara y estructurada los seis tiempos verbales princ
 | **Futur I** | Futuro y predicciones | Común en planificación |
 | **Futur II** | Acción completada en el futuro | Muy raro en el día a día |
 
-## 3. Claves Auxiliares: *Haben vs. Sein*
+## 3. Claves auxiliares: *Haben vs. Sein*
 
 Para formar el *Perfekt* y el *Plusquamperfekt*, debes elegir el auxiliar correcto:
 
@@ -133,7 +133,7 @@ Para formar el *Perfekt* y el *Plusquamperfekt*, debes elegir el auxiliar correc
   * Verbos de estado sin cambio de lugar.
   * *Ejemplo:* Ich **habe** ein Buch gelesen.
 
-## 4. Conjugación de Verbos Irregulares Clave
+## 4. Conjugación de verbos irregulares clave
 
 | Verbo | Präsens (ich) | Präteritum (ich) | Perfekt (ich) |
 | :--- | :--- | :--- | :--- |
@@ -145,7 +145,7 @@ Para formar el *Perfekt* y el *Plusquamperfekt*, debes elegir el auxiliar correc
 
 ---
 
-## 5. Formas No Personales
+## 5. Formas no personales
 
 * **Infinitivo:** Forma base del verbo. *(Ej. Lernen ist wichtig).*
 * **Partizip I:** Participio presente (`raíz + -end`), funciona como adjetivo. *(Ej. Der schlafende Hund).*

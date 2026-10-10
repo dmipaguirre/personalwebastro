@@ -90,7 +90,7 @@ const publishedDateText = new Intl.DateTimeFormat("en-US", {
   }
 
   .blog-header {
-    margin-bottom: 2rem;
+    margin-top: 1rem;
   }
 
   .blog-content h1 {
@@ -98,7 +98,6 @@ const publishedDateText = new Intl.DateTimeFormat("en-US", {
     font-size: var(--fs-h1);
     color: var(--color-text);
     line-height: var(--leading-tight);
-    letter-spacing: var(--tracking-tight);
     font-weight: 700;
   }
 
@@ -108,10 +107,10 @@ const publishedDateText = new Intl.DateTimeFormat("en-US", {
     gap: 1.5rem;
     color: var(--color-text);
     opacity: 0.6;
-    font-size: 1rem;
+    font-size: var(--fs-sm);
     font-family: var(--font-title);
     text-transform: uppercase;
-    letter-spacing: var(--tracking-wide);
+    margin: 1rem 0 1rem 0;
   }
 
   .meta-item {
@@ -132,7 +131,6 @@ const publishedDateText = new Intl.DateTimeFormat("en-US", {
     font-weight: 650;
     font-size: var(--fs-h2);
     line-height: var(--leading-tight);
-    letter-spacing: var(--tracking-tight);
     margin: 3rem 0 1.5rem 0;
   }
 
@@ -141,7 +139,7 @@ const publishedDateText = new Intl.DateTimeFormat("en-US", {
     margin: 0 auto;
 
     & p {
-      font-size: 1.4rem;
+      font-size: var(--fs-xl);
       line-height: 1.7;
       text-align: left;
       margin: 1.5rem 0;
@@ -149,7 +147,7 @@ const publishedDateText = new Intl.DateTimeFormat("en-US", {
     }
 
     & li {
-      font-size: 1.4rem;
+      font-size: var(--fs-lg);
       margin-left: 20px;
       margin-bottom: 0.5rem;
     }
@@ -165,7 +163,6 @@ const publishedDateText = new Intl.DateTimeFormat("en-US", {
       font-weight: 600;
       font-size: var(--fs-h3);
       line-height: var(--leading-snug);
-      letter-spacing: var(--tracking-tight);
       margin-block: 1rem;
     }
 
@@ -218,7 +215,7 @@ const publishedDateText = new Intl.DateTimeFormat("en-US", {
       width: 90%;
       border-collapse: collapse;
       margin: 1.5rem auto;
-      font-size: 1.2rem;
+      font-size: var(--fs-lg);
     }
 
     & th,
@@ -231,8 +228,8 @@ const publishedDateText = new Intl.DateTimeFormat("en-US", {
     & th {
       background-color: var(--color-bgsecondary);
       font-family: var(--font-title);
-      font-weight: 300;
-      font-size: 1.1rem;
+      font-weight: 700;
+      font-size: var(--fs-lg);
     }
 
     & tr:nth-child(even) {
@@ -259,7 +256,7 @@ const publishedDateText = new Intl.DateTimeFormat("en-US", {
       width: 100%;
 
       & p {
-        font-size: 1.4rem;
+        font-size: var(--fs-xl);
       }
       table {
       width: 100%;

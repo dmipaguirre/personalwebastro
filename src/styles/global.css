@@ -7,18 +7,10 @@
 }
 
 @font-face {
-  font-family: "Instrument Serif";
-  src: url("/fonts/InstrumentSerif-Regular.woff2") format("woff2");
+  font-family: "Inter";
+  src: url("/fonts/Inter.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Instrument Serif";
-  src: url("/fonts/InstrumentSerif-Italic.woff2") format("woff2");
-  font-weight: 400;
-  font-style: italic;
   font-display: swap;
 }
 
@@ -47,15 +39,6 @@
   line-gap-override: 0%;
 }
 
-@font-face {
-  font-family: "Instrument Serif Fallback";
-  src: local("Georgia");
-  size-adjust: 90%;
-  ascent-override: 105%;
-  descent-override: 30%;
-  line-gap-override: 0%;
-}
-
 :root {
   --color-primary: #8A4600;
   --color-text: #0e0d0d;
@@ -63,7 +46,7 @@
   --color-bgsecondary: #e6e5e4;
   --width-container: 100%;
   --font-title: "Jost", "Jost Fallback", system-ui, sans-serif;
-  --font-text: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
+  --font-text: "Inter", system-ui, -apple-system, sans-serif;
   --font-style: "Allison-Regular", cursive;
   --font-code: "Fira Code", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 
@@ -72,8 +55,14 @@
   --fs-h1: clamp(2.4rem, 4vw + 1rem, 3.75rem);
   --fs-h2: clamp(1.8rem, 2.5vw + 1rem, 2.5rem);
   --fs-h3: clamp(1.35rem, 1.5vw + 1rem, 1.75rem);
-  --fs-h4: clamp(1.05rem, 1vw + 0.8rem, 1.25rem);
+  --fs-h4: clamp(1.20rem, 1vw + 0.8rem, 1.50rem);
   --fs-eyebrow: 0.82rem;
+
+  --fs-sm: 0.8rem;
+  --fs-base: 1rem;
+  --fs-md: 1.1rem;
+  --fs-lg: 1.2rem;
+  --fs-xl: 1.4rem;
 
   --leading-display: 1.02;
   --leading-tight: 1.08;
