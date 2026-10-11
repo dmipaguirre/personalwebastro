@@ -1,0 +1,144 @@
+---
+import BlogGrid from "./BlogGrid.astro";
+
+interface PostFrontmatter {
+  title: string;
+  description: string;
+  author: string;
+  publishDate: string;
+  readingTime: string;
+  sizeLayout?: "wide" | "tall" | "featured";
+  titleCategory?: string;
+  image?: {
+    url: string;
+    alt: string;
+  };
+}
+
+type PostEntry = {
+  frontmatter: PostFrontmatter;
+  url: string;
+};
+
+const postFiles = import.meta.glob<{
+  frontmatter: PostFrontmatter;
+  url: string;
+}>("../../pages/post/**/*.md", { eager: true });
+
+const allPosts = Object.values(postFiles)
+  .filter((post) => post?.frontmatter)
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.publishDate).getTime() -
+      new Date(a.frontmatter.publishDate).getTime(),
+  );
+
+const categoryConfig: Record<string, { title: string; description: string }> = {
+  tecnologia: {
+    title: "Tecnología",
+    description: "Artículos sobre desarrollo web, Linux, CSS y herramientas para crear mejores productos digitales.",
+  },
+  idiomas: {
+    title: "Idiomas",
+    description: "Guías y recursos para el aprendizaje de idiomas.",
+  },
+};
+
+const categoryMap: Record<string, string> = {
+  "Linux": "tecnologia",
+  "CSS Responsive": "tecnologia",
+  "CSS Hamburger": "tecnologia",
+  "Css": "tecnologia",
+  "CSS Animation": "tecnologia",
+  "Idiomas": "idiomas",
+};
+
+const postsByCategory: Record<string, PostEntry[]> = {};
+
+for (const post of allPosts) {
+  const categoryKey = post.frontmatter.titleCategory
+    ? categoryMap[post.frontmatter.titleCategory] || "tecnologia"
+    : "tecnologia";
+  if (!postsByCategory[categoryKey]) {
+    postsByCategory[categoryKey] = [];
+  }
+  postsByCategory[categoryKey].push(post);
+}
+---
+
+<section class="blog-directory" aria-labelledby="blog-directory-heading">
+  {Object.entries(postsByCategory).map(([categoryKey, posts]) => {
+    const config = categoryConfig[categoryKey] || { title: categoryKey, description: "" };
+    return (
+      <section class="category-section">
+        <header class="category-header">
+          <h2 class="category-title">{config.title}</h2>
+          <p class="category-description">{config.description}</p>
+        </header>
+        <div class="category-content">
+          <h3 class="section-subtitle">Últimos artículos</h3>
+          <BlogGrid posts={posts} />
+        </div>
+      </section>
+    );
+  })}
+</section>
+
+<style>
+  .blog-directory {
+    width: var(--width-container);
+    max-width: 1200px;
+    margin: 8rem auto 4rem auto;
+    padding: 0 1.3rem;
+  }
+
+  .category-section {
+    margin-bottom: 6rem;
+  }
+
+  .category-header {
+    margin-bottom: 2rem;
+  }
+
+  .category-title {
+    font-family: var(--font-title);
+    font-size: var(--fs-h1);
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0 0 0.8rem 0;
+  }
+
+  .category-description {
+    font-family: var(--font-text);
+    font-size: var(--fs-lg);
+    line-height: 1.6;
+    color: var(--color-text);
+    opacity: 0.75;
+    margin: 0;
+    max-width: 60ch;
+  }
+
+  .section-subtitle {
+    font-family: var(--font-title);
+    font-size: var(--fs-h2);
+    font-weight: 650;
+    color: var(--color-text);
+    margin: 0 0 1.5rem 0;
+  }
+
+  @media (width < 600px) {
+    .blog-directory {
+      margin: 4rem auto 2rem auto;
+      padding: 0 1rem;
+    }
+    .category-title {
+      font-size: var(--fs-h2);
+    }
+    .category-description {
+      font-size: var(--fs-base);
+    }
+    .section-subtitle {
+      font-size: var(--fs-h3);
+    }
+  }
+</style>

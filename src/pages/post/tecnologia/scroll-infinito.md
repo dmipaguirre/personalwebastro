@@ -1,14 +1,15 @@
 ---
-layout: ../../layouts/BlogLayout.astro
+layout: ../../../layouts/BlogLayout.astro
 title: 'Creating an Infinite Scrolling Text Marquee'
 publishDate: '2025-11-24'
 description: 'Create a seamless horizontal text marquee with duplicated content and a lightweight CSS animation.'
 author: 'Miguel Páez'
 image:
-  url: "/images/social-card.png"
+  url: ""
   alt: "Miguel Páez web development notes."
-icon: "pending"
+icon: "animation"
 readingTime: '2'
+sizeLayout: "tall"
 titleCategory: "CSS Animation"
 ---
 

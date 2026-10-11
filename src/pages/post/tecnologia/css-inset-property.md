@@ -1,15 +1,16 @@
 ---
-layout: ../../layouts/BlogLayout.astro
+layout: ../../../layouts/BlogLayout.astro
 title: 'Understanding the inset Property in CSS'
 publishDate: '2025-12-17'
 description: 'Understand how the CSS inset shorthand positions elements and how the inset() function creates rectangular masks.'
 author: 'Miguel Páez'
 image:
-  url: "/images/social-card.png"
+  url: ""
   alt: "Miguel Páez web development notes."
-icon: "pending"
+icon: "css"
 readingTime: '5'
-titleCategory: "Css"
+sizeLayout: "tall"
+titleCategory: "CSS"
 ---
 
 The inset keyword is one of the most powerful and modern CSS shortcuts. It can be confusing because it functions both as a value function and a shorthand property, leading to very different effects.

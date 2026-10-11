@@ -1,15 +1,15 @@
 ---
-layout: ../../layouts/BlogLayout.astro
+layout: ../../../layouts/BlogLayout.astro
 title: 'Tiempos verbales en alemán'
 publishDate: '2026-08-27'
 description: 'Una guía rápida y eficaz para aprender los tiempos verbales del alemán'
 author: 'Miguel Páez'
 image:
-  url: "****"
+  url: "/images/social-card.png"
   alt: "Miguel Páez web development notes."
-icon: ""
+icon: "language"
 readingTime: '5'
-sizeLayout: ""
+sizeLayout: "featured"
 titleCategory: "Idiomas"
 ---
 

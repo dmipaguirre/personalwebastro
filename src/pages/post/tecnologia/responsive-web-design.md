@@ -1,14 +1,15 @@
 ---
-layout: ../../layouts/BlogLayout.astro
+layout: ../../../layouts/BlogLayout.astro
 title: 'A guide to responsive Web design'
 publishDate: '2025-11-19'
 description: 'Learn how Flexbox and CSS Grid adapt page layouts across desktop, tablet, and mobile screens.'
 author: 'Miguel Páez'
 image:
-  url: "/images/social-card.png"
+  url: ""
   alt: "Miguel Páez web development notes."
 icon: "layout"
 readingTime: '4'
+sizeLayout: "tall"
 titleCategory: "CSS Responsive"
 ---
 
