@@ -58,7 +58,7 @@
   --fs-h4: clamp(1.20rem, 1vw + 0.8rem, 1.50rem);
   --fs-eyebrow: 0.82rem;
 
-  --fs-sm: 0.8rem;
+  --fs-sm: 0.7rem;
   --fs-base: 1rem;
   --fs-md: 1.1rem;
   --fs-lg: 1.2rem;
@@ -73,7 +73,7 @@
 }
 
 .darkmode {
-  --color-primary: #d79925;
+  --color-primary: #f59e0b;;
   --color-text: #ebe4e4;
   --color-bg: #0f0f0f;
   --color-bgsecondary: #292928bd;
