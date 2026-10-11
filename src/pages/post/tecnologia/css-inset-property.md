@@ -5,7 +5,7 @@ publishDate: '2025-12-17'
 description: 'Understand how the CSS inset shorthand positions elements and how the inset() function creates rectangular masks.'
 author: 'Miguel Páez'
 image:
-  url: ""
+  url: "/"
   alt: "Miguel Páez web development notes."
 icon: "css"
 readingTime: '5'

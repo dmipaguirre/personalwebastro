@@ -5,7 +5,7 @@ publishDate: '2025-11-19'
 description: 'Learn how Flexbox and CSS Grid adapt page layouts across desktop, tablet, and mobile screens.'
 author: 'Miguel Páez'
 image:
-  url: ""
+  url: "/"
   alt: "Miguel Páez web development notes."
 icon: "layout"
 readingTime: '4'
