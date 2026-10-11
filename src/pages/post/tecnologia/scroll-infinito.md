@@ -9,7 +9,7 @@ image:
   alt: "Miguel Páez web development notes."
 icon: "animation"
 readingTime: '2'
-sizeLayout: "tall"
+sizeLayout: "featured"
 titleCategory: "CSS Animation"
 ---
 
