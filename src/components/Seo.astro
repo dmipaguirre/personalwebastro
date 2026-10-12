@@ -23,15 +23,16 @@ const canonicalUrl = Astro.site
   ? new URL(Astro.url.pathname, Astro.site).href
   : undefined;
 
-const imageUrl = image.startsWith("http")
+const imageUrl = image && image.startsWith("http")
   ? image
   : Astro.site
     ? new URL(image, Astro.site).href
     : undefined;
+
+    
 ---
 
 <title>{pageTitle} | Miguel Páez</title>
-
 <!-- SEO Meta Tags -->
 <meta name="description" content={description} />
 <meta name="author" content="Miguel Páez" />

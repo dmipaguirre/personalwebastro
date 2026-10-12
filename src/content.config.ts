@@ -10,7 +10,7 @@ const postCollection = defineCollection({
     description: z.string(),
     author: z.string().default("Miguel Páez"),
     image: z.object({
-      url: z.string().url().or(z.string().startsWith("/")),
+      url: z.string().url().or(z.string().startsWith("/")).optional(),
       alt: z.string().default("Miguel Páez web development notes."),
     }).optional(),
     icon: z.string().default(""),

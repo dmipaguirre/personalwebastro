@@ -19,8 +19,8 @@ const publishedDateText = new Intl.DateTimeFormat("en-US", {
 <Layout
   pageTitle={frontmatter.title}
   description={frontmatter.description}
-  image={frontmatter.image?.url}
-  imageAlt={frontmatter.image?.alt}
+  image={frontmatter.image?.url && frontmatter.image?.url !== "/" ? frontmatter.image?.url : undefined}
+  imageAlt={frontmatter.image?.alt || undefined}
   type="article"
   publishedTime={publishedTime}
 >

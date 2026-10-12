@@ -5,11 +5,11 @@ publishDate: '2025-11-24'
 description: 'Create a seamless horizontal text marquee with duplicated content and a lightweight CSS animation.'
 author: 'Miguel Páez'
 image:
-  url: "/"
+  url: ""
   alt: "Miguel Páez web development notes."
 icon: "animation"
 readingTime: '2'
-sizeLayout: "featured"
+sizeLayout: ""
 titleCategory: "CSS Animation"
 ---
 

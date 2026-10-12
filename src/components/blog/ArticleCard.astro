@@ -35,7 +35,7 @@ const sizeClass = frontmatter.sizeLayout
   ? `blog-card--${frontmatter.sizeLayout}`
   : "";
 
-const hasImage = image?.url;
+const hasImage = image?.url && image.url !== "/";
 const hasBackgroundImage = hasImage && (frontmatter.sizeLayout === "featured" || frontmatter.sizeLayout === "wide");
 
 const pad = (n: number) => String(n).padStart(2, "0");
@@ -319,8 +319,7 @@ const ariaLabel = `Leer: ${title} — por ${author}`;
 
   .has-bg-image .card-title,
   .has-bg-image .card-text,
-  .has-bg-image .card-author,
-  .has-bg-image .card-date {
+  .has-bg-image .card-author {
     color: var(--color-text);
   }
 
