@@ -28,7 +28,9 @@ We use a `<button>` for the hamburger to ensure accessibility, and a `<nav>` ele
 <header class="navbar">
     <div class="logo">My Brand</div>
     
-    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <button class="hamburger" 
+    id="hamburger" aria-label="Open menu" 
+    aria-expanded="false">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
@@ -107,9 +109,17 @@ The key here is using a media query to switch the `.nav-menu` from a horizontal 
 }
 
 /* Hamburger Animation */
-.hamburger.active .bar:nth-child(2) { opacity: 0; }
-.hamburger.active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-.hamburger.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+.hamburger.active .bar:nth-child(2) { 
+    opacity: 0; 
+    }
+.hamburger.active .bar:nth-child(1) { 
+    transform: translateY(9px) 
+    rotate(45deg); 
+    }
+.hamburger.active .bar:nth-child(3) { 
+    transform: translateY(-9px) 
+    rotate(-45deg); 
+    }
 
 @media (max-width: 768px) {
     .hamburger { display: block; }
