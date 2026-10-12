@@ -54,8 +54,8 @@
   --fs-display: clamp(2.9rem, 6vw + 1rem, 5.25rem);
   --fs-h1: clamp(2.4rem, 4vw + 1rem, 3.75rem);
   --fs-h2: clamp(1.8rem, 2.5vw + 1rem, 2.5rem);
-  --fs-h3: clamp(1.35rem, 1.5vw + 1rem, 1.75rem);
-  --fs-h4: clamp(1.20rem, 1vw + 0.8rem, 1.50rem);
+  --fs-h3: clamp(1.4rem, 1.5vw + 1rem, 1.6rem);
+  --fs-h4: clamp(1.2rem, 1vw + 0.8rem, 1.50rem);
   --fs-eyebrow: 0.82rem;
 
   --fs-sm: 0.7rem;
