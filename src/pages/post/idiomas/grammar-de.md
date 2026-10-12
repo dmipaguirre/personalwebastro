@@ -5,8 +5,8 @@ publishDate: '2026-08-27'
 description: 'Una guía rápida y eficaz para aprender los tiempos verbales del alemán'
 author: 'Miguel Páez'
 image:
-  url: "/"
-  alt: "Miguel Páez web development notes."
+  url: ""
+  alt: ""
 icon: "language"
 readingTime: '5'
 sizeLayout: "featured"

@@ -55,7 +55,7 @@ const ariaLabel = `Leer: ${title} — por ${author}`;
     )}
     <div class="card-content">
       {!hasBackgroundImage && hasImage && image && (
-        <div class="card-image">
+        <div class="card-image" style={`--card-bg: url(${image.url})`}>
           <img src={image.url} alt={image.alt || ""} loading="lazy" />
         </div>
       )}
@@ -92,7 +92,7 @@ const ariaLabel = `Leer: ${title} — por ${author}`;
   }
 
   .blog-card {
-    background: var(--color-bg);
+    background: color-mix(in srgb, var(--color-bgsecondary) 50%, var(--color-bg));
     border-radius: 1.5rem;
     overflow: hidden;
     box-shadow: var(--shadow-card);
@@ -115,7 +115,6 @@ const ariaLabel = `Leer: ${title} — por ${author}`;
   .blog-card--featured {
     grid-column: span 2;
     grid-row: span 2;
-    background: color-mix(in srgb, var(--color-bgsecondary) 50%, var(--color-bg));
   }
 
   .blog-card__link {
@@ -281,6 +280,7 @@ const ariaLabel = `Leer: ${title} — por ${author}`;
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s ease;
+    filter: brightness(80%) saturate(0%) grayscale(100%);
   }
 
   .blog-card:hover .card-image img {
@@ -288,7 +288,7 @@ const ariaLabel = `Leer: ${title} — por ${author}`;
   }
 
   .blog-card--tall .card-image {
-    height: 16rem;
+    height: 14rem;
   }
 
   .has-bg-image {

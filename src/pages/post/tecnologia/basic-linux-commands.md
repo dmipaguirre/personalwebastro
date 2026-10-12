@@ -5,7 +5,7 @@ publishDate: '2026-06-15'
 description: 'A simple and clear guide to understanding the fundamentals of the Linux command line.'
 author: 'Miguel Páez'
 image:
-  url: "/images/background.avif"
+  url: "/images/abstract.avif"
   alt: "Miguel Páez web development notes."
 icon: "brand-ubuntu"
 readingTime: '5'

@@ -5,7 +5,7 @@ publishDate: '2025-11-24'
 description: 'Two practical approaches to building a responsive navigation bar with a hamburger menu for small screens.'
 author: 'Miguel Páez'
 image:
-  url: "/images/social-card.avif"
+  url: "/images/ham-menu.avif"
   alt: "Miguel Páez web development notes."
 icon: "pending"
 readingTime: '5'
