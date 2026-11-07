@@ -1,4 +1,6 @@
 <section class="quote-section">
+  <h2 class="quote-label" id="quote-heading">Manifiesto</h2>
+
   <div class="quote-box">
     <blockquote class="quote-block">
       <p class="quote-en">
@@ -15,48 +17,112 @@
 
 <style>
   .quote-section {
+    position: relative;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
     min-width: 0;
     margin: 0;
+    padding: 1.1rem;
+    background: var(--color-bgsecondary);
+    border-radius: 18px;
     color: var(--color-text);
     font-family: var(--font-text);
     font-size: 1.4rem;
     line-height: 1.4;
   }
+
+  .quote-label {
+    position: absolute;
+    bottom: 100%;
+    right: 1.5rem;
+    width: max-content;
+    max-width: calc(100% - 3rem);
+    margin: 0;
+    padding: 0.8rem 0.9rem;
+    font-family: var(--font-title);
+    font-size: var(--fs-eyebrow);
+    font-weight: 650;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-primary);
+    background: var(--color-bgsecondary);
+    border-radius: 12px 12px 0 0;
+  }
+
+  .quote-label::before,
+  .quote-label::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 10px;
+    height: 10px;
+  }
+
+  .quote-label::before {
+    right: 100%;
+    background: radial-gradient(
+      circle 10px at 0 0,
+      transparent 9.5px,
+      var(--color-bgsecondary) 10px
+    );
+  }
+
+  .quote-label::after {
+    left: 100%;
+    background: radial-gradient(
+      circle 10px at 100% 0,
+      transparent 9.5px,
+      var(--color-bgsecondary) 10px
+    );
+  }
+
+  .quote-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
   .quote-block {
     max-width: 700px;
     margin-inline: auto;
     padding-inline: 1rem;
     position: relative;
   }
+
   .quote-block .quote-en,
   .quote-block .quote-es {
-    margin: 2rem 0;
     text-align: center;
   }
+
   .quote-block .quote-en {
+    margin: 0 0 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 45%, transparent);
     font-size: 2rem;
   }
+
   .quote-block .quote-es {
+    margin: 0;
     font-size: 1.3rem;
-    opacity: 0.3;
-  }
-  .quote-box {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    border-left: 1px solid var(--color-primary);
-    background-color: var(--color-bgsecondary);
-    padding: 2rem 1.2rem;
+    opacity: 0.6;
   }
 
   @media (width < 1200px) {
     .quote-block .quote-en {
       font-size: 1.5rem;
     }
+
     .quote-block .quote-es {
       font-size: 1rem;
+    }
+  }
+
+  @media (width < 600px) {
+    .quote-section {
+      padding: 0.8rem;
+      border-radius: 14px;
     }
   }
 </style>

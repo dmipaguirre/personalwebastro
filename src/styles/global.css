@@ -42,8 +42,9 @@
 :root {
   --color-primary: #994d00;
   --color-text: #0e0d0d;
-  --color-bg: #F2F0E8;
-  --color-bgsecondary: #e6e5e4;
+  --color-bg: #e7e5de;
+  --color-bgsecondary: #ffffff;
+  --color-directory: #17294f;
   --width-container: 100%;
   --font-title: "Antonio", "Antonio Fallback", system-ui, sans-serif;
   --font-text: "Inter", system-ui, -apple-system, sans-serif;

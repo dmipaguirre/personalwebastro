@@ -2,16 +2,19 @@
 const skills = [
   {
     title: "Frontend Architecture",
+    tags: ["HTML5", "CSS", "JS"],
     description:
       "Crafting pixel-perfect, responsive interfaces with clean, semantic code. I specialize in HTML5, modern CSS, and JavaScript to ensure high performance and accessibility across all devices.",
   },
   {
     title: "Python & Automation",
+    tags: ["Pandas", "Scraping"],
     description:
       "Leveraging Python for powerful backend solutions and data processing. My focus includes web scraping, workflow automation, and data analysis using libraries like Pandas to turn raw data into insights.",
   },
   {
     title: "Astro Development",
+    tags: ["Zero-JS default"],
     description:
       "Creating secure and fast websites with Astro. I focus on pre-rendering content to ensure instant page loads and seamless performance, avoiding the complexity of heavy client-side frameworks.",
   },
@@ -25,7 +28,18 @@ const skills = [
     {
       skills.map((skill) => (
         <article class="skill-card">
-          <h3 class="skill-title">{skill.title}</h3>
+          <div class="skill-head">
+            <h3 class="skill-title">{skill.title}</h3>
+            <ul class="skill-tags">
+              {
+                skill.tags.map((tag) => (
+                  <li class="skill-tag">
+                    <span class="tag-name">{tag}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
           <p class="skill-text">{skill.description}</p>
         </article>
       ))
@@ -46,10 +60,12 @@ const skills = [
     border-radius: 18px;
   }
 
-  /* Pestaña de la carpeta: al lado derecho, separada del borde (no al ras) */
   .skills-label {
     position: absolute;
     bottom: 100%;
+    left: 1.5rem;
+    width: max-content;
+    max-width: calc(100% - 3rem);
     margin: 0;
     padding: 0.8rem 0.9rem;
     font-family: var(--font-title);
@@ -104,7 +120,6 @@ const skills = [
     gap: 0.45rem;
     padding: 1.05rem 1.2rem;
     background: var(--color-bg);
-    border: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent);
     border-radius: 14px;
   }
 
@@ -116,6 +131,50 @@ const skills = [
     line-height: var(--leading-snug);
     letter-spacing: var(--tracking-tight);
     margin: 0;
+    flex: 1 1 auto;
+  }
+
+  .skill-head {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.4rem 1rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.35rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .skill-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .skill-tag + .skill-tag::before {
+    content: "·";
+    color: color-mix(in srgb, var(--color-text) 45%, transparent);
+  }
+
+  .tag-name {
+    font-family: var(--font-text);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--color-primary);
+    background: color-mix(in srgb, var(--color-primary) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 35%, transparent);
+    padding: 0.1rem 0.55rem;
+    border-radius: 999px;
+    white-space: nowrap;
   }
 
   .skill-text {
@@ -131,11 +190,6 @@ const skills = [
     .skills {
       padding: 0.8rem;
       border-radius: 14px;
-    }
-
-    .skills-label {
-      right: 1rem;
-      padding: 0.3rem 0.9rem;
     }
 
     .skill-card {
