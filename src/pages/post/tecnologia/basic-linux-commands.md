@@ -25,9 +25,11 @@ Personally, my interest in the terminal began when I realized that many tasks I 
 
 Everything in Linux begins with the root directory `/`. From there, the system branches into a clear and hierarchical structure. A few directories you'll run into constantly:
 
-- `/home` — personal files and configuration for each user  
-- `/etc` — system-wide configuration files  
-- `/var` — logs, caches, and other variable data  
+- `/bin` - contiene los programas y comandos básicos del sistema necesarios para uso de todos los usuarios
+- `/boot` - son los archivos estáticos del gestor de arranque: Almacena los archivos necesarios para iniciar el equipo, incluye el núcleo de Linux y la configuración
+- `/home` - personal files and configuration for each user  
+- `/etc` - system-wide configuration files  
+- `/var` - logs, caches, and other variable data  
 - `/bin` and `/usr/bin` — executable programs  
 
 To navigate through this structure, these fundamental commands are essential:
