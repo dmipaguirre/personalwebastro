@@ -1,185 +1,309 @@
 ---
 import SocialIcon from "./icons/SocialIcon.astro";
+import VoxelViewer from "./VoxelViewer.astro";
+import SectionSkill from "./SectionSkill.astro";
+import SectionQuote from "./SectionQuote.astro";
 ---
 
-<section class="hero" role="banner">
+<section class="hero">
+  <div class="hero-avatar">
+    <div class="hero-window-bar" aria-hidden="true">
+      <div class="window-dots">
+        <span class="window-dot dot-close"></span>
+        <span class="window-dot dot-minimize"></span>
+        <span class="window-dot dot-maximize"></span>
+      </div>
+      <span class="window-title">fido.glb</span>
+    </div>
+    <div class="hero-window-stage">
+      <VoxelViewer modelPath="/models/fido.glb" ariaLabel="3D model" />
+      <div class="hero-icons">
+        <SocialIcon />
+      </div>
+    </div>
+  </div>
   <div class="hero-text">
     <p class="hero-name">Hi, I'm Miguel.</p>
-    <h1>
-      A creative
-      <span class="hero-skill">Freelance Web Developer</span>
-    </h1>
-    <p>
-      — highly passionate about technology, programming, cybersecurity, and
-      robotics.
+    <h1 class="hero-title">Creative Freelance Web Developer</h1>
+    <p class="hero-description">
+      Highly passionate about technology, programming, cybersecurity, and
+      robotics. I craft pixel-perfect, responsive interfaces with clean,
+      semantic code, combining high-performance pre-rendered Astro frontends
+      with Python backend automation, web scraping, and data analysis pipelines.
     </p>
   </div>
-  <div class="hero-avatar">
-    <div class="avatar-box"></div>
-    <img
-      src="/images/Users.avif"
-      alt="Miguel's profile photo"
-      width="528"
-      height="528"
-      loading="eager"
-      decoding="sync"
-    />
-  </div>
-  <div class="hero-icons">
-    <SocialIcon />
+  <div class="hero-extras">
+    <SectionSkill />
+    <SectionQuote />
   </div>
 </section>
 
 <style>
   .hero {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: minmax(0, 30fr) minmax(0, 65fr);
+    grid-template-areas:
+      "avatar text"
+      "extras extras";
+    column-gap: 2rem;
+    row-gap: 4.5rem;
     padding: 1.2rem 1.3rem;
     width: 100%;
     max-width: 1200px;
     margin: 8rem auto 4rem auto;
-    font-family: var(--font-title);
-    gap: 2rem;
   }
-  .hero-text {
+
+  .hero-avatar {
+    grid-area: avatar;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--color-text) 16%, transparent);
+    border-radius: 18px;
+    box-shadow:
+      0 24px 48px -24px rgb(3 7 18 / 0.55),
+      0 2px 8px -4px rgb(3 7 18 / 0.4);
+    transition: border-color 0.25s ease;
+  }
+
+  .hero-avatar:hover {
+    border-color: color-mix(in srgb, var(--color-primary) 55%, transparent);
+  }
+
+  .hero-window-bar {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    height: 2.5rem;
+    flex: none;
+    padding: 0 0.9rem;
+    background: linear-gradient(to bottom, #17294f, #101d3c);
+    border-bottom: 1px solid rgb(255 255 255 / 0.08);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.1);
+  }
+
+  .window-dots {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .window-dot {
+    position: relative;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 0.5px rgb(0 0 0 / 0.25);
+    transition:
+      transform 0.15s ease,
+      filter 0.15s ease;
+  }
+
+  .window-dot::after {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-text);
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1;
+    color: rgb(0 0 0 / 0.55);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+
+  .dot-close {
+    background: #ff5f57;
+  }
+
+  .dot-close::after {
+    content: "×";
+  }
+
+  .dot-minimize {
+    background: #febc2e;
+  }
+
+  .dot-minimize::after {
+    content: "−";
+  }
+
+  .dot-maximize {
+    background: #28c840;
+  }
+
+  .dot-maximize::after {
+    content: "+";
+  }
+
+  .hero-window-bar:hover .window-dot::after {
+    opacity: 1;
+  }
+
+  .window-dot:hover {
+    transform: scale(1.18);
+    filter: brightness(1.08);
+  }
+
+  .window-title {
+    grid-column: 2;
+    font-family: var(--font-text);
+    font-size: 0.72rem;
+    letter-spacing: var(--tracking-wide);
+    color: rgb(255 255 255 / 0.45);
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  .hero-window-stage {
+    position: relative;
+    z-index: 1;
+    display: flex;
     flex: 1;
+    min-height: 0;
+    background:
+      radial-gradient(ellipse at bottom, rgb(245 158 11 / 0.22) 0%, transparent 55%),
+      linear-gradient(165deg, #12203f 0%, #0b1530 50%, #060a16 100%);
+  }
+
+  .hero-window-stage > :global(.voxel-viewer) {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .hero-window-stage :global(.voxel-stage canvas) {
+    animation: hero-float 5s ease-in-out infinite;
+  }
+
+  @keyframes hero-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-0.6rem);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-window-stage :global(.voxel-stage canvas) {
+      animation: none;
+    }
+  }
+
+  .hero-text {
+    grid-area: text;
     min-width: 0;
   }
-  .hero-text .hero-name {
-    font-size: clamp(1.4rem, 1.5vw + 1rem, 1.9rem);
+
+  .hero-name {
     font-family: var(--font-text);
-    line-height: 1.2;
-    margin: 1rem 0;
-  }
-
-  .hero-text h1 {
-    font-family: var(--font-title);
     color: var(--color-text);
-    font-size: var(--fs-display);
-    line-height: var(--leading-display);
-    letter-spacing: var(--tracking-tight);
-    margin: 1rem 0;
-    font-weight: 550;
-  }
-
-  .hero-skill {
-    font-family: var(--font-style);
+    font-size: var(--fs-xl);
     font-weight: 400;
-    letter-spacing: normal;
-    font-size: clamp(3.2rem, 6vw + 1rem, 6.5rem);
-    line-height: 0.8;
-    color: var(--color-primary);
-    display: block;
-    margin-top: 0.4rem;
+    line-height: var(--leading-snug);
+    margin: 0 0 0.9rem;
   }
 
-  .hero-text p {
+  .hero-title {
+    font-family: var(--font-title);
+    color: var(--color-primary);
+    font-size: var(--fs-h1);
+    font-weight: 500;
+    line-height: 0.95;
+    letter-spacing: normal;
+    text-wrap: balance;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+  }
+
+  .hero-description {
     font-family: var(--font-text);
     color: var(--color-text);
-    font-size: clamp(1.25rem, 1.2vw + 1rem, 1.6rem);
+    font-size: var(--fs-md);
     line-height: 1.45;
-    margin: 1rem 0;
+    max-width: 65ch;
+    margin: 2rem 0 0;
   }
 
-  .hero-avatar .avatar-box {
-    position: absolute;
-    width: 90%;
-    height: 90%;
-    background-color: var(--color-primary);
-    opacity: 0.4;
-    border-radius: 6%;
-    transform: rotate(5deg);
-    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
-    z-index: -1;
-  }
-  .hero-avatar:hover .avatar-box {
-    transform: rotate(3deg);
-  }
-  .hero-avatar {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: auto;
-    flex: 1;
-    aspect-ratio: 1;
-    align-self: center;
-  }
-
-  .hero-avatar img {
-    position: absolute;
-    width: 90%;
-    height: 90%;
-    border-radius: 6%;
-    object-fit: cover;
-    z-index: 1;
-    box-shadow: 0 0 4px var(--color-primary);
+  .hero-extras {
+    grid-area: extras;
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 2rem;
+    min-width: 0;
   }
 
   .hero-icons {
-    min-width: fit-content;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    z-index: 1;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
     align-items: center;
-    gap: 2rem;
-    align-self: center;
-    margin-left: 2rem;
-  }
-
-  @media (width < 1199px) {
-    .hero {
-      width: 100%;
-      justify-content: center;
-    }
+    gap: 0.375rem;
+    background: color-mix(in srgb, var(--color-bg) 10%, transparent);
+    padding: 0.375rem 0.625rem;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--color-text) 25%, transparent);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
   }
 
   @media (width < 900px) {
     .hero {
-      width: 100%;
-      gap: 1rem;
+      column-gap: 1rem;
     }
 
-    .hero-text h1 {
-      font-size: var(--fs-h1);
+    .hero-extras {
+      grid-template-columns: 1fr;
     }
-    .hero-text p {
-      font-size: 1.25rem;
-    }
-    .hero-skill {
-      font-size: clamp(2.8rem, 12vw, 4rem);
-      display: block;
+
+    .hero-description {
+      font-size: var(--fs-lg);
     }
   }
 
   @media (width < 600px) {
     .hero {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "avatar"
+        "text"
+        "extras";
+      row-gap: 2.6rem;
       margin: 4rem 0;
     }
 
     .hero-avatar {
-      width: 80%;
-      order: 1;
+      width: 100%;
+      justify-self: center;
+      aspect-ratio: 4 / 5;
     }
 
-    .hero-text {
-      order: 2;
-      text-align: center;
+    .hero-window-bar {
+      height: 2.2rem;
+      padding: 0 0.75rem;
     }
 
-    .hero-icons {
-      order: 3;
+    .window-dot {
+      width: 10px;
+      height: 10px;
     }
 
-    .hero {
-      flex-direction: column;
+    .window-dot::after {
+      font-size: 8px;
     }
 
-    .hero-icons {
-      flex-direction: row;
-      margin: 0;
-      margin-left: 0;
+    .hero-window-stage > :global(.voxel-viewer) {
+      min-height: 300px;
     }
   }
 </style>

@@ -22,36 +22,60 @@ Do not solve different blog landing pages by adding an increasing number of cond
 
 ## Canonical Structure
 
-```text
-src/
-├── content/
-│   └── blog/
-│       ├── development/
-│       │   ├── basic-linux-commands.md
-│       │   └── css-inset-property.md
-│       └── languages/
-│           └── english-phrasal-verbs.md
+```
+/
+├── public/                      # Static assets served as-is
+│   ├── fonts/                   # Self-hosted woff2 fonts (Jost, Inter, Allison, Fira Code)
+│   ├── icons/                   # Icon assets
+│   ├── images/                  # Images (AVIF) used by articles and cards
+│   ├── models/                  # 3D models (fido.glb, rendered in the hero)
+│   └── favicon.svg              # Site favicon
 │
-├── content.config.ts
-├── data/
-│   └── blogs.ts
-├── lib/
-│   └── blogPosts.ts
-├── components/
-│   └── blog/
-│       ├── ArticleCard.astro
-│       ├── BlogDirectory.astro
-│       ├── BlogGrid.astro
-│       └── BlogLanding.astro
-├── layouts/
-│   └── BlogLayout.astro
-└── pages/
-    └── blog/
-        ├── index.astro
-        ├── [blog]/
-        │   └── index.astro
-        └── [blog]/
-            └── [slug].astro
+├── src/
+│   ├── components/              # Reusable UI components
+│   │   ├── blog/                # Blog-specific components
+│   │   │   ├── ArticleCard.astro  # Card for a single article (variantes wide/tall/featured)
+│   │   │   ├── BlogDirectory.astro # Blog landing: agrupa artículos por categoría
+│   │   │   └── BlogGrid.astro     # Responsive CSS Grid of cards
+│   │   ├── icons/
+│   │   │   └── SocialIcon.astro   # Social media SVG icons
+│   │   ├── Breadcrumbs.astro    # Breadcrumb navigation
+│   │   ├── ButtonColor.astro    # Theme switch (light/dark)
+│   │   ├── Experience.astro     # Experience timeline
+│   │   ├── Footer.astro         # Site footer
+│   │   ├── Hero.astro           # Home hero with the 3D viewer
+│   │   ├── Logo.astro           # Site logo
+│   │   ├── Navbar.astro         # Top navigation bar
+│   │   ├── ProjectsPlaceholder.astro # Projects page placeholder
+│   │   ├── SectionAbout.astro   # About section
+│   │   ├── SectionQuote.astro   # Quote / testimonial section
+│   │   ├── SectionSkill.astro   # Skills section
+│   │   ├── Seo.astro            # Meta tags, Open Graph, Twitter Cards, canonical
+│   │   └── VoxelViewer.astro    # Three.js GLB viewer (lazy, self-disposing)
+│   ├── content/
+│   │   └── content.config.ts    # Content collection "post" (Zod schema, glob loader)
+│   ├── data/
+│   │   └── blogPosts.ts         # Legacy static post data (no longer rendered)
+│   ├── layouts/
+│   │   ├── Layout.astro         # Main layout: head, SEO, navbar, footer, theme boot
+│   │   └── BlogLayout.astro     # Layout for individual blog posts
+│   ├── pages/                   # File-based routing
+│   │   ├── index.astro          # Homepage (/)
+│   │   ├── about.astro          # About me (/about)
+│   │   ├── blog.astro           # Blog listing (/blog)
+│   │   ├── projects.astro       # Projects, currently noindex (/projects)
+│   │   └── post/                # Markdown articles, organized by category
+│   │       ├── tecnologia/      #   Linux, CSS, responsive design...
+│   │       └── idiomas/         #   Language learning guides
+│   └── styles/
+│       └── global.css           # CSS variables: colors, typography scale, theme
+│
+├── astro.config.mjs             # Astro config (site, legacy redirects)
+├── package.json                 # Dependencies and scripts
+├── pnpm-lock.yaml               # pnpm lockfile
+├── pnpm-workspace.yaml          # Build allowances (esbuild, sharp)
+├── tsconfig.json                # TypeScript strict + @/* alias
+└── README.md                    # This file
 ```
 
 Each folder directly under `src/content/blog/` represents a blog. Its name must match the `slug` configured in `src/data/blogs.ts`.

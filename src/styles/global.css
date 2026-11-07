@@ -1,7 +1,7 @@
 @font-face {
-  font-family: "Jost";
-  src: url("/fonts/Jost.woff2") format("woff2");
-  font-weight: 100 900;
+  font-family: "Antonio";
+  src: url("/fonts/Antonio.woff2") format("woff2");
+  font-weight: 100 700;
   font-style: normal;
   font-display: swap;
 }
@@ -9,7 +9,7 @@
 @font-face {
   font-family: "Inter";
   src: url("/fonts/Inter.woff2") format("woff2");
-  font-weight: 400;
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
@@ -25,27 +25,27 @@
 @font-face {
   font-family: "Fira Code";
   src: url("/fonts/FiraCode.woff2") format("woff2");
-  font-weight: 100 900;
+  font-weight: 300 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Jost Fallback";
+  font-family: "Antonio Fallback";
   src: local("Arial");
-  size-adjust: 97%;
-  ascent-override: 100%;
-  descent-override: 25%;
+  size-adjust: 84%;
+  ascent-override: 115.5%;
+  descent-override: 13.9%;
   line-gap-override: 0%;
 }
 
 :root {
-  --color-primary: #8A4600;
+  --color-primary: #994d00;
   --color-text: #0e0d0d;
-  --color-bg: #f1ede9;
+  --color-bg: #F2F0E8;
   --color-bgsecondary: #e6e5e4;
   --width-container: 100%;
-  --font-title: "Jost", "Jost Fallback", system-ui, sans-serif;
+  --font-title: "Antonio", "Antonio Fallback", system-ui, sans-serif;
   --font-text: "Inter", system-ui, -apple-system, sans-serif;
   --font-style: "Allison-Regular", cursive;
   --font-code: "Fira Code", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
@@ -56,7 +56,7 @@
   --fs-h2: clamp(1.8rem, 2.5vw + 1rem, 2.5rem);
   --fs-h3: clamp(1.4rem, 1.5vw + 1rem, 1.6rem);
   --fs-h4: clamp(1.2rem, 1vw + 0.8rem, 1.50rem);
-  --fs-eyebrow: 0.82rem;
+  --fs-eyebrow: 0.92rem;
 
   --fs-sm: 0.7rem;
   --fs-base: 1rem;
@@ -68,12 +68,12 @@
   --leading-tight: 1.08;
   --leading-snug: 1.2;
 
-  --tracking-tight: -0.015em;
+  --tracking-tight: -0.025em;
   --tracking-wide: 0.09em;
 }
 
 .darkmode {
-  --color-primary: #f59e0b;;
+  --color-primary: #f59e0b;
   --color-text: #ebe4e4;
   --color-bg: #0f0f0f;
   --color-bgsecondary: #292928bd;

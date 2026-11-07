@@ -33,6 +33,7 @@
 - No levantes servidores ni hagas `build`, simplemente avisa, que lo hará un humano.
 - Si una página se está repitiendo mucho, contempla separarlo a un componente Astro.
 - No levantes servidores sin previa autorización
+- No generes comentarios dentro del codigo a menos de que yo te lo indique
 
 ## Tareas pendientes
 

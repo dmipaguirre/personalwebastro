@@ -15,10 +15,10 @@
 
 <style>
   .quote-section {
-    padding: 2rem 1.3rem;
-    width: var(--width-container);
-    max-width: 1200px;
-    margin: 1rem auto;
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
     color: var(--color-text);
     font-family: var(--font-text);
     font-size: 1.4rem;
@@ -43,16 +43,15 @@
     opacity: 0.3;
   }
   .quote-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
     border-left: 1px solid var(--color-primary);
     background-color: var(--color-bgsecondary);
     padding: 2rem 1.2rem;
   }
 
   @media (width < 1200px) {
-    .quote-section {
-      width: 100%;
-    }
-
     .quote-block .quote-en {
       font-size: 1.5rem;
     }

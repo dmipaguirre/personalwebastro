@@ -1,0 +1,446 @@
+---
+interface Props {
+  modelPath: string;
+  background?: string;
+  radius?: number | string;
+  autoRotate?: boolean;
+  introSpin?: boolean;
+  enableZoom?: boolean;
+  ariaLabel?: string;
+  loadingLabel?: string;
+  errorLabel?: string;
+  webglLabel?: string;
+  class?: string;
+}
+
+const {
+  modelPath,
+  background,
+  radius,
+  autoRotate = false,
+  introSpin = true,
+  enableZoom = false,
+  ariaLabel = "Interactive 3D model",
+  loadingLabel = "Loading 3D model…",
+  errorLabel = "The 3D model could not be loaded.",
+  webglLabel = "WebGL is not available on this device.",
+  class: className,
+} = Astro.props;
+
+const toCssSize = (value: number | string) =>
+  typeof value === "number" ? `${value}px` : value;
+
+const styleVars = [
+  background ? `--voxel-bg: ${background}` : null,
+  radius !== undefined ? `--voxel-radius: ${toCssSize(radius)}` : null,
+]
+  .filter(Boolean)
+  .join("; ");
+---
+
+<div
+  class:list={["voxel-viewer", className]}
+  data-voxel-viewer
+  data-model={modelPath}
+  data-auto-rotate={autoRotate ? "true" : "false"}
+  data-intro-spin={introSpin ? "true" : "false"}
+  data-enable-zoom={enableZoom ? "true" : "false"}
+  data-loading-label={loadingLabel}
+  data-error-label={errorLabel}
+  data-webgl-label={webglLabel}
+  style={styleVars}
+>
+  <div class="voxel-stage" data-voxel-stage role="img" aria-label={ariaLabel}>
+  </div>
+  <p class="voxel-status" data-voxel-status role="status" aria-live="polite">
+    {loadingLabel}
+  </p>
+</div>
+
+<style>
+  .voxel-viewer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 300px; /* evita que colapse a 0 */
+    background: var(--voxel-bg, transparent);
+    border-radius: var(--voxel-radius, 0);
+    overflow: hidden;
+  }
+
+  .voxel-stage {
+    position: absolute;
+    inset: 0;
+  }
+
+  /* El canvas lo crea Three.js en runtime, por eso necesita :global */
+  .voxel-stage :global(canvas) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: grab;
+    transition: opacity 0.6s ease;
+  }
+
+  .voxel-stage :global(canvas:active) {
+    cursor: grabbing;
+  }
+
+  .voxel-viewer.is-ready .voxel-stage :global(canvas) {
+    opacity: 1;
+  }
+
+  .voxel-status {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    margin: 0;
+    color: var(--color-text);
+    font-family: var(--font-text);
+    font-size: var(--fs-sm);
+    letter-spacing: var(--tracking-wide);
+    text-align: center;
+    text-transform: uppercase;
+    opacity: 0.6;
+    pointer-events: none;
+    transition:
+      opacity 0.4s ease,
+      visibility 0.4s ease;
+  }
+
+  .voxel-viewer.is-ready .voxel-status {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .voxel-viewer.is-error .voxel-status {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .voxel-stage :global(canvas),
+    .voxel-status {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // Three.js se importa dinámicamente la primera vez que el visor entra en pantalla.
+  type ThreeModule = typeof import("three");
+
+  const cleanups = new Map<HTMLElement, () => void>();
+
+  const loadLibraries = () =>
+    Promise.all([
+      import("three"),
+      import("three/examples/jsm/loaders/GLTFLoader.js"),
+      import("three/examples/jsm/controls/OrbitControls.js"),
+    ]);
+
+  const disposeObject = (
+    THREE: ThreeModule,
+    object: import("three").Object3D,
+  ) => {
+    object.traverse((child) => {
+      const mesh = child as import("three").Mesh;
+      if (!mesh.isMesh) return;
+
+      mesh.geometry?.dispose();
+      const materials = Array.isArray(mesh.material)
+        ? mesh.material
+        : [mesh.material];
+
+      for (const material of materials) {
+        for (const value of Object.values(material)) {
+          if (value instanceof THREE.Texture) value.dispose();
+        }
+        material.dispose();
+      }
+    });
+  };
+
+  const createViewer = (root: HTMLElement) => {
+    const stage = root.querySelector<HTMLElement>("[data-voxel-stage]");
+    const status = root.querySelector<HTMLElement>("[data-voxel-status]");
+    const modelUrl = root.dataset.model;
+
+    if (!stage || !modelUrl) return;
+
+    const loadingLabel = root.dataset.loadingLabel ?? "";
+    const errorLabel = root.dataset.errorLabel ?? "";
+    const webglLabel = root.dataset.webglLabel ?? "";
+
+    const showError = (message: string) => {
+      root.classList.add("is-error");
+      if (status) status.textContent = message;
+    };
+
+    let disposed = false;
+    let started = false;
+    let visible = false;
+    let handle: {
+      start: () => void;
+      stop: () => void;
+      dispose: () => void;
+    } | null = null;
+
+    const setup = async () => {
+      const [THREE, { GLTFLoader }, { OrbitControls }] = await loadLibraries();
+      if (disposed) return;
+
+      let renderer: import("three").WebGLRenderer;
+      try {
+        renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      } catch {
+        showError(webglLabel);
+        return;
+      }
+
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 1000);
+      camera.position.set(2, 2, 4);
+
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setClearColor(0x000000, 0);
+      renderer.domElement.setAttribute("aria-hidden", "true");
+      stage.appendChild(renderer.domElement);
+
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.08;
+      controls.enablePan = false;
+      controls.enableZoom = root.dataset.enableZoom === "true";
+      controls.autoRotate =
+        root.dataset.autoRotate === "true" && !prefersReducedMotion;
+      controls.autoRotateSpeed = 1.2;
+
+      scene.add(new THREE.HemisphereLight(0xffffff, 0x444444, 2));
+
+      const keyLight = new THREE.DirectionalLight(0xffffff, 2.2);
+      keyLight.position.set(5, 10, 7);
+      scene.add(keyLight);
+
+      const fillLight = new THREE.DirectionalLight(0xffffff, 0.8);
+      fillLight.position.set(-6, 4, -5);
+      scene.add(fillLight);
+
+      const introSpinEnabled =
+        root.dataset.introSpin === "true" && !prefersReducedMotion;
+      const introSpinDuration = 1000;
+
+      let introPivot: import("three").Group | null = null;
+      let introSpinStart: number | null = null; // se fija en el primer frame visible
+      let rafId: number | null = null;
+
+      const render = () => {
+        rafId = requestAnimationFrame(render);
+
+        if (introPivot) {
+          introSpinStart ??= performance.now();
+          const progress = Math.min(
+            (performance.now() - introSpinStart) / introSpinDuration,
+            1,
+          );
+
+          if (progress < 1) {
+            const eased = 1 - Math.pow(1 - progress, 3);
+            introPivot.rotation.y = -Math.PI * 2 * (1 - eased);
+          } else {
+            introPivot.rotation.y = 0;
+            introPivot = null;
+          }
+        }
+
+        controls.update();
+        renderer.render(scene, camera);
+      };
+
+      const start = () => {
+        if (rafId === null) render();
+      };
+
+      const stop = () => {
+        if (rafId !== null) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+      };
+
+      const resize = () => {
+        const width = stage.clientWidth;
+        const height = stage.clientHeight;
+        if (width === 0 || height === 0) return;
+
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height, false);
+      };
+
+      resize();
+
+      const resizeObserver = new ResizeObserver(resize);
+      resizeObserver.observe(stage);
+
+      const loader = new GLTFLoader();
+      loader.load(
+        modelUrl,
+        (gltf) => {
+          // El visor se destruyó mientras descargaba el modelo
+          if (disposed) {
+            disposeObject(THREE, gltf.scene);
+            return;
+          }
+
+          const model = gltf.scene;
+
+          model.traverse((child) => {
+            const mesh = child as import("three").Mesh;
+            if (!mesh.isMesh) return;
+
+            const materials = Array.isArray(mesh.material)
+              ? mesh.material
+              : [mesh.material];
+
+            for (const material of materials) {
+              const map = (material as import("three").MeshStandardMaterial)
+                .map;
+              if (!map) continue;
+
+              map.magFilter = THREE.NearestFilter;
+              map.minFilter = THREE.NearestMipmapNearestFilter;
+              map.colorSpace = THREE.SRGBColorSpace;
+              map.needsUpdate = true;
+            }
+          });
+
+          const box = new THREE.Box3().setFromObject(model);
+          const size = box.getSize(new THREE.Vector3());
+          const center = box.getCenter(new THREE.Vector3());
+
+          model.position.sub(center);
+
+          const pivot = new THREE.Group();
+          pivot.add(model);
+          scene.add(pivot);
+
+          if (introSpinEnabled) {
+            pivot.rotation.y = -Math.PI * 2;
+            introPivot = pivot;
+            introSpinStart = null;
+          }
+
+          const maxDimension = Math.max(size.x, size.y, size.z) || 1;
+          const fov = THREE.MathUtils.degToRad(camera.fov);
+          const distance = (maxDimension / 2 / Math.tan(fov / 2)) * 1.5;
+
+          camera.near = Math.max(distance / 100, 0.01);
+          camera.far = distance * 100;
+          camera.position.set(
+            distance * 0.45,
+            distance * 0.35,
+            distance * 0.85,
+          );
+          camera.updateProjectionMatrix();
+
+          controls.target.set(0, 0, 0);
+          controls.minDistance = distance * 0.5;
+          controls.maxDistance = distance * 3;
+          controls.update();
+
+          root.classList.remove("is-error");
+          root.classList.add("is-ready");
+          if (status) status.textContent = "";
+        },
+        undefined,
+        () => {
+          if (disposed) return;
+          showError(errorLabel);
+        },
+      );
+
+      const dispose = () => {
+        stop();
+        introPivot = null;
+        resizeObserver.disconnect();
+        controls.dispose();
+        disposeObject(THREE, scene);
+        renderer.dispose();
+        renderer.forceContextLoss(); // libera el contexto WebGL (límite ~16 por página)
+        renderer.domElement.remove();
+      };
+
+      handle = { start, stop, dispose };
+      if (visible) start();
+    };
+
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        visible = entry.isIntersecting;
+
+        if (handle) {
+          if (visible) handle.start();
+          else handle.stop();
+          return;
+        }
+
+        // Primera vez visible: cargar Three.js y construir la escena
+        if (visible && !started) {
+          started = true;
+          setup().catch(() => {
+            if (!disposed) showError(errorLabel);
+          });
+        }
+      },
+      { rootMargin: "100px" },
+    );
+    visibilityObserver.observe(root);
+
+    cleanups.set(root, () => {
+      disposed = true;
+      visibilityObserver.disconnect();
+      handle?.dispose();
+      handle = null;
+
+      // Permite reinicializar (transition:persist, bfcache)
+      delete root.dataset.voxelInitialized;
+      root.classList.remove("is-ready", "is-error");
+      if (status) status.textContent = loadingLabel;
+      cleanups.delete(root);
+    });
+  };
+
+  const initViewers = () => {
+    document
+      .querySelectorAll<HTMLElement>("[data-voxel-viewer]")
+      .forEach((root) => {
+        if (cleanups.has(root) || root.dataset.voxelInitialized === "true") {
+          return;
+        }
+        root.dataset.voxelInitialized = "true";
+        createViewer(root);
+      });
+  };
+
+  const cleanupAll = () => {
+    for (const cleanup of [...cleanups.values()]) cleanup();
+  };
+
+  initViewers();
+  document.addEventListener("astro:page-load", initViewers);
+  document.addEventListener("astro:before-swap", cleanupAll);
+  window.addEventListener("pagehide", cleanupAll);
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted) initViewers(); // vuelta desde bfcache
+  });
+</script>

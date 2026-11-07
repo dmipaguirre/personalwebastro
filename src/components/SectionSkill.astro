@@ -18,82 +18,128 @@ const skills = [
 ];
 ---
 
-<section class="skills" aria-label="Technical Skills">
-  {
-    skills.map((skill, index) => (
-      <>
-        <div class="skill-card">
-          <h2>{skill.title}</h2>
-          <p>{skill.description}</p>
-        </div>
-        {index < skills.length - 1 && (
-          <div class="skill-divider" aria-hidden="true" />
-        )}
-      </>
-    ))
-  }
+<section class="skills">
+  <h2 class="skills-label" id="skills-heading">Technical Specialties</h2>
+
+  <div class="skills-list">
+    {
+      skills.map((skill) => (
+        <article class="skill-card">
+          <h3 class="skill-title">{skill.title}</h3>
+          <p class="skill-text">{skill.description}</p>
+        </article>
+      ))
+    }
+  </div>
 </section>
 
 <style>
+  /* --- Carpeta que envuelve todas las skills --- */
   .skills {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 1.2rem 1.3rem;
-    width: var(--width-container);
-    max-width: 1200px;
-    margin: 1rem auto;
-    gap: 2rem;
-  }
-  .skill-divider {
-    width: 1px;
-    background-color: var(--color-primary);
-    height: 180px;
-  }
-  .skill-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    flex: 1;
+    min-width: 0;
+    padding: 1.1rem;
+    background: var(--color-bgsecondary);
+    border-radius: 18px;
   }
-  .skill-card h2 {
+
+  /* Pestaña de la carpeta: al lado derecho, separada del borde (no al ras) */
+  .skills-label {
+    position: absolute;
+    bottom: 100%;
+    margin: 0;
+    padding: 0.8rem 0.9rem;
+    font-family: var(--font-title);
+    font-size: var(--fs-eyebrow);
+    font-weight: 650;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-primary);
+    background: var(--color-bgsecondary);
+    border-radius: 12px 12px 0 0;
+  }
+
+  /* Esquinas internas redondas donde la pestaña se une al cuerpo de la carpeta */
+  .skills-label::before,
+  .skills-label::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 10px;
+    height: 10px;
+  }
+
+  .skills-label::before {
+    right: 100%;
+    background: radial-gradient(
+      circle 10px at 0 0,
+      transparent 9.5px,
+      var(--color-bgsecondary) 10px
+    );
+  }
+
+  .skills-label::after {
+    left: 100%;
+    background: radial-gradient(
+      circle 10px at 100% 0,
+      transparent 9.5px,
+      var(--color-bgsecondary) 10px
+    );
+  }
+
+  /* --- Lista vertical: cada skill debajo de la anterior --- */
+  .skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  /* --- Cada skill con su propio fondo, redondeado (borde interno) --- */
+  .skill-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding: 1.05rem 1.2rem;
+    background: var(--color-bg);
+    border: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent);
+    border-radius: 14px;
+  }
+
+  .skill-title {
     font-family: var(--font-title);
     color: var(--color-text);
-    font-size: var(--fs-h3);
+    font-size: var(--fs-h4);
+    font-weight: 650;
     line-height: var(--leading-snug);
     letter-spacing: var(--tracking-tight);
-    margin: 0 0 1rem 0;
-    font-weight: 650;
+    margin: 0;
   }
-  .skill-card p {
+
+  .skill-text {
     font-family: var(--font-text);
     color: var(--color-text);
-    font-size: var(--fs-lg);
-    opacity: 0.6;
+    font-size: var(--fs-base);
+    line-height: 1.6;
+    opacity: 0.75;
+    margin: 0;
   }
 
-  @media (width < 1200px) {
+  @media (width < 600px) {
     .skills {
-      width: 100%;
+      padding: 0.8rem;
+      border-radius: 14px;
     }
-  }
-  @media (width < 800px) {
-    .skills {
-      flex-direction: column;
-      gap: 1rem;
+
+    .skills-label {
+      right: 1rem;
+      padding: 0.3rem 0.9rem;
     }
-    .skill-divider {
-      height: 1px;
-      width: 100%;
-      margin: 0 auto;
-    }
+
     .skill-card {
-      max-width: 100%;
-      margin: 1rem 0;
-
-      & p {
-        font-size: var(--fs-xl);
-      }
+      padding: 0.9rem 1rem;
     }
   }
 </style>
