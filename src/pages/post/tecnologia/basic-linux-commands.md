@@ -13,7 +13,7 @@ sizeLayout: "wide"
 titleCategory: "Linux"
 ---
 
-Linux is, for many people, the doorway into the world of open-source software and system administration. Its terminal—powerful, minimalistic, and incredibly flexible—allows you to control every aspect of the system with precision, speed, and elegance. In this introductory guide, we'll explore how basic commands can transform the way you interact with your computer and help you understand how an operating system really works.
+Linux is, for many people, the doorway into the world of open-source software and system administration. Its terminal—powerful, minimalistic, and incredibly flexible allows you to control every aspect of the system with precision, speed, and elegance. In this introductory guide, we'll explore how basic commands can transform the way you interact with your computer and help you understand how an operating system really works.
 
 ## Why the terminal still matters
 
@@ -25,18 +25,17 @@ Personally, my interest in the terminal began when I realized that many tasks I 
 
 Everything in Linux begins with the root directory `/`. From there, the system branches into a clear and hierarchical structure. A few directories you'll run into constantly:
 
-`/bin` contiene los programas y comandos básicos del sistema necesarios para uso de todos los usuarios
-`/boot`
-archivos estáticos del gestor de arranque: Almacena los archivos necesarios para iniciar el equipo, incluye el núcleo de Linux y la configuración
-`/home` personal files and configuration for each user
-`/etc` configuración del sistema
-`/var` logs, caches, and other variable data  
+- `/bin` contains the basic system programs and commands needed for all users,
+- `/boot` static bootloader files. It stores the files required to start the system, including the Linux kernel and configuration
+- `/home` houses personal directories such as regular user folders of the syste
+- `/etc` host-specific system configuration containing all global configuration files for the system and installed programs in plain text format, for example: networks, encrypted passwords, and services
+- `/var` stores data whose content constantly changes during system operation, such as event logs, mail queues, databases, or caches
 
 To navigate through this structure, these fundamental commands are essential:
 
-`ls` lists files and folders (`ls -la` shows hidden files and details)  
-`cd` changes directories  
-`pwd` shows your current location  
+- `ls` lists files and folders in the current path or by specifying a specific path (ls -la shows hidden files with detailed information like permissions and type)
+- `cd` allows changing between directories
+- `pwd` shows the current location, meaning it lets you check the path you are currently in
 
 Learning to navigate the system is the foundation for everything that follows.
 
@@ -44,10 +43,10 @@ Learning to navigate the system is the foundation for everything that follows.
 
 Once you know how to move around, the next step is creating, copying, and deleting items. The most commonly used commands include:
 
-- `mkdir` to create directories  
-- `cp` to copy files  
-- `mv` to move or rename  
-- `rm` to delete  
+- `mkdir` creates a directory in the current location, it is also possible to create a full directory path using `-p`
+- `cp` copies a file
+- `mv` moves or renames a file
+- `rm` deletes files
 
 With just these commands, you can manage almost everything in your working environment.
 
