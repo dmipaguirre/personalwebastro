@@ -1,7 +1,15 @@
 ---
 import Layout from "./Layout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { categoryConfig, getCategoryKey } from "../data/blogCategories";
 
 const { frontmatter } = Astro.props;
+const categoryKey = getCategoryKey(frontmatter.titleCategory);
+const breadcrumbs = [
+  { label: "Blog", href: "/blog/" },
+  { label: categoryConfig[categoryKey]?.title ?? categoryKey, href: `/blog/#${categoryKey}` },
+  { label: frontmatter.title },
+];
 const timeValue = frontmatter.readingTime;
 const regardingTimeText = timeValue
   ? `${timeValue} min to read`
@@ -26,6 +34,7 @@ const publishedDateText = new Intl.DateTimeFormat("en-US", {
 >
   <article class="blog-content">
     <section class="blog-header">
+      <Breadcrumbs items={breadcrumbs} />
       <h1>{frontmatter.title}</h1>
       <div class="blog-meta">
         <div class="meta-item">
@@ -81,9 +90,9 @@ const publishedDateText = new Intl.DateTimeFormat("en-US", {
 <style is:global>
   .blog-content {
     width: var(--width-container);
-    max-width: 1200px;
+    max-width: var(--page-max-width);
     margin: 8rem auto;
-    padding: 1.2rem 1.3rem;
+    padding: var(--page-pad-y) var(--page-pad-x);
     font-family: var(--font-text);
     color: var(--color-text);
     line-height: 1.6;
@@ -258,24 +267,18 @@ const publishedDateText = new Intl.DateTimeFormat("en-US", {
       & p {
         font-size: var(--fs-lg);
       }
-      table {
-      width: 100%;
 
+      table {
+        width: 100%;
+      }
     }
 
     .blog-content h1 {
-      font-size: var(--fs-h1);
-      font-weight: 700;
       margin-bottom: 0.7rem;
     }
 
     .blog-meta {
       gap: 1rem;
     }
-
-    .blog-content h2 {
-      font-size: var(--fs-h2);
-    }
-  }
   }
 </style>

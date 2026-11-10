@@ -1,59 +1,75 @@
 ---
 import ArticleCard from "./ArticleCard.astro";
-
-interface PostFrontmatter {
-  title: string;
-  description: string;
-  author: string;
-  publishDate: string;
-  readingTime: string;
-  sizeLayout?: "wide" | "tall" | "featured";
-  titleCategory?: string;
-  image?: {
-    url: string;
-    alt: string;
-  };
-}
+import type { PostEntry } from "../../data/blogPosts";
 
 interface Props {
-  posts: Array<{
-    frontmatter: PostFrontmatter;
-    url: string;
-  }>;
+  posts: PostEntry[];
+  label?: string;
 }
 
-const { posts } = Astro.props;
+const { posts, label = "Últimos artículos" } = Astro.props;
 ---
 
-<div class="blog-grid">
-  {posts.map((post) => (
-    <ArticleCard post={post} />
-  ))}
+<div class="folder-viewer">
+  <div class="folder-viewer__scroll" tabindex="0" role="group" aria-label={label}>
+    {posts.map((post, i) => (
+      <ArticleCard post={post} index={i + 1} />
+    ))}
+  </div>
 </div>
 
 <style>
-  .blog-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-auto-flow: dense;
-    column-gap: 1.8rem;
-    row-gap: 2rem;
-    max-width: 1440px;
-    margin: 0 auto;
-    align-items: stretch;
+  .folder-viewer {
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    display: flex;
   }
 
-  @media (max-width: 1100px) {
-    .blog-grid {
-      grid-template-columns: repeat(4, 1fr);
-    }
+  .folder-viewer__scroll {
+    --fade-edge: linear-gradient(
+      to bottom,
+      transparent 0,
+      #000 1.15rem,
+      #000 calc(100% - 1.25rem),
+      transparent 100%
+    );
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
+    scroll-padding-block: 0.35rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scroll-thumb) var(--scroll-track);
+    padding: 0.55rem 0.35rem 0.85rem;
+    -webkit-mask-image: var(--fade-edge);
+    mask-image: var(--fade-edge);
   }
 
-  @media (max-width: 800px) {
-    .blog-grid {
-      grid-template-columns: 1fr;
-      column-gap: 0;
-      row-gap: 1.6rem;
+  .folder-viewer__scroll::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .folder-viewer__scroll::-webkit-scrollbar-track {
+    background: var(--scroll-track);
+    border-radius: 99px;
+  }
+
+  .folder-viewer__scroll::-webkit-scrollbar-thumb {
+    background: var(--scroll-thumb);
+    border-radius: 99px;
+  }
+
+  .folder-viewer__scroll:focus-visible {
+    outline: 3px solid var(--folder-accent);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .folder-viewer__scroll {
+      scroll-behavior: auto;
     }
   }
 </style>

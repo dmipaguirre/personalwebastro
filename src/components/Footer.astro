@@ -142,7 +142,7 @@ import Logo from "./Logo.astro";
 <style>
   .footer {
     overflow: hidden;
-    max-width: 1200px;
+    max-width: var(--page-max-width);
     margin-top: 4rem;
     margin-bottom: 1rem;
     margin-left: auto;
@@ -164,9 +164,9 @@ import Logo from "./Logo.astro";
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    max-width: 1200px;
+    max-width: var(--page-max-width);
     margin: 0 auto;
-    padding: 5rem 1.3rem 3rem;
+    padding: 5rem var(--page-pad-x) 3rem;
     gap: 4rem;
   }
 
@@ -261,9 +261,9 @@ import Logo from "./Logo.astro";
     }
   }
   .footer-bottom {
-    max-width: 1200px;
+    max-width: var(--page-max-width);
     margin: 0 auto;
-    padding: 0 1.3rem 0;
+    padding: 0 var(--page-pad-x) 0;
   }
 
   .footer-bottom-content {
@@ -334,7 +334,7 @@ import Logo from "./Logo.astro";
 
   @media (width < 600px) {
     .footer-content {
-      padding: 3rem 1.3rem 2rem;
+      padding: 3rem var(--page-pad-x) 2rem;
     }
 
     .footer-links {

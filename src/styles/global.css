@@ -46,6 +46,16 @@
   --color-bgsecondary: #ffffff;
   --color-directory: #17294f;
   --width-container: 100%;
+  --page-max-width: 1200px;
+  --page-pad-y: 1.2rem;
+  --page-pad-x: 1.3rem;
+  --page-margin: 8rem auto 4rem;
+  --color-white: #ffffff;
+  --color-ink: #161615;
+  --color-cream: #f2f0e8;
+  --color-orange: #ff5900;
+  --color-stone: #8e8b80;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --font-title: "Antonio", "Antonio Fallback", system-ui, sans-serif;
   --font-text: "Inter", system-ui, -apple-system, sans-serif;
   --font-style: "Allison-Regular", cursive;

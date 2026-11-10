@@ -10,6 +10,8 @@ Personal portfolio of Miguel Páez, built with [Astro](https://astro.build). A s
 - 🎯 **SEO Optimized** - Canonical URLs, Open Graph and Twitter Card metadata via `Seo.astro`
 - 🧊 **Interactive 3D Hero** - Lazy-loaded Three.js viewer (`VoxelViewer.astro`) rendering a GLB model with OrbitControls, auto-disposing resources and honoring `prefers-reduced-motion`
 - 📝 **Markdown Blog** - Articles written in Markdown, grouped into categories and rendered with a dedicated layout
+- 🗂️ **Folder-style Blog Directory** - Categories shown as stacked folders with staggered tabs, a CSS-only radio switch, hover lift for background folders and a "bring to front" transition
+- 🍞 **Breadcrumbs in Articles** - `Blog / Category / Title` navigation; the category crumb returns to the same folder in `/blog` via a `#hash`
 - 🔤 **Custom Typography** - Self-hosted Jost, Inter, Allison and Fira Code fonts (woff2, preloaded)
 
 ## 🏗️ Project Structure
@@ -26,12 +28,12 @@ Personal portfolio of Miguel Páez, built with [Astro](https://astro.build). A s
 ├── src/
 │   ├── components/              # Reusable UI components
 │   │   ├── blog/                # Blog-specific components
-│   │   │   ├── ArticleCard.astro  # Card for a single article (variantes wide/tall/featured)
-│   │   │   ├── BlogDirectory.astro # Blog landing: agrupa artículos por categoría
-│   │   │   └── BlogGrid.astro     # Responsive CSS Grid of cards
+│   │   │   ├── ArticleCard.astro  # Article preview row (index, date, title, tag, "Leer →")
+│   │   │   ├── BlogDirectory.astro # Folder stage: stacked folders with tabs, one radio per category
+│   │   │   └── BlogGrid.astro     # Scrollable viewer with fade masks and themed scrollbar
 │   │   ├── icons/
 │   │   │   └── SocialIcon.astro   # Social media SVG icons
-│   │   ├── Breadcrumbs.astro    # Breadcrumb navigation
+│   │   ├── Breadcrumbs.astro    # Breadcrumb navigation (receives `items` as props)
 │   │   ├── ButtonColor.astro    # Theme switch (light/dark)
 │   │   ├── Experience.astro     # Experience timeline
 │   │   ├── Footer.astro         # Site footer
@@ -47,10 +49,11 @@ Personal portfolio of Miguel Páez, built with [Astro](https://astro.build). A s
 │   ├── content/
 │   │   └── content.config.ts    # Content collection "post" (Zod schema, glob loader)
 │   ├── data/
-│   │   └── blogPosts.ts         # Legacy static post data (no longer rendered)
+│   │   ├── blogCategories.ts    # Category config, titleCategory map and getCategoryKey()
+│   │   └── blogPosts.ts         # getAllPosts(), formatPostDate(), padIndex(), PostEntry/PostFrontmatter (+ legacy static data)
 │   ├── layouts/
 │   │   ├── Layout.astro         # Main layout: head, SEO, navbar, footer, theme boot
-│   │   └── BlogLayout.astro     # Layout for individual blog posts
+│   │   └── BlogLayout.astro     # Layout for individual blog posts (SEO, meta, breadcrumbs)
 │   ├── pages/                   # File-based routing
 │   │   ├── index.astro          # Homepage (/)
 │   │   ├── about.astro          # About me (/about)
@@ -74,7 +77,10 @@ Personal portfolio of Miguel Páez, built with [Astro](https://astro.build). A s
 
 - **Blog articles** live as Markdown files in `src/pages/post/<categoria>/*.md`, so each file generates its own route at `/post/<categoria>/<slug>` and declares its layout (`BlogLayout.astro`) in the frontmatter.
 - **Frontmatter schema** (validated in `src/content/content.config.ts`): `title`, `publishDate`, `description` are required; `author`, `icon`, `readingTime`, `titleCategory`, `image` and `sizeLayout` (`wide` | `tall` | `featured`) have sensible defaults or are optional.
-- `BlogDirectory.astro` discovers articles at build time with `import.meta.glob`, sorts them by `publishDate` and groups them into categories (`tecnologia`, `idiomas`) with a title and description. Card size comes only from the explicit `sizeLayout` metadata — never from the article's index.
+- `BlogDirectory.astro` discovers articles at build time with `import.meta.glob`, sorts them by `publishDate` and groups them into categories (`idiomas`, `tecnologia`, `escritos` — only non-empty folders are rendered). Category titles, headlines and the `titleCategory` map live in `src/data/blogCategories.ts`, shared with `BlogLayout.astro` so breadcrumb labels always match the directory.
+- **Folder stage**: each category is a self-contained `.folder-unit` (tab + body) stacked with depth layers (`z-index` 10/20/30). Tabs are staggered left/center/right; a hidden radio per folder (`name="blog-folder"`) drives the selection with pure CSS (`:checked ~`). Only background folders lift on hover; clicking one brings it to front with a transition. Tabs rotate to the right edge below 768px.
+- **Article rows** (`ArticleCard.astro`) use a 12-column grid: index + date, truncated title, category tag and "Leer →", with a subtle horizontal shift on hover. Card size comes only from the explicit `sizeLayout` metadata — never from the article's index.
+- **Breadcrumbs**: `BlogLayout.astro` builds `Blog / <category> / <title>` from the frontmatter. The category crumb links to `/blog/#<category>`; a small script in `BlogDirectory.astro` reads the hash on load and selects that folder.
 
 ## 🛠️ Available Commands
 
@@ -95,7 +101,7 @@ All commands are run from the root of the project (package manager: **pnpm**):
 |--------------------------|------------------------------------|
 | `/`                      | Homepage: hero, skills, quote      |
 | `/about`                 | About me: experience and interests |
-| `/blog`                  | Blog directory grouped by category |
+| `/blog`                  | Blog directory: stacked folders by category (supports `/blog/#tecnologia`, `/blog/#idiomas`, `/blog/#escritos`) |
 | `/projects`              | Projects (placeholder, `noindex`)  |
 | `/post/<categoria>/<slug>` | Individual blog article          |
 
@@ -125,6 +131,8 @@ Defined as CSS variables in `src/styles/global.css`:
   - Allison (Accent text)
   - Fira Code (Code)
 - **Fluid typographic scale** built with `clamp()` (`--fs-display` … `--fs-sm`)
+- **Layout tokens**: `--page-max-width`, `--page-pad-x`, `--page-pad-y`, `--page-margin` shared by every section, plus `--ease-out` for motion
+- **Folder palette**: `--color-white`, `--color-ink`, `--color-cream`, `--color-orange`, `--color-stone` feed the blog folder themes
 
 ## 📝 License
 
