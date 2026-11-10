@@ -50,7 +50,7 @@ const styleVars = [
   data-webgl-label={webglLabel}
   style={styleVars}
 >
-  <div class="voxel-stage" data-voxel-stage role="img" aria-label={ariaLabel}>
+  <div class="voxel-stage" data-voxel-stage role="group" aria-label={ariaLabel}>
   </div>
   <p class="voxel-status" data-voxel-status role="status" aria-live="polite">
     {loadingLabel}
@@ -85,6 +85,15 @@ const styleVars = [
 
   .voxel-stage :global(canvas:active) {
     cursor: grabbing;
+  }
+
+  .voxel-stage :global(canvas:focus-visible) {
+    outline: 2px solid var(--color-primary);
+    outline-offset: -4px;
+  }
+
+  .voxel-viewer.is-offscreen .voxel-stage :global(canvas) {
+    animation-play-state: paused;
   }
 
   .voxel-viewer.is-ready .voxel-stage :global(canvas) {
@@ -212,7 +221,9 @@ const styleVars = [
 
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.setClearColor(0x000000, 0);
-      renderer.domElement.setAttribute("aria-hidden", "true");
+      renderer.domElement.tabIndex = 0;
+      renderer.domElement.setAttribute("role", "img");
+      renderer.domElement.setAttribute("aria-label", stage.getAttribute("aria-label") ?? "");
       stage.appendChild(renderer.domElement);
 
       const controls = new OrbitControls(camera, renderer.domElement);
@@ -241,9 +252,14 @@ const styleVars = [
       let introPivot: import("three").Group | null = null;
       let introSpinStart: number | null = null; // se fija en el primer frame visible
       let rafId: number | null = null;
+      let running = false;
+
+      const requestRender = () => {
+        if (running && rafId === null) rafId = requestAnimationFrame(render);
+      };
 
       const render = () => {
-        rafId = requestAnimationFrame(render);
+        rafId = null;
 
         if (introPivot) {
           introSpinStart ??= performance.now();
@@ -263,18 +279,42 @@ const styleVars = [
 
         controls.update();
         renderer.render(scene, camera);
+
+        if (introPivot) requestRender();
       };
 
       const start = () => {
-        if (rafId === null) render();
+        running = true;
+        requestRender();
       };
 
       const stop = () => {
+        running = false;
         if (rafId !== null) {
           cancelAnimationFrame(rafId);
           rafId = null;
         }
       };
+
+      controls.addEventListener("change", requestRender);
+      controls.addEventListener("start", () => {
+        root.classList.add("is-touched");
+      });
+
+      renderer.domElement.addEventListener("keydown", (event) => {
+        const step = 0.15;
+        const rotations: Record<string, () => void> = {
+          ArrowLeft: () => controls.rotateLeft(step),
+          ArrowRight: () => controls.rotateLeft(-step),
+          ArrowUp: () => controls.rotateUp(step),
+          ArrowDown: () => controls.rotateUp(-step),
+        };
+        const rotate = rotations[event.key];
+        if (!rotate) return;
+        event.preventDefault();
+        root.classList.add("is-touched");
+        rotate();
+      });
 
       const resize = () => {
         const width = stage.clientWidth;
@@ -284,6 +324,7 @@ const styleVars = [
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
         renderer.setSize(width, height, false);
+        requestRender();
       };
 
       resize();
@@ -359,6 +400,7 @@ const styleVars = [
 
           root.classList.remove("is-error");
           root.classList.add("is-ready");
+          requestRender();
           if (status) status.textContent = "";
         },
         undefined,
@@ -383,10 +425,13 @@ const styleVars = [
       if (visible) start();
     };
 
+    root.classList.add("is-offscreen");
+
     const visibilityObserver = new IntersectionObserver(
       ([entry]) => {
         if (!entry) return;
         visible = entry.isIntersecting;
+        root.classList.toggle("is-offscreen", !visible);
 
         if (handle) {
           if (visible) handle.start();

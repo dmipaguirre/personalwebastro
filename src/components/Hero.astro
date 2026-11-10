@@ -16,7 +16,11 @@ import SectionQuote from "./SectionQuote.astro";
       <span class="window-title">fido.glb</span>
     </div>
     <div class="hero-window-stage">
-      <VoxelViewer modelPath="/models/fido.glb" ariaLabel="3D model" />
+      <VoxelViewer
+        modelPath="/models/fido.glb"
+        ariaLabel="Interactive 3D model of Fido. Drag or use the arrow keys to rotate."
+      />
+      <p class="hero-hint" aria-hidden="true">Drag to rotate</p>
       <div class="hero-icons">
         <SocialIcon />
       </div>
@@ -184,6 +188,27 @@ import SectionQuote from "./SectionQuote.astro";
     animation: hero-float 5s ease-in-out infinite;
   }
 
+  .hero-hint {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 1;
+    margin: 0;
+    font-family: var(--font-text);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: rgb(255 255 255 / 0.6);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .hero-window-stage:has(.voxel-viewer.is-ready:not(.is-touched)) .hero-hint {
+    opacity: 1;
+  }
+
   @keyframes hero-float {
     0%,
     100% {
@@ -286,6 +311,7 @@ import SectionQuote from "./SectionQuote.astro";
 
     .hero-avatar {
       width: 100%;
+      height: auto;
       justify-self: center;
       aspect-ratio: 4 / 5;
     }

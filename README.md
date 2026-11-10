@@ -8,7 +8,7 @@ Personal portfolio of Miguel Páez, built with [Astro](https://astro.build). A s
 - 🎨 **Modern & Responsive Design** - CSS Grid layouts that adapt to mobile, tablet and desktop
 - 🌗 **Light / Dark Theme** - Toggle persisted in `localStorage`, respecting `prefers-color-scheme`
 - 🎯 **SEO Optimized** - Canonical URLs, Open Graph and Twitter Card metadata via `Seo.astro`
-- 🧊 **Interactive 3D Hero** - Lazy-loaded Three.js viewer (`VoxelViewer.astro`) rendering a GLB model with OrbitControls, auto-disposing resources and honoring `prefers-reduced-motion`
+- 🧊 **Interactive 3D Hero** - Lazy-loaded Three.js viewer (`VoxelViewer.astro`) rendering a GLB model with OrbitControls on demand (only while visible or changing), keyboard rotation (arrow keys on focus), auto-disposing resources and honoring `prefers-reduced-motion`
 - 📝 **Markdown Blog** - Articles written in Markdown, grouped into categories and rendered with a dedicated layout
 - 🗂️ **Folder-style Blog Directory** - Categories shown as stacked folders with staggered tabs, a CSS-only radio switch, hover lift for background folders and a "bring to front" transition
 - 🍞 **Breadcrumbs in Articles** - `Blog / Category / Title` navigation; the category crumb returns to the same folder in `/blog` via a `#hash`
