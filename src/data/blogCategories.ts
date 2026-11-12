@@ -9,7 +9,7 @@ export interface CategoryConfig {
 export const categoryConfig: Record<string, CategoryConfig> = {
   idiomas: {
     title: "Idiomas",
-    headline: "Filología, fonética y aprendizaje de lenguas",
+    headline: "Aprendizaje de idiomas",
     theme: "white",
   },
   tecnologia: {
